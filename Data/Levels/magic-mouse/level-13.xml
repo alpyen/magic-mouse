@@ -1,0 +1,236 @@
+<?xml version="2.0" ?>
+<Type>saved</Type>
+<Name>level-13</Name>
+<Description></Description>
+<Shader>post</Shader>
+<Shadows>true</Shadows>
+<LoadingScreen>
+    <Image></Image>
+</LoadingScreen>
+<OutOfDate NavMesh="true" NavMeshParamHash="-1674835251" />
+<AmbientSounds />
+<Script>magic-mouse/level.as</Script>
+<LevelScriptParameters>
+    <parameter name="Achievements" type="string" val="flawless, no_injuries, no_kills" />
+    <parameter name="Custom Shader" type="string" val="" />
+    <parameter name="Fog amount" type="float" val="0" />
+    <parameter name="GPU Particle Field" type="string" val="" />
+    <parameter name="HDR Black point" type="float" val="0.005" />
+    <parameter name="HDR Bloom multiplier" type="float" val="1" />
+    <parameter name="HDR White point" type="float" val="0.971" />
+    <parameter name="Level Boundaries" type="int" val="1" />
+    <parameter name="Load Tip" type="string" val="" />
+    <parameter name="Max Energy" type="int" val="100" />
+    <parameter name="Objectives" type="string" val="destroy_all" />
+    <parameter name="Saturation" type="float" val="1" />
+    <parameter name="Sky Brightness" type="float" val="1" />
+    <parameter name="Sky Rotation" type="float" val="0" />
+    <parameter name="Sky Tint" type="string" val="255, 255, 255" />
+</LevelScriptParameters>
+<NavMeshParameters generate="false" cell_size="0.3" cell_height="0.2" agent_height="1.7" agent_radius="0.4" agent_max_climb="1.5" agent_max_slope="60" />
+<Sky>
+    <DomeTexture>Data/Textures/skies/deep_blue.tga_converted.dds</DomeTexture>
+    <SunAngularRad>0.153056</SunAngularRad>
+    <SunColorAngle>353.589</SunColorAngle>
+    <RayToSun r0="0" r1="0" r2="1" />
+</Sky>
+<ActorObjects>
+    <CameraObject t0="44.5177" t1="11.1291" t2="64.4701" s0="1" s1="1" s2="1" q0="0.125742" q1="-0.0744549" q2="0.00946406" q3="0.98922" euler_x="0.252869" euler_y="-0.150249" euler_z="0" id="0">
+        <parameters />
+    </CameraObject>
+    <ActorObject t0="-2.5" t1="2" t2="0" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="1" type_file="Data/Objects/IGF_Characters/IGF_TurnerActor.xml" pc_script_path="magic-mouse/playercontrol.as" is_player="1">
+        <parameters>
+            <parameter name="Aggression" type="float" val="0.5" />
+            <parameter name="Attack Damage" type="float" val="1" />
+            <parameter name="Attack Knockback" type="float" val="1" />
+            <parameter name="Attack Speed" type="float" val="1" />
+            <parameter name="Block Follow-up" type="float" val="0.5" />
+            <parameter name="Block Skill" type="float" val="0.5" />
+            <parameter name="Cannot Be Disarmed" type="int" val="0" />
+            <parameter name="Character Scale" type="float" val="1" />
+            <parameter name="Damage Resistance" type="float" val="1" />
+            <parameter name="Ear Size" type="float" val="1" />
+            <parameter name="Fall Damage Multiplier" type="float" val="1" />
+            <parameter name="Fat" type="float" val="0.5" />
+            <parameter name="Fear - Afraid At Health Level" type="float" val="0" />
+            <parameter name="Fear - Always Afraid On Sight" type="int" val="0" />
+            <parameter name="Fear - Causes Fear On Sight" type="int" val="0" />
+            <parameter name="Fear - Never Afraid On Sight" type="int" val="0" />
+            <parameter name="Focus FOV distance" type="float" val="100" />
+            <parameter name="Focus FOV horizontal" type="float" val="0.62834" />
+            <parameter name="Focus FOV vertical" type="float" val="0.62834" />
+            <parameter name="Ground Aggression" type="float" val="0.5" />
+            <parameter name="Knockout Shield" type="int" val="0" />
+            <parameter name="Left handed" type="int" val="0" />
+            <parameter name="Movement Speed" type="float" val="1" />
+            <parameter name="Muscle" type="float" val="0.5" />
+            <parameter name="No Look Around" type="int" val="0" />
+            <parameter name="Peripheral FOV distance" type="float" val="4" />
+            <parameter name="Peripheral FOV horizontal" type="float" val="1.41376" />
+            <parameter name="Peripheral FOV vertical" type="float" val="1.41376" />
+            <parameter name="Species" type="string" val="rabbit" />
+            <parameter name="Static" type="int" val="0" />
+            <parameter name="Stick To Nav Mesh" type="int" val="0" />
+            <parameter name="Teams" type="string" val="turner" />
+            <parameter name="Throw Counter Probability" type="float" val="0.4" />
+            <parameter name="Throw Trainer" type="int" val="0" />
+            <parameter name="Weapon Catch Skill" type="float" val="1" />
+            <parameter name="Wearing Metal Armor" type="int" val="0" />
+        </parameters>
+        <Connections>
+            <Connection id="-1" />
+        </Connections>
+        <ItemConnections />
+        <Palette>
+            <Color label="Cloth" channel="0" red="1" green="1" blue="1" />
+            <Color label="Rope" channel="1" red="1" green="1" blue="1" />
+            <Color label="Fur" channel="2" red="1" green="1" blue="1" />
+        </Palette>
+    </ActorObject>
+    <EnvObject t0="-2.5" t1="0" t2="0" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="2" color_r="0" color_g="1" color_b="0" overbright="0" type_file="Data/Objects/Buildings/basics/soft_cube.xml">
+        <parameters />
+    </EnvObject>
+    <EnvObject t0="64" t1="0" t2="0" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="3" color_r="1" color_g="0" color_b="0" overbright="0" type_file="Data/Objects/Buildings/basics/soft_cube.xml">
+        <parameters />
+    </EnvObject>
+    <EnvObject t0="3.5" t1="0" t2="0" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="4" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/Buildings/basics/soft_cube.xml">
+        <parameters />
+    </EnvObject>
+    <Hotspot t0="3.5" t1="2" t2="0" s0="0.5" s1="0.5" s2="0.5" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="8" type_file="Data/Objects/magic-mouse/Hotspots/teleport-door-hotspot.xml">
+        <parameters />
+        <Connections>
+            <Connection id="11" />
+        </Connections>
+        <ConnectionsFrom>
+            <Connection id="11" />
+        </ConnectionsFrom>
+    </Hotspot>
+    <EnvObject t0="58.4995" t1="-0.000161409" t2="-0.000826836" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="10" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/Buildings/basics/soft_cube.xml">
+        <parameters />
+    </EnvObject>
+    <Hotspot t0="58.4995" t1="1.99984" t2="-0.000826836" s0="0.5" s1="0.5" s2="0.5" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="11" type_file="Data/Objects/magic-mouse/Hotspots/teleport-door-hotspot.xml">
+        <parameters />
+        <Connections>
+            <Connection id="8" />
+        </Connections>
+        <ConnectionsFrom>
+            <Connection id="8" />
+        </ConnectionsFrom>
+    </Hotspot>
+    <Hotspot t0="0.555279" t1="-0.291835" t2="-0.116188" s0="0.560837" s1="0.560837" s2="0.560837" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="15" type_file="Data/Objects/Hotspots/fire_test.xml">
+        <parameters>
+            <parameter name="Fire Ribbons" type="int" val="50" />
+            <parameter name="Ignite Characters" type="int" val="1" />
+            <parameter name="Light Amplify" type="float" val="2.6" />
+            <parameter name="Light Distance" type="float" val="2" />
+        </parameters>
+        <Connections />
+        <ConnectionsFrom />
+    </Hotspot>
+    <Hotspot t0="0.511937" t1="-0.0267459" t2="-0.116188" s0="0.457386" s1="0.457386" s2="0.457386" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="19" type_file="Data/Objects/Hotspots/fire_test.xml">
+        <parameters>
+            <parameter name="Fire Ribbons" type="int" val="50" />
+            <parameter name="Ignite Characters" type="int" val="1" />
+            <parameter name="Light Amplify" type="float" val="2.6" />
+            <parameter name="Light Distance" type="float" val="2" />
+        </parameters>
+        <Connections />
+        <ConnectionsFrom />
+    </Hotspot>
+    <Hotspot t0="0.490932" t1="0.164119" t2="-0.0235046" s0="0.381124" s1="0.381124" s2="0.381124" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="21" type_file="Data/Objects/Hotspots/fire_test.xml">
+        <parameters>
+            <parameter name="Fire Ribbons" type="int" val="50" />
+            <parameter name="Ignite Characters" type="int" val="1" />
+            <parameter name="Light Amplify" type="float" val="2.6" />
+            <parameter name="Light Distance" type="float" val="2" />
+        </parameters>
+        <Connections />
+        <ConnectionsFrom />
+    </Hotspot>
+    <Hotspot t0="0.536897" t1="-0.649234" t2="-0.116188" s0="0.66013" s1="0.66013" s2="0.66013" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="23" type_file="Data/Objects/Hotspots/fire_test.xml">
+        <parameters>
+            <parameter name="Fire Ribbons" type="int" val="50" />
+            <parameter name="Ignite Characters" type="int" val="1" />
+            <parameter name="Light Amplify" type="float" val="2.6" />
+            <parameter name="Light Distance" type="float" val="2" />
+        </parameters>
+        <Connections />
+        <ConnectionsFrom />
+    </Hotspot>
+    <EnvObject t0="0.352331" t1="0.912181" t2="-0.127876" s0="2.56582" s1="2.56582" s2="2.56582" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="26" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/Environment/camp/fire_wood_hot.xml">
+        <parameters />
+    </EnvObject>
+    <Group t0="0.153242" t1="-4.18461" t2="4.15805" s0="41.8706" s1="25.9178" s2="43.2981" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="27" version="1">
+        <parameters />
+        <EnvObject t0="0.06489" t1="2.5" t2="4.05652" s0="1.67374" s1="1.67374" s2="1.67374" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="13" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/Buildings/rabbit_village/rabbit_hut_walls.xml">
+            <parameters />
+        </EnvObject>
+        <EnvObject t0="0.326575" t1="2.32975" t2="11.3788" s0="1.09995" s1="1.01724" s2="1.04041" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="14" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/therium/burrow/burrow_door.xml">
+            <parameters />
+        </EnvObject>
+        <EnvObject t0="0.641051" t1="3.11821" t2="11.1968" s0="2.73755" s1="0.578619" s2="4.19122" q0="0.499986" q1="-0.509746" q2="-0.488702" q3="0.501344" euler_x="1.59046" euler_y="-0.0224298" euler_z="-1.56814" id="16" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/therium/rug.xml">
+            <parameters />
+        </EnvObject>
+        <EnvObject t0="0.0650572" t1="3.76271" t2="4.05695" s0="1.674" s1="1.674" s2="1.674" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="17" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/Buildings/rabbit_village/rabbit_hut_roof.xml">
+            <parameters />
+        </EnvObject>
+        <EnvObject t0="0.153242" t1="-8.18856" t2="4.15806" s0="11.5437" s1="5.13052" s2="11.5437" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="22" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/Environment/Cliffs/CliffRock_03_Detail.xml">
+            <parameters />
+        </EnvObject>
+    </Group>
+    <Group t0="61.6532" t1="-4.18461" t2="4.15805" s0="41.8706" s1="25.9178" s2="43.2981" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="28" version="1">
+        <parameters />
+        <EnvObject t0="61.5649" t1="2.5" t2="4.05652" s0="1.67374" s1="1.67374" s2="1.67374" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="29" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/Buildings/rabbit_village/rabbit_hut_walls.xml">
+            <parameters />
+        </EnvObject>
+        <EnvObject t0="61.8266" t1="2.32975" t2="11.3788" s0="1.09995" s1="1.01724" s2="1.04041" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="30" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/therium/burrow/burrow_door.xml">
+            <parameters />
+        </EnvObject>
+        <EnvObject t0="62.1411" t1="3.1182" t2="11.1968" s0="2.73755" s1="0.578619" s2="4.19122" q0="0.499986" q1="-0.509746" q2="-0.488702" q3="0.501344" euler_x="1.59046" euler_y="-0.0224298" euler_z="-1.56814" id="31" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/therium/rug.xml">
+            <parameters />
+        </EnvObject>
+        <EnvObject t0="61.5651" t1="3.76271" t2="4.05695" s0="1.674" s1="1.674" s2="1.674" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="32" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/Buildings/rabbit_village/rabbit_hut_roof.xml">
+            <parameters />
+        </EnvObject>
+        <EnvObject t0="61.6532" t1="-8.18856" t2="4.15806" s0="11.5437" s1="5.13052" s2="11.5437" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="33" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/Environment/Cliffs/CliffRock_03_Detail.xml">
+            <parameters />
+        </EnvObject>
+    </Group>
+    <EnvObject t0="2.02433" t1="2.26072" t2="0" s0="2" s1="2" s2="2" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="34" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/therium/rabbit_statue/rabbit_statue_1.xml">
+        <parameters />
+    </EnvObject>
+</ActorObjects>
+<RecentItems>
+    <SpawnerItem display_name="Basics Stone Cube" path="Data/Objects/Buildings/basics/soft_cube.xml" thumbnail_path="Data/UI/spawner/thumbs/Static Objects/soft_cube.png" />
+    <SpawnerItem display_name="teleport-door-hotspot.xml" path="Data/Objects/magic-mouse/Hotspots/teleport-door-hotspot.xml" thumbnail_path="empty_placeholder.png" />
+    <SpawnerItem display_name="Burrow Tunnel" path="Data/Objects/therium/burrow/burrow_tunnel.xml" thumbnail_path="Data/UI/spawner/thumbs/Object/burrow/burrow.png" />
+    <SpawnerItem display_name="Rabbit Hut Walls" path="Data/Objects/Buildings/rabbit_village/rabbit_hut_walls.xml" thumbnail_path="Data/UI/spawner/thumbs/Static Objects/rabbit_hut_walls.png" />
+    <SpawnerItem display_name="Ravine Ground" path="Data/Objects/george/ravineGround.xml" thumbnail_path="" />
+    <SpawnerItem display_name="Cat Stand" path="Data/Objects/Environment/Furniture/CatStand.xml" thumbnail_path="Data/UI/spawner/thumbs/Object/catstand.png" />
+    <SpawnerItem display_name="Cat City Streets" path="Data/Prototypes/OG/GardenDuelPavement.xml" thumbnail_path="" />
+    <SpawnerItem display_name="Stucco Walkway" path="Data/Prototypes/OG/StuccoWall_Walkway.xml" thumbnail_path="" />
+    <SpawnerItem display_name="Stucco Medium Block" path="Data/Objects/Buildings/cat_town/medium_block.xml" thumbnail_path="Data/UI/spawner/thumbs/Static Objects/medium_block.png" />
+    <SpawnerItem display_name="Crete Dark Dirty Cube" path="Data/Objects/Crete/dark_dirty_cube.xml" thumbnail_path="Data/UI/spawner/thumbs/Static Objects/dark_dirty_cube.png" />
+    <SpawnerItem display_name="Strata Rock Block Dirty" path="Data/Objects/Environment/Rocks/strata_rocks/strata_rock_block_dirty.xml" thumbnail_path="Data/UI/spawner/thumbs/Static Objects/strata_rock_block_dirty.png" />
+    <SpawnerItem display_name="Courtyard Grass 1" path="Data/Prototypes/OG/CourtyardGrass_1.xml" thumbnail_path="" />
+    <SpawnerItem display_name="Courtyard Grass 1" path="Data/Prototypes/OG/CourtyardGrass_2.xml" thumbnail_path="" />
+    <SpawnerItem display_name="Burrow Door" path="Data/Objects/therium/burrow/burrow_door.xml" thumbnail_path="Data/UI/spawner/thumbs/Object/burrow/burrowdoor.png" />
+    <SpawnerItem display_name="Door" path="Data/Objects/therium/Prefabs/door.xml" thumbnail_path="Data/Textures/ui/t2/spawner.jpg" />
+    <SpawnerItem display_name="Rabbit Hut Base" path="Data/Objects/Buildings/rabbit_village/rabbit_hut_base.xml" thumbnail_path="Data/UI/spawner/thumbs/Static Objects/rabbit_hut_base.png" />
+    <SpawnerItem display_name="Burrow Hut" path="Data/Objects/therium/burrow/burrow_hut.xml" thumbnail_path="Data/UI/spawner/thumbs/Utility/empty_placeholder.png" />
+    <SpawnerItem display_name="Rabbit Hut Roof" path="Data/Objects/Buildings/rabbit_village/rabbit_hut_roof.xml" thumbnail_path="Data/UI/spawner/thumbs/Static Objects/rabbit_hut_roof.png" />
+    <SpawnerItem display_name="Thick Tan Rug" path="Data/Objects/Decals/rugs/thick_tan_rug.xml" thumbnail_path="Data/UI/spawner/thumbs/Decal/thick_tan_rug.png" />
+    <SpawnerItem display_name="Sand" path="Data/Objects/Environment/sand.xml" thumbnail_path="Data/UI/spawner/thumbs/Static Objects/sand.png" />
+    <SpawnerItem display_name="Cliff Rock 01 Detail" path="Data/Objects/Environment/Cliffs/CliffRock_01_Detail.xml" thumbnail_path="Data/UI/spawner/thumbs/Static Objects/Cliff_Rock_01.png" />
+    <SpawnerItem display_name="Stone Rock Wooden Trim" path="Data/Objects/Buildings/cat_town/rock_trim.xml" thumbnail_path="Data/UI/spawner/thumbs/Static Objects/rock_trim.png" />
+    <SpawnerItem display_name="Red Trim Rug" path="Data/Objects/Decals/rugs/red_trim_rug.xml" thumbnail_path="Data/UI/spawner/thumbs/Decal/red_trim_rug.png" />
+    <SpawnerItem display_name="Rug Ancient" path="Data/Objects/therium/rug_ancient.xml" thumbnail_path="Data/Textures/ui/t2/spawner.jpg" />
+    <SpawnerItem display_name="Rug" path="Data/Objects/therium/rug.xml" thumbnail_path="Data/Textures/ui/t2/spawner.jpg" />
+    <SpawnerItem display_name="Cliff Rock 03 Detail" path="Data/Objects/Environment/Cliffs/CliffRock_03_Detail.xml" thumbnail_path="Data/UI/spawner/thumbs/Static Objects/Cliff_Rock_03.png" />
+    <SpawnerItem display_name="Rabbit Statue (troubled advisor)" path="Data/Objects/therium/rabbit_statue/troubledadvisor.xml" thumbnail_path="" />
+    <SpawnerItem display_name="Spike" path="Data/Objects/Hotspots/spike.xml" thumbnail_path="Data/UI/spawner/thumbs/Interactive Objects/spike_2.png" />
+    <SpawnerItem display_name="Fire" path="Data/Objects/fire.xml" thumbnail_path="" />
+    <SpawnerItem display_name="Fire Hotspot" path="Data/Objects/Hotspots/fire_test.xml" thumbnail_path="" />
+    <SpawnerItem display_name="Fire Wood Hot" path="Data/Objects/Environment/camp/fire_wood_hot.xml" thumbnail_path="Data/UI/spawner/thumbs/Static Objects/fire_wood_hot.png" />
+    <SpawnerItem display_name="Ancient Rabbit Statue 1" path="Data/Objects/therium/rabbit_statue/rabbit_statue_1.xml" thumbnail_path="Data/Textures/ui/t2/spawner.jpg" />
+</RecentItems>

@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<Actor>
+	<Character>Data/Characters/magic-mouse/koko.xml</Character>
+    <ControlScript>enemycontrol.as</ControlScript>
+</Actor>

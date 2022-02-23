@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<Mod>
+	<Id>magic-mouse</Id>
+	<Name>Magic Mouse!</Name>
+	<Category>Mod</Category>
+	<Author>_Ins4ne_ (alpines)</Author>
+	<Description>
+		magic-mouse
+	</Description>
+	<Version>1.0.0</Version>
+	<Thumbnail>Data/Images/magic-mouse/mod-thumb.jpg</Thumbnail>
+	<PreviewImage>Data/Images/magic-mouse/mod-full.jpg</PreviewImage>
+	<Tag>Mouse</Tag>
+	<Tag>2.5D</Tag>
+	<Tag>Script</Tag>
+	<Tag>Editor</Tag>
+	<SupportedVersion>*</SupportedVersion>
+	<NeedsRestart>false</NeedsRestart>
+	
+	<Campaign title="magic-mouse" thumbnail="Images/magic-mouse/campaign-thumb.jpg" type="general" is_linear="true">
+		<Level title="Introduction Level 1" thumbnail="Images/magic-mouse/level-1.jpg">magic-mouse/level-1.xml</Level>
+		<Level title="Introduction Level 2" thumbnail="Images/magic-mouse/level-2.jpg">magic-mouse/level-2.xml</Level>
+		<Level title="Introduction Level 3" thumbnail="Images/magic-mouse/level-3.jpg">magic-mouse/level-3.xml</Level>
+		<Level title="Introduction Level 4" thumbnail="Images/magic-mouse/level-4.jpg">magic-mouse/level-4.xml</Level>
+		<Level title="Introduction Level 5" thumbnail="Images/magic-mouse/level-5.jpg">magic-mouse/level-5.xml</Level>
+		<Level title="Introduction Level 6" thumbnail="Images/magic-mouse/level-6.jpg">magic-mouse/level-6.xml</Level>
+		<Level title="Introduction Level 7" thumbnail="Images/magic-mouse/level-7.jpg">magic-mouse/level-7.xml</Level>
+		<Level title="Introduction Level 8" thumbnail="Images/magic-mouse/level-8.jpg">magic-mouse/level-8.xml</Level>
+		<Level title="Introduction Level 9" thumbnail="Images/magic-mouse/level-9.jpg">magic-mouse/level-9.xml</Level>
+		<Level title="Introduction Level 10" thumbnail="Images/magic-mouse/level-10.jpg">magic-mouse/level-10.xml</Level>
+		<Level title="Introduction Level 11" thumbnail="Images/magic-mouse/level-11.jpg">magic-mouse/level-11.xml</Level>
+		<Level title="Introduction Level 12" thumbnail="Images/magic-mouse/level-12.jpg">magic-mouse/level-12.xml</Level>
+		<Level title="Easy Level 13" thumbnail="Images/magic-mouse/level-13.jpg">magic-mouse/level-13.xml</Level>
+		<Level title="Medium Level 14" thumbnail="Images/magic-mouse/level-14.jpg">magic-mouse/level-14.xml</Level>
+	</Campaign>
+</Mod> 
