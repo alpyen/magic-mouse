@@ -33,23 +33,23 @@ namespace GUI
 		
 		energyRemainingBar.setSizeX((int(remainingEnergy) / totalEnergy) * (GUI_SIZE.x + 2.0f * -15.0f));
 		
-		vec4 eneryBarColor(0.0f, 0.0f, 0.0f, 0.6f);
+		vec4 energyBarColor(0.0f, 0.0f, 0.0f, 0.6f);
 		
 		remainingEnergy /= totalEnergy;
 		totalEnergy /= totalEnergy;
 		
 		if (remainingEnergy >= 0.5f)
 		{
-			eneryBarColor.x = 1.0f - ((remainingEnergy - 0.5f) / (totalEnergy - 0.5f));
-			eneryBarColor.y = 1.0f;
+			energyBarColor.x = 1.0f - ((remainingEnergy - 0.5f) / (totalEnergy - 0.5f));
+			energyBarColor.y = 1.0f;
 		}
 		else
 		{
-			eneryBarColor.x = 1.0f;
-			eneryBarColor.y = 1.0f - ((totalEnergy - remainingEnergy - 0.5f) / (totalEnergy - 0.5f));
+			energyBarColor.x = 1.0f;
+			energyBarColor.y = 1.0f - ((totalEnergy - remainingEnergy - 0.5f) / (totalEnergy - 0.5f));
 		}
 		
-		energyRemainingBar.setColor(eneryBarColor);
+		energyRemainingBar.setColor(energyBarColor);
 	}
 
 	void Build()

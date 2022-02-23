@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<Object>
+	<Model>Data/Models/Plants/Trees/temperate/tall_fern_sided.obj</Model>
+	<ColorMap>Data/Textures/Plants/Trees/temperate/ferns_tall_c_alpha.tga</ColorMap>
+	<NormalMap>Data/Textures/Plants/Trees/temperate/ferns_tall_n.tga</NormalMap>
+	<TranslucencyMap>Data/Textures/Plants/Trees/temperate/ferns_tall_t.tga</TranslucencyMap>
+	<WindMap>Data/Textures/Plants/Trees/temperate/ferns_low_w.tga</WindMap>
+	<ShaderName>magic-mouse/lessshakingplant #PLANT</ShaderName>
+    <flags no_collision = "true"/>
+    <MaterialPath>Data/Materials/wood.xml</MaterialPath>
+</Object>
