@@ -1,17 +1,24 @@
 namespace GUI
 {
-	const vec2 GUI_SIZE(750.0f, 120.0f);
+	const vec2 ENERGY_CONTAINER_SIZE(750.0f, 120.0f);
+	const vec2 TIMER_CONTAINER_SIZE(320.0f, 75.0f);
 	
-	FontSetup fontText("Underdog-Regular", 50.0f, vec4(1.0f), false);
+	FontSetup fontText("Underdog-Regular", 50, vec4(1.0f), false);
+	FontSetup fontTimer("Lato-Regular", int(TIMER_CONTAINER_SIZE.y - 25), vec4(1.0f), false);
 	
 	IMGUI@ gui = CreateIMGUI();
 
-	IMContainer@ container;
-	IMImage@ background;
-	IMText@ label;
+	IMContainer@ energyContainer;
+	IMImage@ energyBackground;
+	IMText@ energyLabel;
 	IMText@ energyText;
 	IMImage@ energyRemainingBar;
 	IMImage@ energyMaxBar;
+
+	IMContainer@ timerContainer;
+	IMImage@ timerBackground;
+	IMImage@ timerImage;
+	IMText@ timerText;
 
 	void Init()
 	{
@@ -22,16 +29,41 @@ namespace GUI
 		Build();
 	}
 
+	void SetTimer(float timestampLevelStart)
+	{
+		Log(fatal, "Elapsed Time: " + (ImGui_GetTime() - timestampLevelStart));
+		
+		int passedTime = min(
+			int((ImGui_GetTime() - timestampLevelStart) * 1000.0f),
+			99 * 60 * 1000 + 59 * 1000 + 999
+		);
+		
+		int minutes = passedTime / (60 * 1000);
+		passedTime %= (60 * 1000);
+		
+		int seconds = passedTime / 1000;
+		passedTime %= 1000;
+		
+		int milliseconds = int(passedTime / 100);
+		
+		timerText.setText(
+			(minutes < 10 ? "0" : "") + minutes + ":" + 
+			(seconds < 10 ? "0" : "") + seconds + "." + 
+			milliseconds
+		);
+		gui.update();
+	}
+
 	void SetEnergy(float remainingEnergy, float totalEnergy)
 	{
 		energyText.setText(int(remainingEnergy) + " / " + int(totalEnergy));
 		gui.update();
-		container.moveElement("energyText", vec2(container.getSizeX() - energyText.getSizeX() - 15.0f, 15.0f));
+		energyContainer.moveElement("energyText", vec2(energyContainer.getSizeX() - energyText.getSizeX() - 15.0f, 15.0f));
 		
 		// Just so we don't get a divide by zero error.
 		if (totalEnergy == 0) totalEnergy = 1;
 		
-		energyRemainingBar.setSizeX((int(remainingEnergy) / totalEnergy) * (GUI_SIZE.x + 2.0f * -15.0f));
+		energyRemainingBar.setSizeX((int(remainingEnergy) / totalEnergy) * (ENERGY_CONTAINER_SIZE.x + 2.0f * -15.0f));
 		
 		vec4 energyBarColor(0.0f, 0.0f, 0.0f, 0.6f);
 		
@@ -54,32 +86,58 @@ namespace GUI
 
 	void Build()
 	{
-		@container = IMContainer();
-		container.setSize(GUI_SIZE);
-		gui.getMain().addFloatingElement(container, "container", vec2((gui.getMain().getSizeX() - GUI_SIZE.x) / 2.0f, gui.getMain().getSizeY() * 0.9f), 1);
+		// ===== Energy Bar ===== //
+		@energyContainer = IMContainer();
+		energyContainer.setSize(ENERGY_CONTAINER_SIZE);
+		gui.getMain().addFloatingElement(energyContainer, "energyContainer", vec2((gui.getMain().getSizeX() - ENERGY_CONTAINER_SIZE.x) / 2.0f, gui.getMain().getSizeY() * 0.9f), 1);
 		
-		@background = IMImage("Textures/UI/whiteblock.tga");
-		background.setColor(vec4(vec3(0.0f), 0.2f));
-		background.setSize(container.getSize());
-		container.addFloatingElement(background, "background", vec2(0.0f), 2);
+		@energyBackground = IMImage("Textures/UI/whiteblock.tga");
+		energyBackground.setColor(vec4(vec3(0.0f), 0.2f));
+		energyBackground.setSize(energyContainer.getSize());
+		energyContainer.addFloatingElement(energyBackground, "energyBackground", vec2(0.0f), 2);
 		
-		@label = IMText("Energy:", fontText);
-		container.addFloatingElement(label, "label", vec2(15.0f), 2);
+		@energyLabel = IMText("Energy:", fontText);
+		energyContainer.addFloatingElement(energyLabel, "energyLabel", vec2(15.0f), 2);
 		
 		@energyText = IMText("100 / 100", fontText);
-		container.addFloatingElement(energyText, "energyText", vec2(0.0f), 2);
+		energyContainer.addFloatingElement(energyText, "energyText", vec2(0.0f), 2);
 		gui.update();
-		container.moveElement("energyText", vec2(container.getSizeX() - energyText.getSizeX() - 15.0f, 15.0f));
+		energyContainer.moveElement("energyText", vec2(ENERGY_CONTAINER_SIZE.x - energyText.getSizeX() - 15.0f, 15.0f));
 		
 		@energyMaxBar = IMImage("Textures/UI/whiteblock.tga");
 		energyMaxBar.setColor(vec4(0.0f, 0.621f, 0.0f, 0.4f));
-		energyMaxBar.setSize(GUI_SIZE + vec2(2.0f * -15.0f, 3.0f * -15.0f - fontText.size));
-		container.addFloatingElement(energyMaxBar, "energyMaxBar", vec2(15.0f, 15.0f + fontText.size + 15.0f), 2);
+		energyMaxBar.setSize(ENERGY_CONTAINER_SIZE + vec2(2.0f * -15.0f, 3.0f * -15.0f - fontText.size));
+		energyContainer.addFloatingElement(energyMaxBar, "energyMaxBar", vec2(15.0f, 15.0f + fontText.size + 15.0f), 2);
 		
 		@energyRemainingBar = IMImage("Textures/UI/whiteblock.tga");
 		energyRemainingBar.setColor(vec4(0.0f, 1.0f, 0.0f, 0.6f));
-		energyRemainingBar.setSize(GUI_SIZE + vec2(2.0f * -15.0f, 3.0f * -15.0f - fontText.size));
-		container.addFloatingElement(energyRemainingBar, "energyRemainingBar", vec2(15.0f, 15.0f + fontText.size + 15.0f), 3);
+		energyRemainingBar.setSize(ENERGY_CONTAINER_SIZE + vec2(2.0f * -15.0f, 3.0f * -15.0f - fontText.size));
+		energyContainer.addFloatingElement(energyRemainingBar, "energyRemainingBar", vec2(15.0f, 15.0f + fontText.size + 15.0f), 3);
+		
+		// ===== Timer ===== //
+		
+		@timerContainer = IMContainer();
+		timerContainer.setSize(TIMER_CONTAINER_SIZE);
+		gui.getMain().addFloatingElement(timerContainer, "timerContainer", vec2((gui.getMain().getSize().x - TIMER_CONTAINER_SIZE.x) / 2.0f, gui.getMain().getSizeY() * 0.015f), 1);
+		
+		@timerBackground = IMImage("Textures/UI/whiteblock.tga");
+		timerBackground.setColor(vec4(vec3(0.0f), 0.2f));
+		timerBackground.setSize(timerContainer.getSize());
+		timerContainer.addFloatingElement(timerBackground, "timerBackground", vec2(0.0f), 2);
+		
+		@timerImage = IMImage("Textures/magic-mouse/timer.png");
+		timerImage.setSize(vec2(timerContainer.getSizeY() - 2.0f * 15.0f));
+		timerContainer.addFloatingElement(timerImage, "timerImage", vec2(0.0f), 2);
+		
+		@timerText = IMText("00:00.0", fontTimer);
+		timerContainer.addFloatingElement(timerText, "timerText", vec2(0.0f), 2);
+		gui.update();
+		
+		timerContainer.moveElement("timerImage", vec2((TIMER_CONTAINER_SIZE.x - timerImage.getSizeX() - 30.0f - timerText.getSizeX()) / 2.0f, (TIMER_CONTAINER_SIZE.y - timerImage.getSizeY()) / 2.0f));
+		timerContainer.moveElement("timerText", vec2((TIMER_CONTAINER_SIZE.x - timerImage.getSizeX() - 30.0f - timerText.getSizeX()) / 2.0f + timerImage.getSizeX() + 30.0f, (TIMER_CONTAINER_SIZE.y - timerText.getSizeY()) / 2.0f) + 3.0f);
+		
+		// 15.0f vom Bild links wegmachen
+		// Layout: (Timer + 15.0f + Zeit) zentrieren
 		
 		gui.update();
 	}
@@ -134,9 +192,9 @@ namespace GUI
 		GUI::ResizeToFullscreen(true);
 		
 		gui.getMain().moveElement(
-			"container",
+			"energyContainer",
 			vec2(
-				(gui.getMain().getSizeX() - GUI_SIZE.x) / 2.0f,
+				(gui.getMain().getSizeX() - ENERGY_CONTAINER_SIZE.x) / 2.0f,
 				gui.getMain().getSizeY() * 0.9f
 			)
 		);

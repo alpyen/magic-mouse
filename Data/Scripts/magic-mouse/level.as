@@ -24,6 +24,8 @@ vec3 endRay;
 float maxEnergy = 100.0f;
 float remainingEnergy = maxEnergy;
 
+float timestampLevelStart = 0.0f;
+
 // Reset player to this Z-Axis value.
 float zAxisStickValue;
 
@@ -47,6 +49,8 @@ void Update(int is_paused)
 	{
 		postInit = true;
 		
+		timestampLevelStart = ImGui_GetTime();
+		
 		Object@ playerObject = ReadObjectFromID(PLAYER_ID);
 		playerObject.SetDeletable(false);
 		playerObject.SetCopyable(false);
@@ -67,8 +71,8 @@ void Update(int is_paused)
 		
 		zAxisStickValue = playerObject.GetTranslation().z;
 	}
-	
-	HandleScriptParams();
+		
+	GUI::SetTimer(timestampLevelStart);
 	
 	MovementObject@ player = ReadCharacterID(PLAYER_ID);
 	player.position.z = zAxisStickValue;
@@ -90,6 +94,7 @@ void Update(int is_paused)
 		return;
 	}
 
+	HandleScriptParams();
 	HandleCamera();
 	HandleDragging();
 	
@@ -109,6 +114,8 @@ void ReceiveMessage(string message)
 			DeleteObjectID(lines[i]);
 		
 		lines.resize(0);
+		
+		timestampLevelStart = ImGui_GetTime();
 		
 		remainingEnergy = maxEnergy;
 		GUI::SetEnergy(maxEnergy, maxEnergy);
