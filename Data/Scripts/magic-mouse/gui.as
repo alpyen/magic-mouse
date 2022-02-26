@@ -1,10 +1,12 @@
 namespace GUI
 {
 	const vec2 ENERGY_CONTAINER_SIZE(750.0f, 120.0f);
-	const vec2 TIMER_CONTAINER_SIZE(320.0f, 75.0f);
+	const vec2 TIMER_CONTAINER_SIZE(300.0f, 75.0f);
+	const vec2 PBTIMER_CONTAINER_SIZE(150.0f, 30.0f);
 	
 	FontSetup fontText("Underdog-Regular", 50, vec4(1.0f), false);
 	FontSetup fontTimer("Lato-Regular", int(TIMER_CONTAINER_SIZE.y - 25), vec4(1.0f), false);
+	FontSetup fontPbTimer("Lato-Regular", int(TIMER_CONTAINER_SIZE.y - 50), vec4(1.0), false);
 	
 	IMGUI@ gui = CreateIMGUI();
 
@@ -19,6 +21,11 @@ namespace GUI
 	IMImage@ timerBackground;
 	IMImage@ timerImage;
 	IMText@ timerText;
+
+	IMContainer@ pbTimerContainer;
+	IMImage@ pbTimerBackground;
+	IMText@ pbTimerText;
+
 
 	void Init()
 	{
@@ -36,7 +43,7 @@ namespace GUI
 		int passedTime = min(
 			int((ImGui_GetTime() - timestampLevelStart) * 1000.0f),
 			99 * 60 * 1000 + 59 * 1000 + 999
-		);
+		); // Cap to 99:99.999
 		
 		int minutes = passedTime / (60 * 1000);
 		passedTime %= (60 * 1000);
@@ -126,7 +133,7 @@ namespace GUI
 		timerContainer.addFloatingElement(timerBackground, "timerBackground", vec2(0.0f), 2);
 		
 		@timerImage = IMImage("Textures/magic-mouse/timer.png");
-		timerImage.setSize(vec2(timerContainer.getSizeY() - 2.0f * 15.0f));
+		timerImage.setSize(vec2(timerImage.getSizeX() / timerImage.getSizeY(), 1.0f) * (timerContainer.getSizeY() - 2.0f * 15.0f));
 		timerContainer.addFloatingElement(timerImage, "timerImage", vec2(0.0f), 2);
 		
 		@timerText = IMText("00:00.0", fontTimer);
@@ -134,10 +141,24 @@ namespace GUI
 		gui.update();
 		
 		timerContainer.moveElement("timerImage", vec2((TIMER_CONTAINER_SIZE.x - timerImage.getSizeX() - 30.0f - timerText.getSizeX()) / 2.0f, (TIMER_CONTAINER_SIZE.y - timerImage.getSizeY()) / 2.0f));
-		timerContainer.moveElement("timerText", vec2((TIMER_CONTAINER_SIZE.x - timerImage.getSizeX() - 30.0f - timerText.getSizeX()) / 2.0f + timerImage.getSizeX() + 30.0f, (TIMER_CONTAINER_SIZE.y - timerText.getSizeY()) / 2.0f) + 3.0f);
+		timerContainer.moveElement("timerText", vec2((TIMER_CONTAINER_SIZE.x - timerImage.getSizeX() - 30.0f - timerText.getSizeX()) / 2.0f + timerImage.getSizeX() + 30.0f, (TIMER_CONTAINER_SIZE.y - timerText.getSizeY()) / 2.0f + 3.0f));
 		
-		// 15.0f vom Bild links wegmachen
-		// Layout: (Timer + 15.0f + Zeit) zentrieren
+		// ===== PB Timer ===== //
+		
+		@pbTimerContainer = IMContainer();
+		pbTimerContainer.setSize(PBTIMER_CONTAINER_SIZE);
+		gui.getMain().addFloatingElement(pbTimerContainer, "pbTimerContainer", vec2((gui.getMain().getSize().x - PBTIMER_CONTAINER_SIZE.x) / 2.0f, gui.getMain().getSizeY() * 0.015f + timerContainer.getSizeY() + 1.0f), 1);
+		
+		@pbTimerBackground = IMImage("Textures/UI/whiteblock.tga");
+		pbTimerBackground.setColor(vec4(vec3(0.0f), 0.2f));
+		pbTimerBackground.setSize(pbTimerContainer.getSize());
+		pbTimerContainer.addFloatingElement(pbTimerBackground, "pbTimerBackground", vec2(0.0f), 2);
+		
+		@pbTimerText = IMText("PB: 00:00.0", fontPbTimer);
+		pbTimerContainer.addFloatingElement(pbTimerText, "pbTimerText", vec2(0.0f), 2);
+		gui.update();
+		
+		pbTimerContainer.moveElement("pbTimerText", vec2((PBTIMER_CONTAINER_SIZE.x - pbTimerText.getSizeX()) / 2.0f, (PBTIMER_CONTAINER_SIZE.y - pbTimerText.getSizeY()) / 2.0f + 3.0f));
 		
 		gui.update();
 	}
@@ -196,6 +217,22 @@ namespace GUI
 			vec2(
 				(gui.getMain().getSizeX() - ENERGY_CONTAINER_SIZE.x) / 2.0f,
 				gui.getMain().getSizeY() * 0.9f
+			)
+		);
+		
+		gui.getMain().moveElement(
+			"timerContainer",
+			vec2(
+				(gui.getMain().getSize().x - TIMER_CONTAINER_SIZE.x) / 2.0f,
+				gui.getMain().getSizeY() * 0.015f
+			)
+		);
+		
+		gui.getMain().moveElement(
+			"pbTimerContainer",
+			vec2(
+				(gui.getMain().getSize().x - PBTIMER_CONTAINER_SIZE.x) / 2.0f,
+				gui.getMain().getSizeY() * 0.015f + timerContainer.getSizeY() + 1.0f
 			)
 		);
 			
