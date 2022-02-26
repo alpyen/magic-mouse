@@ -3,6 +3,8 @@
 array<int> lines;
 bool postInit = false;
 
+const string SF_PERSONAL_BEST = "[Magic Mouse] Personal Best";
+
 const int PLAYER_ID = 1;
 const int START_ID = 2;
 const int FINISH_ID = 3;
@@ -24,7 +26,9 @@ vec3 endRay;
 float maxEnergy = 100.0f;
 float remainingEnergy = maxEnergy;
 
-float timestampLevelStart = 0.0f;
+float timestampLevelStart;
+float timestampLevelFinished;
+bool levelFinished;
 
 // Reset player to this Z-Axis value.
 float zAxisStickValue;
@@ -40,6 +44,7 @@ void PostScriptReload()
 void Init(string level_name)
 {
 	GUI::Init();
+	GUI::SetPbTime(GetPbTime());
 	GUI::SetEnergy(remainingEnergy, maxEnergy);
 }
 
@@ -50,6 +55,7 @@ void Update(int is_paused)
 		postInit = true;
 		
 		timestampLevelStart = ImGui_GetTime();
+		levelFinished = false;
 		
 		Object@ playerObject = ReadObjectFromID(PLAYER_ID);
 		playerObject.SetDeletable(false);
@@ -71,8 +77,13 @@ void Update(int is_paused)
 		
 		zAxisStickValue = playerObject.GetTranslation().z;
 	}
-		
-	GUI::SetTimer(timestampLevelStart);
+	
+	HandleScriptParams();
+	
+	if (!levelFinished)
+		GUI::SetTimer(timestampLevelStart);
+	else
+		GUI::SetTimer(ImGui_GetTime() - (timestampLevelFinished - timestampLevelStart));
 	
 	MovementObject@ player = ReadCharacterID(PLAYER_ID);
 	player.position.z = zAxisStickValue;
@@ -85,7 +96,27 @@ void Update(int is_paused)
 	bool zOK = abs(finishLocation.z - player.position.z) <= 0.5f;
 	
 	if (xOK && bottomOK && topOK && zOK)
-		Log(fatal, ImGui_GetTime() + " Level won!");
+	{
+		if (!levelFinished)
+		{
+			levelFinished = true;
+			timestampLevelFinished = ImGui_GetTime();
+			
+			PlaySound("Data/Sounds/magic-mouse/cheer.wav");
+			Log(fatal, ImGui_GetTime() + " Level won!");
+			
+			SavedLevel@ levelData = save_file.GetSavedLevel(GetCurrLevelRelPath());
+			string pbTime = levelData.GetValue(SF_PERSONAL_BEST);
+			
+			float cutTime = float(int((timestampLevelFinished - timestampLevelStart) * 10)) / 10;
+			
+			if (pbTime == "" || cutTime < atof(pbTime))
+			{
+				levelData.SetValue(SF_PERSONAL_BEST, formatFloat(cutTime, "", 0, 1));
+				save_file.WriteInPlace();
+			}
+		}
+	}
 	
 	if (EditorModeActive() || GetMenuPaused())
 	{	
@@ -94,7 +125,6 @@ void Update(int is_paused)
 		return;
 	}
 
-	HandleScriptParams();
 	HandleCamera();
 	HandleDragging();
 	
@@ -116,6 +146,9 @@ void ReceiveMessage(string message)
 		lines.resize(0);
 		
 		timestampLevelStart = ImGui_GetTime();
+		levelFinished = false;
+		
+		GUI::SetPbTime(GetPbTime());
 		
 		remainingEnergy = maxEnergy;
 		GUI::SetEnergy(maxEnergy, maxEnergy);
@@ -160,23 +193,34 @@ void DrawGUI()
 	GUI::Render();
 }
 
+float GetPbTime()
+{
+	SavedLevel@ levelData = save_file.GetSavedLevel(GetCurrLevelRelPath());
+	string pbTime = levelData.GetValue(SF_PERSONAL_BEST);
+	
+	return atof(pbTime);
+}
+
 void HandleScriptParams()
 {
+	const string SP_MAX_ENERGY = "[Magic Mouse] Max Energy";
+	const string SP_RESET_PB = "[Magic Mouse] Reset PB type reset";
+
 	ScriptParams@ scriptParams = level.GetScriptParams();
-	if (!scriptParams.HasParam("Max Energy"))
+	if (!scriptParams.HasParam(SP_MAX_ENERGY))
 	{
-		scriptParams.AddInt("Max Energy", 100);
+		scriptParams.AddInt(SP_MAX_ENERGY, 100);
 		maxEnergy = 100.0f;
 		remainingEnergy = 100.0f;
 		
 		GUI::SetEnergy(maxEnergy, maxEnergy);
 	}
 	
-	int levelEnergy = scriptParams.GetInt("Max Energy");
+	int levelEnergy = scriptParams.GetInt(SP_MAX_ENERGY);
 	if (levelEnergy < 0 || levelEnergy > 10000)
 	{
 		levelEnergy = (levelEnergy < 0) ? 0 : 10000;
-		scriptParams.SetInt("Max Energy", levelEnergy);
+		scriptParams.SetInt(SP_MAX_ENERGY, levelEnergy);
 	}
 	
 	if (levelEnergy != int(maxEnergy))
@@ -184,6 +228,28 @@ void HandleScriptParams()
 		maxEnergy = levelEnergy;
 		remainingEnergy = levelEnergy;
 		GUI::SetEnergy(maxEnergy, maxEnergy);
+	}
+	
+	if (!scriptParams.HasParam(SP_RESET_PB))
+		scriptParams.AddString(SP_RESET_PB, "");
+	
+	if (scriptParams.GetString(SP_RESET_PB) == "reset")
+	{
+		scriptParams.SetString(SP_RESET_PB, "");
+		
+		SavedLevel@ levelData = save_file.GetSavedLevel(GetCurrLevelRelPath());
+		
+		if (levelData.GetValue(SF_PERSONAL_BEST) != "")
+		{
+			GUI::SetPbTime(0.0f);
+		
+			levelData.SetValue(SF_PERSONAL_BEST, "");
+			save_file.WriteInPlace();
+		}
+	}
+	else
+	{
+		scriptParams.SetString(SP_RESET_PB, "");
 	}
 }
 

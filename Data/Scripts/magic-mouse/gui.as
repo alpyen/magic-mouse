@@ -5,7 +5,7 @@ namespace GUI
 	const vec2 PBTIMER_CONTAINER_SIZE(150.0f, 30.0f);
 	
 	FontSetup fontText("Underdog-Regular", 50, vec4(1.0f), false);
-	FontSetup fontTimer("Lato-Regular", int(TIMER_CONTAINER_SIZE.y - 25), vec4(1.0f), false);
+	FontSetup fontTimer("Lato-Regular", int(TIMER_CONTAINER_SIZE.y - 25), vec4(1.0f), true);
 	FontSetup fontPbTimer("Lato-Regular", int(TIMER_CONTAINER_SIZE.y - 50), vec4(1.0), false);
 	
 	IMGUI@ gui = CreateIMGUI();
@@ -36,10 +36,29 @@ namespace GUI
 		Build();
 	}
 
+	void SetPbTime(float pbTime)
+	{
+		int time = int(pbTime * 1000.0f);
+	
+		int minutes = time / (60 * 1000);
+		time %= (60 * 1000);
+		
+		int seconds = time / 1000;
+		time %= 1000;
+		
+		int milliseconds = int(time / 100);
+		
+		pbTimerText.setText(
+			"PB: " +
+			(minutes < 10 ? "0" : "") + minutes + ":" +
+			(seconds < 10 ? "0" : "") + seconds + "." + 
+			milliseconds
+		);
+		gui.update();
+	}
+
 	void SetTimer(float timestampLevelStart)
 	{
-		Log(fatal, "Elapsed Time: " + (ImGui_GetTime() - timestampLevelStart));
-		
 		int passedTime = min(
 			int((ImGui_GetTime() - timestampLevelStart) * 1000.0f),
 			99 * 60 * 1000 + 59 * 1000 + 999
