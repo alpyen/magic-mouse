@@ -35,5 +35,6 @@
 		<Level title="Introduction Level 12" thumbnail="Images/magic-mouse/level-12.jpg">magic-mouse/level-12.xml</Level>
 		<Level title="Easy Level 13" thumbnail="Images/magic-mouse/level-13.jpg">magic-mouse/level-13.xml</Level>
 		<Level title="Medium Level 14" thumbnail="Images/magic-mouse/level-14.jpg">magic-mouse/level-14.xml</Level>
+        <Level title="Medium Level 15" thumbnail="Images/magic-mouse/level-15.jpg">magic-mouse/level-15.xml</Level>
 	</Campaign>
 </Mod> 
