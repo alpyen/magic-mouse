@@ -57,25 +57,18 @@ void Update(int is_paused)
 		timestampLevelStart = ImGui_GetTime();
 		levelFinished = false;
 		
-		Object@ playerObject = ReadObjectFromID(PLAYER_ID);
-		playerObject.SetDeletable(false);
-		playerObject.SetCopyable(false);
-		playerObject.SetRotatable(false);
-		playerObject.SetScalable(false);
+		// Protect these objects from destructive/impossible manipulation.
+		array<int> modObjects = { PLAYER_ID, START_ID, FINISH_ID };
+		for (int i = 0; i < int(modObjects.size()); ++i)
+		{
+			Object@ object = ReadObjectFromID(modObjects[i]);
+			object.SetDeletable(false);
+			object.SetCopyable(false);
+			object.SetRotatable(false);
+			object.SetScalable(false);
+		}
 		
-		Object@ startObject = ReadObjectFromID(START_ID);
-		startObject.SetDeletable(false);
-		startObject.SetCopyable(false);
-		startObject.SetRotatable(false);
-		startObject.SetScalable(false);
-		
-		Object@ finishObject = ReadObjectFromID(FINISH_ID);
-		finishObject.SetDeletable(false);
-		finishObject.SetCopyable(false);
-		finishObject.SetRotatable(false);
-		finishObject.SetScalable(false);
-		
-		zAxisStickValue = playerObject.GetTranslation().z;
+		zAxisStickValue = ReadObjectFromID(PLAYER_ID).GetTranslation().z;
 	}
 	
 	HandleScriptParams();
@@ -126,6 +119,7 @@ void Update(int is_paused)
 	}
 
 	HandleCamera();
+	HandleClicks();
 	HandleDragging();
 	
 	timestampLastUpdate = ImGui_GetTime();
@@ -281,6 +275,50 @@ void HandleCamera()
 		camera.SetPos(savedCameraLocation + vec3(0.0f, 0.5f, cameraDistance));
 	else
 		camera.SetPos(player.position + vec3(0.0f, 0.5f, cameraDistance));
+}
+
+void HandleClicks()
+{
+	if (GetInputPressed(ReadCharacterID(PLAYER_ID).controller_id, "attack"))
+	{
+		vec3 start = camera.GetPos();
+		vec3 end = camera.GetPos() + camera.GetMouseRay() * 1000.0f;
+		
+		col.GetObjRayCollision(start, end);
+		
+		float closestCollisionDistance;
+		int closestId = -1;
+		
+		for (int i = 0; i < sphere_col.NumContacts(); ++i)
+		{
+			CollisionPoint cp = sphere_col.GetContact(i);
+			if (cp.id == -1) continue;
+			
+			float newCollisionDistance = distance_squared(camera.GetPos(), cp.position);
+			
+			if (closestId == -1)
+			{
+				closestId = cp.id;
+				closestCollisionDistance = newCollisionDistance;
+			}
+			else if (newCollisionDistance < closestCollisionDistance)
+			{
+				closestId = cp.id;
+				newCollisionDistance = closestCollisionDistance;
+			}
+		}
+		
+		if (closestId != -1)
+		{
+			for (int j = 0; j < GetNumHotspots(); ++j)
+			{
+				if (ReadHotspot(j).GetTypeString() == "MagicMouse-SwitchHotspot")
+				{
+					ReadObjectFromID(ReadHotspot(j).GetID()).ReceiveScriptMessage("MagicMouse-Click " + closestId);
+				}
+			}
+		}
+	}
 }
 
 void HandleDragging()

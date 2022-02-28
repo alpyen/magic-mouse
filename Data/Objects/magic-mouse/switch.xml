@@ -1,0 +1,16 @@
+<?xml version="2.0" ?>
+<Type>saved</Type>
+<ActorObjects>
+    <Group t0="0" t1="0" t2="0" s0="0.190815" s1="0.397224" s2="0.248427" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="33" version="1">
+        <parameters />
+        <EnvObject t0="0" t1="0" t2="-0.06019" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="34" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/Buildings/StoneWindow1.xml">
+            <parameters />
+        </EnvObject>
+        <EnvObject t0="0.000661403" t1="-0.0932934" t2="0.0375301" s0="0.466778" s1="0.138305" s2="0.466778" q0="0.707107" q1="0" q2="0" q3="0.707107" euler_x="1.5708" euler_y="0" euler_z="0" id="35" color_r="1" color_g="0" color_b="0" overbright="0" type_file="Data/Objects/Environment/Farm/FenceSystem_Post_01.xml">
+            <parameters />
+        </EnvObject>
+        <EnvObject t0="0.000661403" t1="0.0839833" t2="0.0375301" s0="0.466778" s1="0.138305" s2="0.466778" q0="0.707107" q1="0" q2="0" q3="0.707107" euler_x="1.5708" euler_y="0" euler_z="0" id="38" color_r="0" color_g="1" color_b="0" overbright="0" type_file="Data/Objects/Environment/Farm/FenceSystem_Post_01.xml">
+            <parameters />
+        </EnvObject>
+    </Group>
+</ActorObjects>

@@ -7,7 +7,7 @@ array<int> incomingConnections;
 
 string GetTypeString()
 {
-	return "TeleportDoorHotspot";
+	return "MagicMouse-TeleportDoorHotspot";
 }
 
 void Reset()
@@ -33,12 +33,12 @@ void Update()
 		ReadObjectFromID(doorId).SetTranslation(ReadObjectFromID(hotspot.GetID()).GetTranslation());
 		
 		hotspotObject.SetRotatable(false);
-		hotspotObject.SetScalable(false);		
+		hotspotObject.SetScalable(false);
 	}
 	
 	Object@ doorObject = ReadObjectFromID(doorId);
 	
-	if (hotspotObject.GetTranslation() != doorObject.GetTranslation() + vec3(0.0f, 0.0f, -1.0f))
+	if (doorObject.GetTranslation() + vec3(0.0f, 0.0f, -1.0f) != hotspotObject.GetTranslation())
 		doorObject.SetTranslation(hotspotObject.GetTranslation() + vec3(0.0f, 0.0f, -1.0f));
 		
 	if (hotspotObject.GetScale() != vec3(0.5f))
