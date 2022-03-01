@@ -304,7 +304,7 @@ void HandleClicks()
 			else if (newCollisionDistance < closestCollisionDistance)
 			{
 				closestId = cp.id;
-				newCollisionDistance = closestCollisionDistance;
+				closestCollisionDistance = newCollisionDistance;
 			}
 		}
 		
