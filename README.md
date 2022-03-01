@@ -21,3 +21,4 @@ An Overgrowth puzzle mod which makes use of the mouse.
 - Test if menu hook is drawing performance from non-magic-mouse levels.
 - Add levels with NPCs
 - Add levels with switches
+- Remove 'if (groupId == -1)' check in switch-hotspot script with something more solid when hovering occurs.
