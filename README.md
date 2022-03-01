@@ -11,6 +11,7 @@ An Overgrowth puzzle mod which makes use of the mouse.
 - Add Mod menu to editor for settings
 	- Reset PB on this map
 	- Show hotspot short info on certain distance to not clutter the screen
+	- Open Workshop page button
 - Remove PB reset from script parameters
 - Export shared strings to shared.as?
 - Switch Hotspot uses Reset() and runs before post_reset. Hook LevelMessages and wait for post_reset?
@@ -18,3 +19,5 @@ An Overgrowth puzzle mod which makes use of the mouse.
 - Optimize (Un-)Hovering of the Switch Hotspots (do not send messages every frame)
 	- Add disabling to mod settings menu if it draws too much performance on low-end systems?
 - Test if menu hook is drawing performance from non-magic-mouse levels.
+- Add levels with NPCs
+- Add levels with switches
