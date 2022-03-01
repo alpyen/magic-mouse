@@ -1,3 +1,4 @@
+const string SP_CHARACTER_ID = "Character ID (-1 for Level Message)";
 const string SP_DEFAULT_SWITCH_STATE_IS_ON = "Default Switch State is On (Not Off)";
 const string SP_SEND_MESSAGE_ON_LEVEL_RESET = "Send Message on Level Reset";
 const string SP_SEND_MESSAGE_ON_SWITCH_OFF_TO_ON = "Send Message on switch Off to On";
@@ -21,6 +22,7 @@ void Dispose()
 
 void SetParameters()
 {
+	params.AddInt(SP_CHARACTER_ID, -1);
 	params.AddIntCheckbox(SP_DEFAULT_SWITCH_STATE_IS_ON, false);
 	params.AddIntCheckbox(SP_SEND_MESSAGE_ON_LEVEL_RESET, false);
 	params.AddString(SP_SEND_MESSAGE_ON_SWITCH_OFF_TO_ON, "");
@@ -91,6 +93,8 @@ void ReceiveMessage(string message)
 	TokenIterator ti;
 	ti.Init();
 	
+	if (groupId == -1) return;
+	
 	if (!ti.FindNextToken(message)) return;
 	
 	if (ti.GetToken(message) == "MagicMouse-Click")
@@ -103,6 +107,19 @@ void ReceiveMessage(string message)
 		
 		if (clickedId == groupObjects[1] || clickedId == groupObjects[2])
 			SetSwitchState(!switchState, true);
+	}
+	else if (ti.GetToken(message) == "MagicMouse-Hover")
+	{
+		if (!ti.FindNextToken(message)) return;
+		
+		int clickedId = atoi(ti.GetToken(message));
+		
+		array<int>@ groupObjects = ReadObjectFromID(groupId).GetChildren();
+		
+		float brightness = (clickedId == groupObjects[1] || clickedId == groupObjects[2]) ? 2.0f : 1.0f;
+		
+		ReadObjectFromID(groupObjects[1]).SetTint(brightness * vec3(1.0f, 0.0f, 0.0f));
+		ReadObjectFromID(groupObjects[2]).SetTint(brightness * vec3(0.0f, 1.0f, 0.0f));
 	}
 }
 
@@ -129,16 +146,34 @@ void SetSwitchState(bool state, bool sendMessage)
 		offSwitchObject.SetEnabled(false);
 		onSwitchObject.SetEnabled(true);
 		
-		if (sendMessage && params.GetString(SP_SEND_MESSAGE_ON_SWITCH_OFF_TO_ON) != "")
-			level.SendMessage(params.GetString(SP_SEND_MESSAGE_ON_SWITCH_OFF_TO_ON));
+		string message = params.GetString(SP_SEND_MESSAGE_ON_SWITCH_OFF_TO_ON);
+		
+		if (sendMessage && message != "")
+		{
+			int receiverId = params.GetInt(SP_CHARACTER_ID);
+		
+			if (receiverId == -1)
+				level.SendMessage(message);
+			else if (ObjectExists(receiverId) && ReadObjectFromID(receiverId).GetType() == _movement_object)
+				ReadCharacterID(receiverId).ReceiveScriptMessage(message);
+		}
 	}
 	else
 	{
 		offSwitchObject.SetEnabled(true);
 		onSwitchObject.SetEnabled(false);
 		
-		if (sendMessage && params.GetString(SP_SEND_MESSAGE_ON_SWITCH_ON_TO_OFF) != "")
-			level.SendMessage(params.GetString(SP_SEND_MESSAGE_ON_SWITCH_ON_TO_OFF));
+		string message = params.GetString(SP_SEND_MESSAGE_ON_SWITCH_ON_TO_OFF);
+		
+		if (sendMessage && message != "")
+		{
+			int receiverId = params.GetInt(SP_CHARACTER_ID);
+			
+			if (receiverId == -1)
+				level.SendMessage(message);
+			else if (ObjectExists(receiverId) && ReadObjectFromID(receiverId).GetType() == _movement_object)
+				ReadCharacterID(receiverId).ReceiveScriptMessage(message);
+		}
 	}
 	
 	switchState = state;

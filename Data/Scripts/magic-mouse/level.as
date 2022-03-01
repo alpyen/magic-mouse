@@ -119,6 +119,7 @@ void Update(int is_paused)
 	}
 
 	HandleCamera();
+	HandleHovering();
 	HandleClicks();
 	HandleDragging();
 	
@@ -275,6 +276,48 @@ void HandleCamera()
 		camera.SetPos(savedCameraLocation + vec3(0.0f, 0.5f, cameraDistance));
 	else
 		camera.SetPos(player.position + vec3(0.0f, 0.5f, cameraDistance));
+}
+
+void HandleHovering()
+{
+	vec3 start = camera.GetPos();
+	vec3 end = camera.GetPos() + camera.GetMouseRay() * 1000.0f;
+	
+	col.GetObjRayCollision(start, end);
+	
+	float closestCollisionDistance;
+	int closestId = -1;
+	
+	for (int i = 0; i < sphere_col.NumContacts(); ++i)
+	{
+		CollisionPoint cp = sphere_col.GetContact(i);
+		if (cp.id == -1) continue;
+		
+		float newCollisionDistance = distance_squared(camera.GetPos(), cp.position);
+		
+		if (closestId == -1)
+		{
+			closestId = cp.id;
+			closestCollisionDistance = newCollisionDistance;
+		}
+		else if (newCollisionDistance < closestCollisionDistance)
+		{
+			closestId = cp.id;
+			closestCollisionDistance = newCollisionDistance;
+		}
+	}
+	
+	// There has to be a better way to solve this rather than sending so many
+	// messages in each script iteration but it draws so less performance, I'll disregard it for now.
+	
+	for (int j = 0; j < GetNumHotspots(); ++j)
+	{
+		if (ReadHotspot(j).GetTypeString() == "MagicMouse-SwitchHotspot")
+		{
+			// Sending Id -1 will UnHover the hotspot.
+			ReadObjectFromID(ReadHotspot(j).GetID()).ReceiveScriptMessage("MagicMouse-Hover " + closestId);
+		}
+	}
 }
 
 void HandleClicks()
