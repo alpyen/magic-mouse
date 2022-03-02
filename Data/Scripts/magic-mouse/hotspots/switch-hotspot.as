@@ -15,9 +15,40 @@ string GetTypeString()
 	return "MagicMouse-SwitchHotspot";
 }
 
+void Init()
+{
+	// Parameters are unloaded, need to load them.
+	// params.Add will load them correctly weirdly enough.
+	SetParameters();
+	
+	groupId = CreateObject("Data/Objects/magic-mouse/switch.xml", true);
+	
+	Object@ groupObject = ReadObjectFromID(groupId);		
+	groupObject.SetTranslation(ReadObjectFromID(hotspot.GetID()).GetTranslation());
+	
+	array<int> groupObjects = groupObject.GetChildren();
+	groupObjects.insertAt(0, groupId);
+	
+	// You could technically select the elements through the scenegraph and scale them,
+	// but the scaling will not save correctly, as it is dependant on the group scale.
+	// Disabling it completely is possible, but not worth the time and effort.
+	for (int i = 0; i < int(groupObjects.size()); ++i)
+	{
+		Object@ object = ReadObjectFromID(groupObjects[i]);
+		object.SetDeletable(false);
+		object.SetCopyable(false);
+		object.SetRotatable(false);
+		object.SetScalable(false);
+		object.SetSelectable(false);
+	}
+	
+	adjustedScale = 10.0f * ReadObjectFromID(groupId).GetScale();
+	SetSwitchState((params.GetInt(SP_DEFAULT_SWITCH_STATE_IS_ON) == 1) ? true : false, false);
+}
+
 void Dispose()
 {
-	if (groupId != -1) DeleteObjectID(groupId);
+	DeleteObjectID(groupId);
 }
 
 void SetParameters()
@@ -32,34 +63,6 @@ void SetParameters()
 void Update()
 {
 	Object@ hotspotObject = ReadObjectFromID(hotspot.GetID());
-	
-	if (groupId == -1)
-	{
-		groupId = CreateObject("Data/Objects/magic-mouse/switch.xml", true);
-		
-		Object@ groupObject = ReadObjectFromID(groupId);		
-		groupObject.SetTranslation(ReadObjectFromID(hotspot.GetID()).GetTranslation());
-		
-		array<int> groupObjects = groupObject.GetChildren();
-		groupObjects.insertAt(0, groupId);
-		
-		// You could technically select the elements through the scenegraph and scale them,
-		// but the scaling will not save correctly, as it is dependant on the group scale.
-		// Disabling it completely is possible, but not worth the time and effort.
-		for (int i = 0; i < int(groupObjects.size()); ++i)
-		{
-			Object@ object = ReadObjectFromID(groupObjects[i]);
-			object.SetDeletable(false);
-			object.SetCopyable(false);
-			object.SetRotatable(false);
-			object.SetScalable(false);
-			object.SetSelectable(false);
-		}
-		
-		adjustedScale = 10.0f * ReadObjectFromID(groupId).GetScale();
-		SetSwitchState((params.GetInt(SP_DEFAULT_SWITCH_STATE_IS_ON) == 1) ? true : false, false);
-	}
-	
 	Object@ switchObject = ReadObjectFromID(groupId);
 	
 	if (switchObject.GetTranslation() != hotspotObject.GetTranslation())
@@ -92,9 +95,7 @@ void ReceiveMessage(string message)
 {
 	TokenIterator ti;
 	ti.Init();
-	
-	if (groupId == -1) return;
-	
+		
 	if (!ti.FindNextToken(message)) return;
 	
 	if (ti.GetToken(message) == "MagicMouse-Click")
