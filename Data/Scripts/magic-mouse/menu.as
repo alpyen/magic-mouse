@@ -24,7 +24,9 @@ void Menu()
 		if (level.GetScriptParams().HasParam("[Magic Mouse] Max Energy"))
 		{
 			ImGui_AlignTextToFramePadding();
-			ImGui_TextColored(HexColor("#FF3EC3"), "                      Magic Mouse Settings Menu");
+			ImGui_SetWindowFontScale(1.5f);
+			ImGui_TextColored(HexColor("#FF3EC3"), "           Magic Mouse Settings Menu");
+			ImGui_SetWindowFontScale(1.0f);
 			ImGui_Text("_____________________________________________________________________");
 			ImGui_NewLine();
 			ImGui_Indent();

@@ -46,24 +46,9 @@ namespace GUI
 
 	void SetTimer(float timestampLevelStart)
 	{
-		int passedTime = min(
-			int((ImGui_GetTime() - timestampLevelStart) * 1000.0f),
-			99 * 60 * 1000 + 59 * 1000 + 999
-		); // Cap to 99:99.999
+		float passedTime = min(ImGui_GetTime() - timestampLevelStart, 99 * 60 + 59 + 0.999f);
 		
-		int minutes = passedTime / (60 * 1000);
-		passedTime %= (60 * 1000);
-		
-		int seconds = passedTime / 1000;
-		passedTime %= 1000;
-		
-		int milliseconds = int(passedTime / 100);
-		
-		timerText.setText(
-			(minutes < 10 ? "0" : "") + minutes + ":" + 
-			(seconds < 10 ? "0" : "") + seconds + "." + 
-			milliseconds
-		);
+		timerText.setText(GetTimeString(passedTime));
 		gui.update();
 	}
 

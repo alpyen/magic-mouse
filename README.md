@@ -17,3 +17,4 @@ An Overgrowth puzzle mod which makes use of the mouse.
 - Test if menu hook is drawing performance from non-magic-mouse levels.
 - Add levels with NPCs
 - Add levels with switches
+- Use 1.5x font as title or not?
