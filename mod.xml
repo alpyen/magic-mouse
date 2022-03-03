@@ -38,21 +38,7 @@
 	<Item category="Magic Mouse" title="   Teleport Door Hotspot" path="Data/Objects/magic-mouse/Hotspots/teleport_door_hotspot.xml" thumbnail="Data/Textures/magic-mouse/Spawner/teleport_door_hotspot.png"/>
 	
 	
-	<Campaign title="Magic Mouse Campaign" thumbnail="Images/magic-mouse/campaign-thumb.jpg" type="general" is_linear="true">
-		<Level title="Introduction Level 1" thumbnail="Images/magic-mouse/level_1.jpg">magic-mouse/level_1.xml</Level>
-		<Level title="Introduction Level 2" thumbnail="Images/magic-mouse/level_2.jpg">magic-mouse/level_2.xml</Level>
-		<Level title="Introduction Level 3" thumbnail="Images/magic-mouse/level_3.jpg">magic-mouse/level_3.xml</Level>
-		<Level title="Introduction Level 4" thumbnail="Images/magic-mouse/level_4.jpg">magic-mouse/level_4.xml</Level>
-		<Level title="Introduction Level 5" thumbnail="Images/magic-mouse/level_5.jpg">magic-mouse/level_5.xml</Level>
-		<Level title="Introduction Level 6" thumbnail="Images/magic-mouse/level_6.jpg">magic-mouse/level_6.xml</Level>
-		<Level title="Introduction Level 7" thumbnail="Images/magic-mouse/level_7.jpg">magic-mouse/level_7.xml</Level>
-		<Level title="Introduction Level 8" thumbnail="Images/magic-mouse/level_8.jpg">magic-mouse/level_8.xml</Level>
-		<Level title="Introduction Level 9" thumbnail="Images/magic-mouse/level_9.jpg">magic-mouse/level_9.xml</Level>
-		<Level title="Introduction Level 10" thumbnail="Images/magic-mouse/level_10.jpg">magic-mouse/level_10.xml</Level>
-		<Level title="Introduction Level 11" thumbnail="Images/magic-mouse/level_11.jpg">magic-mouse/level_11.xml</Level>
-		<Level title="Introduction Level 12" thumbnail="Images/magic-mouse/level_12.jpg">magic-mouse/level_12.xml</Level>
-		<Level title="Easy Level 13" thumbnail="Images/magic-mouse/level_13.jpg">magic-mouse/level_13.xml</Level>
-		<Level title="Medium Level 14" thumbnail="Images/magic-mouse/level_14.jpg">magic-mouse/level_14.xml</Level>
-        <Level title="Medium Level 15" thumbnail="Images/magic-mouse/level_15.jpg">magic-mouse/level_15.xml</Level>
+	<Campaign title="Magic Mouse Campaign" thumbnail="Images/magic-mouse/campaign_thumb.jpg" type="general" is_linear="true">
+		<!-- Levels will be entered later, removed them for now -->
 	</Campaign>
 </Mod> 
