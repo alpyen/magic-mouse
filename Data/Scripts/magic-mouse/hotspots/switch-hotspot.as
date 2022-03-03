@@ -168,8 +168,8 @@ void SetSwitchState(bool state, bool sendMessage)
 	
 	string message = params.GetString(
 		state
-			? SP_SEND_MESSAGE_ON_SWITCH_OFF_TO_ON
-			: SP_SEND_MESSAGE_ON_SWITCH_ON_TO_OFF
+		? SP_SEND_MESSAGE_ON_SWITCH_OFF_TO_ON
+		: SP_SEND_MESSAGE_ON_SWITCH_ON_TO_OFF
 	);	
 	
 	if (sendMessage && message != "")

@@ -19,3 +19,4 @@ An Overgrowth puzzle mod which makes use of the mouse.
 - Add all gameplay elements to base.xml
 - Add gameplay elements to Load menu (mod.xml)
 - Force enemies on Z-Axis necessary?
+- Make co-op compatible

@@ -177,7 +177,7 @@
     <EnvObject t0="4" t1="0" t2="0" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="4" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/Buildings/basics/soft_cube.xml">
         <parameters />
     </EnvObject>
-    <Hotspot t0="4" t1="2" t2="0" s0="0.5" s1="0.5" s2="0.5" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="8" type_file="Data/Objects/magic-mouse/Hotspots/teleport-door-hotspot.xml">
+    <Hotspot t0="4" t1="2" t2="0" s0="0.5" s1="0.5" s2="0.5" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="8" type_file="Data/Objects/magic-mouse/Hotspots/teleport_door_hotspot.xml">
         <parameters />
         <Connections>
             <Connection id="11" />
@@ -189,7 +189,7 @@
     <EnvObject t0="8" t1="0" t2="0" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="10" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/Buildings/basics/soft_cube.xml">
         <parameters />
     </EnvObject>
-    <Hotspot t0="8" t1="2" t2="0" s0="0.5" s1="0.5" s2="0.5" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="11" type_file="Data/Objects/magic-mouse/Hotspots/teleport-door-hotspot.xml">
+    <Hotspot t0="8" t1="2" t2="0" s0="0.5" s1="0.5" s2="0.5" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="11" type_file="Data/Objects/magic-mouse/Hotspots/teleport_door_hotspot.xml">
         <parameters />
         <Connections>
             <Connection id="8" />
@@ -201,7 +201,7 @@
 </ActorObjects>
 <RecentItems>
     <SpawnerItem display_name="Basics Stone Cube" path="Data/Objects/Buildings/basics/soft_cube.xml" thumbnail_path="Data/UI/spawner/thumbs/Static Objects/soft_cube.png" />
-    <SpawnerItem display_name="teleport-door-hotspot.xml" path="Data/Objects/magic-mouse/Hotspots/teleport-door-hotspot.xml" thumbnail_path="empty_placeholder.png" />
+    <SpawnerItem display_name="teleport_door_hotspot.xml" path="Data/Objects/magic-mouse/Hotspots/teleport_door_hotspot.xml" thumbnail_path="empty_placeholder.png" />
     <SpawnerItem display_name="koko_spawner.xml" path="Data/Objects/magic-mouse/Characters/koko_spawner.xml" thumbnail_path="empty_placeholder.png" />
-    <SpawnerItem display_name="switch-hotspot.xml" path="Data/Objects/magic-mouse/Hotspots/switch-hotspot.xml" thumbnail_path="empty_placeholder.png" />
+    <SpawnerItem display_name="switch_hotspot.xml" path="Data/Objects/magic-mouse/Hotspots/switch_hotspot.xml" thumbnail_path="empty_placeholder.png" />
 </RecentItems>

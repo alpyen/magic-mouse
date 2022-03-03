@@ -243,7 +243,7 @@
         <ItemConnections />
         <Palette />
     </ActorObject>
-    <Hotspot t0="4" t1="2" t2="1.39189" s0="0.369975" s1="0.369975" s2="0.369975" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="39" type_file="Data/Objects/magic-mouse/Hotspots/switch-hotspot.xml">
+    <Hotspot t0="4" t1="2" t2="1.39189" s0="0.369975" s1="0.369975" s2="0.369975" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="39" type_file="Data/Objects/magic-mouse/Hotspots/switch_hotspot.xml">
         <parameters>
             <parameter name="Character ID (-1 for Level Message)" type="int" val="35" />
             <parameter name="Default Switch State is On (Not Off)" type="int" val="0" />
@@ -402,7 +402,7 @@
             <parameters />
         </Decal>
     </Group>
-    <Hotspot t0="8" t1="2" t2="1.39189" s0="0.369975" s1="0.369975" s2="0.369975" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="93" type_file="Data/Objects/magic-mouse/Hotspots/switch-hotspot.xml">
+    <Hotspot t0="8" t1="2" t2="1.39189" s0="0.369975" s1="0.369975" s2="0.369975" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="93" type_file="Data/Objects/magic-mouse/Hotspots/switch_hotspot.xml">
         <parameters>
             <parameter name="Character ID (-1 for Level Message)" type="int" val="1" />
             <parameter name="Default Switch State is On (Not Off)" type="int" val="0" />
@@ -417,10 +417,10 @@
 </ActorObjects>
 <RecentItems>
     <SpawnerItem display_name="Basics Stone Cube" path="Data/Objects/Buildings/basics/soft_cube.xml" thumbnail_path="Data/UI/spawner/thumbs/Static Objects/soft_cube.png" />
-    <SpawnerItem display_name="teleport-door-hotspot.xml" path="Data/Objects/magic-mouse/Hotspots/teleport-door-hotspot.xml" thumbnail_path="empty_placeholder.png" />
+    <SpawnerItem display_name="teleport_door_hotspot.xml" path="Data/Objects/magic-mouse/Hotspots/teleport_door_hotspot.xml" thumbnail_path="empty_placeholder.png" />
     <SpawnerItem display_name="koko_spawner.xml" path="Data/Objects/magic-mouse/Characters/koko_spawner.xml" thumbnail_path="empty_placeholder.png" />
     <SpawnerItem display_name="Alpha Male Wolf" path="Data/Objects/IGF_Characters/IGF_WolfActor.xml" thumbnail_path="Data/UI/spawner/thumbs/Character/IGF_wolfActor.png" />
-    <SpawnerItem display_name="switch-hotspot.xml" path="Data/Objects/magic-mouse/Hotspots/switch-hotspot.xml" thumbnail_path="empty_placeholder.png" />
+    <SpawnerItem display_name="switch_hotspot.xml" path="Data/Objects/magic-mouse/Hotspots/switch_hotspot.xml" thumbnail_path="empty_placeholder.png" />
     <SpawnerItem display_name="Graffiti 1 Decal" path="Data/Objects/therium/Decals/inscriptions/advised.xml" thumbnail_path="" />
     <SpawnerItem display_name="Thick Tan Rug" path="Data/Objects/Decals/rugs/thick_tan_rug.xml" thumbnail_path="Data/UI/spawner/thumbs/Decal/thick_tan_rug.png" />
 </RecentItems>
