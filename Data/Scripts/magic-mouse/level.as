@@ -90,8 +90,10 @@ void Update(int is_paused)
 	bool bottomOK = player.position.y >= finishLocation.y + 1.0f;
 	bool topOK = player.position.y <= finishLocation.y + 1.5f;
 	bool zOK = abs(finishLocation.z - player.position.z) <= 0.5f;
+	int knockedOut = player.GetIntVar("knocked_out");
+	bool playerAlive = knockedOut != _dead && knockedOut != _unconscious;
 	
-	if (xOK && bottomOK && topOK && zOK)
+	if (xOK && bottomOK && topOK && zOK && playerAlive)
 	{
 		if (!levelFinished)
 		{

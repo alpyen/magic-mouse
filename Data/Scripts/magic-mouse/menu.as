@@ -18,7 +18,7 @@ void Init(string level_name)
 
 void Menu()
 {
-	if (ImGui_BeginMenu("Magic Mouse"))
+	if (ImGui_BeginMenu("Magic Mouse Mod"))
 	{
 	
 		if (level.GetScriptParams().HasParam("[Magic Mouse] Max Energy"))
@@ -58,13 +58,14 @@ void Menu()
 			ImGui_SameLine();
 			ImGui_Text("mod by");
 			ImGui_SameLine();
-			ImGui_TextColored(HexColor("#F1C40F"), "alpines (_Ins4ne_)");
+			ImGui_TextColored(HexColor("#F1C40F"), "alpines (_Ins4ne_)");	
 			
 			ImGui_Text("\n" +
 				"Please consider leaving a like/favorite/comment on the workshop page!\n"
 				"              I read all comments! Thank you very much!"
 			);
 			ImGui_NewLine();
+			
 			ImGui_Text("                        ");
 			ImGui_SameLine();
 			ImGui_Button("Open Workshop Page");
