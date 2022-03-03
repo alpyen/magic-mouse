@@ -35,7 +35,7 @@
     <RayToSun r0="0" r1="0" r2="1" />
 </Sky>
 <ActorObjects>
-    <CameraObject t0="6.68309" t1="2.657" t2="11.2485" s0="1" s1="1" s2="1" q0="0.00445449" q1="-0.0276808" q2="0.000123354" q3="0.999607" euler_x="0.00891243" euler_y="-0.0553693" euler_z="0" id="0">
+    <CameraObject t0="6.58453" t1="2.35144" t2="10.1823" s0="1" s1="1" s2="1" q0="0.00443506" q1="-0.0143392" q2="6.36205e-005" q3="0.999887" euler_x="0.00887107" euler_y="-0.0286797" euler_z="0" id="0">
         <parameters />
     </CameraObject>
     <ActorObject t0="0" t1="2" t2="0" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="1" type_file="Data/Objects/magic-mouse/Characters/koko_actor.xml" pc_script_path="magic-mouse/playercontrol.as" is_player="1">
@@ -107,60 +107,60 @@
                 <BoneConnect bone_id="-1" num_connections="0" m0="1" m1="0" m2="0" m3="0" m4="0" m5="1" m6="0" m7="0" m8="0" m9="0" m10="1" m11="0" m12="0" m13="0" m14="0" m15="1" />
             </EnvObjectAttachment>
         </EnvObjectAttachments>
-        <Group t0="0.0455376" t1="1.78875" t2="-0.200186" s0="0.926472" s1="0.996969" s2="1.12264" q0="-0.00663987" q1="0.00158797" q2="-0.00397443" q3="0.999969" euler_x="-0.0132924" euler_y="0.00312307" euler_z="-0.00796983" id="5" version="1">
+        <Group t0="0.0474968" t1="1.7826" t2="-0.207301" s0="0.926472" s1="0.996969" s2="1.12264" q0="-0.00664144" q1="0.00148893" q2="-0.00334069" q3="0.999971" euler_x="-0.0132929" euler_y="0.0029334" euler_z="-0.00670105" id="5" version="1">
             <parameters />
-            <EnvObject t0="0.0449738" t1="1.78638" t2="-0.378078" s0="0.379665" s1="0.379665" s2="0.379665" q0="-0.615969" q1="0.247047" q2="-0.184382" q3="0.72495" euler_x="-1.45037" euler_y="0.131423" euler_z="-0.614628" id="6" color_r="0.846863" color_g="0" color_b="1" overbright="4.92" type_file="Data/Objects/magic-mouse/Plants/tall_fern_lessshake.xml">
+            <EnvObject t0="0.0469697" t1="1.78023" t2="-0.385193" s0="0.379665" s1="0.379665" s2="0.379665" q0="-0.616064" q1="0.246734" q2="-0.184108" q3="0.725045" euler_x="-1.4503" euler_y="0.131318" euler_z="-0.613754" id="6" color_r="0.846863" color_g="0" color_b="1" overbright="4.92" type_file="Data/Objects/magic-mouse/Plants/tall_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="0.108751" t1="1.78893" t2="0.146357" s0="0.18125" s1="0.18125" s2="0.18125" q0="0.481947" q1="-0.042803" q2="-0.310036" q3="0.818395" euler_x="0.992882" euler_y="0.230827" euler_z="-0.598825" id="7" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="0.110644" t1="1.78286" t2="0.139254" s0="0.18125" s1="0.18125" s2="0.18125" q0="0.481985" q1="-0.0426475" q2="-0.309651" q3="0.818527" euler_x="0.992955" euler_y="0.23072" euler_z="-0.597942" id="7" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="0.198165" t1="1.78965" t2="0.0752784" s0="0.158602" s1="0.158602" s2="0.158602" q0="0.277876" q1="-0.180596" q2="-0.541256" q3="0.772795" euler_x="0.675294" euler_y="0.0216792" euler_z="-1.21436" id="9" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="0.200071" t1="1.7837" t2="0.0681927" s0="0.158602" s1="0.158602" s2="0.158602" q0="0.277989" q1="-0.180526" q2="-0.540904" q3="0.773018" euler_x="0.675414" euler_y="0.0216322" euler_z="-1.21349" id="9" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="0.249011" t1="1.78474" t2="-0.0111024" s0="0.175407" s1="0.175407" s2="0.175407" q0="-0.318738" q1="-0.508512" q2="-0.546928" q3="0.583692" euler_x="0.582336" euler_y="-1.22938" euler_z="-1.92275" id="12" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="0.250939" t1="1.77885" t2="-0.0181784" s0="0.175407" s1="0.175407" s2="0.175407" q0="-0.318483" q1="-0.508688" q2="-0.546696" q3="0.583896" euler_x="0.582702" euler_y="-1.22934" euler_z="-1.92223" id="12" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="0.172712" t1="1.76728" t2="-0.0733243" s0="0.158602" s1="0.158602" s2="0.158602" q0="0.610196" q1="0.734703" q2="-0.29262" q3="0.0474008" euler_x="-2.71751" euler_y="0.44091" euler_z="1.85184" id="13" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="0.174674" t1="1.76129" t2="-0.0804148" s0="0.158602" s1="0.158602" s2="0.158602" q0="0.609897" q1="0.734964" q2="-0.292561" q3="0.0475753" euler_x="-2.71765" euler_y="0.440947" euler_z="1.85264" id="13" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="0.149069" t1="1.78602" t2="-0.162654" s0="0.167044" s1="0.167044" s2="0.167044" q0="0.332544" q1="0.781834" q2="-0.501689" q3="0.162675" euler_x="-2.15144" euler_y="0.628631" euler_z="2.68479" id="14" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="0.151024" t1="1.78" t2="-0.169749" s0="0.167044" s1="0.167044" s2="0.167044" q0="0.332238" q1="0.781967" q2="-0.501598" q3="0.162943" euler_x="-2.15151" euler_y="0.628747" euler_z="2.68562" id="14" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="0.0529119" t1="1.78977" t2="-0.200518" s0="0.171886" s1="0.171886" s2="0.171886" q0="-0.400047" q1="0.596624" q2="-0.373011" q3="0.587252" euler_x="-1.60575" euler_y="0.41402" euler_z="-1.56009" id="15" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="0.0548699" t1="1.78363" t2="-0.207631" s0="0.171886" s1="0.171886" s2="0.171886" q0="-0.400336" q1="0.596364" q2="-0.372731" q3="0.587498" euler_x="-1.60558" euler_y="0.414017" euler_z="-1.55895" id="15" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="-0.0671799" t1="1.79188" t2="-0.179276" s0="0.167705" s1="0.167705" s2="0.167705" q0="-0.549349" q1="0.414288" q2="0.0250457" q3="0.725226" euler_x="-1.5024" euler_y="0.679523" euler_z="-0.568603" id="16" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="-0.0652286" t1="1.78559" t2="-0.186412" s0="0.167705" s1="0.167705" s2="0.167705" q0="-0.549531" q1="0.414004" q2="0.0253235" q3="0.725242" euler_x="-1.50231" euler_y="0.679414" euler_z="-0.567684" id="16" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="-0.161471" t1="1.73979" t2="-0.106492" s0="0.17259" s1="0.17259" s2="0.17259" q0="-0.523907" q1="0.104467" q2="0.326736" q3="0.77965" euler_x="-1.05023" euler_y="0.529675" euler_z="0.48198" id="17" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="-0.159467" t1="1.73338" t2="-0.113646" s0="0.17259" s1="0.17259" s2="0.17259" q0="-0.523974" q1="0.10419" q2="0.327039" q3="0.779515" euler_x="-1.0503" euler_y="0.529562" euler_z="0.48281" id="17" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="-0.169083" t1="1.71959" t2="-0.0222593" s0="0.171237" s1="0.171237" s2="0.171237" q0="-0.258755" q1="-0.219263" q2="0.575159" q3="0.744419" euler_x="-0.69155" euler_y="-0.0288004" euler_z="1.32603" id="18" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="-0.16707" t1="1.71317" t2="-0.0294145" s0="0.171237" s1="0.171237" s2="0.171237" q0="-0.258685" q1="-0.21946" q2="0.575535" q3="0.744095" euler_x="-0.691705" euler_y="-0.0288372" euler_z="1.3271" id="18" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="-0.183702" t1="1.7236" t2="0.0208859" s0="0.17313" s1="0.17313" s2="0.17313" q0="0.0768816" q1="-0.118232" q2="0.610257" q3="0.779549" euler_x="-0.0254447" euler_y="-0.281889" euler_z="1.33198" id="19" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="-0.181702" t1="1.71716" t2="0.0137279" s0="0.17313" s1="0.17313" s2="0.17313" q0="0.0768951" q1="-0.118253" q2="0.610679" q3="0.779214" euler_x="-0.0256067" euler_y="-0.281925" euler_z="1.33309" id="19" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="-0.172839" t1="1.71769" t2="0.0569642" s0="0.166565" s1="0.166565" s2="0.166565" q0="0.480737" q1="-0.455642" q2="0.376271" q3="0.647844" euler_x="1.15818" euler_y="-1.26018" euler_z="0.16248" id="20" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="-0.170838" t1="1.71126" t2="0.0498083" s0="0.166565" s1="0.166565" s2="0.166565" q0="0.480909" q1="-0.455476" q2="0.376583" q3="0.647652" euler_x="1.15811" euler_y="-1.26031" euler_z="0.163413" id="20" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="-0.145224" t1="1.74061" t2="0.156306" s0="0.158602" s1="0.158602" s2="0.158602" q0="0.604619" q1="-0.606746" q2="-0.139839" q3="0.496725" euler_x="2.11616" euler_y="-0.448566" euler_z="-1.31887" id="21" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="-0.143271" t1="1.73422" t2="0.149155" s0="0.158602" s1="0.158602" s2="0.158602" q0="0.60489" q1="-0.606517" q2="-0.139585" q3="0.496747" euler_x="2.1163" euler_y="-0.448599" euler_z="-1.31807" id="21" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="-0.0467529" t1="1.77362" t2="0.171403" s0="0.158602" s1="0.158602" s2="0.158602" q0="-0.456081" q1="0.690742" q2="0.422352" q3="-0.369444" euler_x="1.95325" euler_y="-0.125455" euler_z="-1.88965" id="22" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="-0.0448449" t1="1.76735" t2="0.164271" s0="0.158602" s1="0.158602" s2="0.158602" q0="-0.456482" q1="0.690529" q2="0.422118" q3="-0.369615" euler_x="1.9534" euler_y="-0.125408" euler_z="-1.8886" id="22" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="0.0311957" t1="1.77474" t2="0.19434" s0="0.171253" s1="0.171253" s2="0.171253" q0="-0.385222" q1="0.739588" q2="0.488024" q3="-0.257773" euler_x="1.97227" euler_y="-0.00529682" euler_z="-2.1777" id="23" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="0.0330979" t1="1.76857" t2="0.187223" s0="0.171253" s1="0.171253" s2="0.171253" q0="-0.385573" q1="0.739439" q2="0.487887" q3="-0.257937" euler_x="1.97238" euler_y="-0.00522392" euler_z="-2.17683" id="23" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
         </Group>
-        <Group t0="0.0517989" t1="2.32142" t2="0.165772" s0="0.213102" s1="0.245885" s2="0.233667" q0="0.0850346" q1="0.246439" q2="-0.0335365" q3="0.964838" euler_x="0.169141" euler_y="0.502082" euler_z="-0.0260163" id="24" version="1">
+        <Group t0="-0.0813233" t1="2.34868" t2="0.0695517" s0="0.213102" s1="0.245885" s2="0.233667" q0="-0.0432312" q1="-0.253508" q2="-0.00151454" q3="0.966366" euler_x="-0.0951178" euler_y="-0.512197" euler_z="0.0217894" id="24" version="1">
             <parameters />
-            <EnvObject t0="0.0517989" t1="2.32142" t2="0.165772" s0="0.078199" s1="0.078199" s2="0.078199" q0="0.548234" q1="-0.499494" q2="-0.110016" q3="0.661695" euler_x="1.69006" euler_y="-0.570908" euler_z="-0.968334" id="25" color_r="0" color_g="0.682353" color_b="1" overbright="8.124" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="-0.0813233" t1="2.34868" t2="0.0695517" s0="0.078199" s1="0.078199" s2="0.078199" q0="0.450029" q1="-0.754707" q2="0.248062" q3="0.407868" euler_x="-3.12814" euler_y="-0.995279" euler_z="-2.07352" id="25" color_r="0" color_g="0.682353" color_b="1" overbright="8.124" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="0.0517989" t1="2.32142" t2="0.165772" s0="0.0781989" s1="0.0781989" s2="0.078199" q0="-0.428754" q1="0.755229" q2="0.358985" q3="-0.341947" euler_x="2.11747" euler_y="-0.210209" euler_z="-1.99046" id="26" color_r="1" color_g="0.752941" color_b="0" overbright="8.124" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="-0.0813233" t1="2.34868" t2="0.0695517" s0="0.0781989" s1="0.0781989" s2="0.078199" q0="-0.513896" q1="0.857843" q2="-0.00243624" q3="0.0030486" euler_x="-3.13428" euler_y="0.00272649" euler_z="-2.06213" id="26" color_r="1" color_g="0.752941" color_b="0" overbright="8.124" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
         </Group>
@@ -247,6 +247,7 @@
         <parameters>
             <parameter name="Character ID (-1 for Level Message)" type="int" val="35" />
             <parameter name="Default Switch State is On (Not Off)" type="int" val="0" />
+            <parameter name="Execute as Code instead of Message" type="int" val="0" />
             <parameter name="Send Message on Level Reset" type="int" val="0" />
             <parameter name="Send Message on switch Off to On" type="string" val="ignite" />
             <parameter name="Send Message on switch On to Off" type="string" val="extinguish" />
@@ -259,16 +260,16 @@
         <Decal t0="3.3988" t1="4.43872" t2="1.00816" s0="0.242473" s1="0.274593" s2="0.0748759" q0="0.706847" q1="0.0191809" q2="0.0191809" q3="0.706847" euler_x="1.5708" euler_y="0" euler_z="0.0542585" id="44" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
             <parameters />
         </Decal>
-        <Decal t0="3.30034" t1="4.30052" t2="1.00816" s0="0.343747" s1="0.274593" s2="0.0802906" q0="0.514634" q1="-0.484925" q2="-0.484924" q3="0.514634" euler_x="1.5708" euler_y="0" euler_z="-1.51137" id="45" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+        <Decal t0="3.30034" t1="4.30052" t2="1.00816" s0="0.343747" s1="0.274593" s2="0.0802906" q0="0.514634" q1="-0.484925" q2="-0.484924" q3="0.514634" euler_x="1.5708" euler_y="-1.04308e-006" euler_z="-1.51137" id="45" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
             <parameters />
         </Decal>
-        <Decal t0="3.43285" t1="4.16972" t2="1.00816" s0="0.234467" s1="0.274593" s2="0.0850996" q0="0.706876" q1="0.0180519" q2="0.018052" q3="0.706876" euler_x="1.5708" euler_y="0" euler_z="0.0510642" id="46" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+        <Decal t0="3.43285" t1="4.16972" t2="1.00816" s0="0.234467" s1="0.274593" s2="0.0850996" q0="0.706876" q1="0.0180519" q2="0.018052" q3="0.706876" euler_x="1.5708" euler_y="0" euler_z="0.0510641" id="46" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
             <parameters />
         </Decal>
-        <Decal t0="3.68103" t1="4.31316" t2="1.00816" s0="0.343747" s1="0.274593" s2="0.0802905" q0="0.494023" q1="-0.505907" q2="-0.505907" q3="0.494022" euler_x="1.5708" euler_y="0" euler_z="-1.59457" id="47" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+        <Decal t0="3.68103" t1="4.31316" t2="1.00816" s0="0.343747" s1="0.274593" s2="0.0802905" q0="0.494023" q1="-0.505907" q2="-0.505907" q3="0.494022" euler_x="1.5708" euler_y="1.01328e-006" euler_z="-1.59457" id="47" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
             <parameters />
         </Decal>
-        <Decal t0="3.75532" t1="4.16892" t2="1.00816" s0="0.219334" s1="0.274593" s2="0.0774773" q0="0.707104" q1="-0.00188273" q2="-0.0018826" q3="0.707104" euler_x="1.5708" euler_y="0" euler_z="-0.005325" id="48" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+        <Decal t0="3.75532" t1="4.16892" t2="1.00816" s0="0.219334" s1="0.274593" s2="0.0774773" q0="0.707104" q1="-0.00188273" q2="-0.0018826" q3="0.707104" euler_x="1.5708" euler_y="0" euler_z="-0.00532499" id="48" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
             <parameters />
         </Decal>
         <Decal t0="4.00144" t1="4.3097" t2="1.00816" s0="0.343827" s1="0.274593" s2="0.0780195" q0="0.506446" q1="-0.49347" q2="-0.49347" q3="0.506446" euler_x="1.5708" euler_y="0" euler_z="-1.54484" id="49" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
@@ -277,31 +278,142 @@
         <Decal t0="4.29628" t1="4.46492" t2="1.00816" s0="0.242473" s1="0.274593" s2="0.0748759" q0="0.706847" q1="0.0191809" q2="0.0191809" q3="0.706847" euler_x="1.5708" euler_y="0" euler_z="0.0542585" id="50" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
             <parameters />
         </Decal>
-        <Decal t0="4.19782" t1="4.32672" t2="1.00816" s0="0.343747" s1="0.274593" s2="0.0802906" q0="0.514634" q1="-0.484925" q2="-0.484924" q3="0.514634" euler_x="1.5708" euler_y="0" euler_z="-1.51137" id="51" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+        <Decal t0="4.19782" t1="4.32672" t2="1.00816" s0="0.343747" s1="0.274593" s2="0.0802906" q0="0.514634" q1="-0.484925" q2="-0.484924" q3="0.514634" euler_x="1.5708" euler_y="-1.04308e-006" euler_z="-1.51137" id="51" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
             <parameters />
         </Decal>
-        <Decal t0="4.33034" t1="4.19591" t2="1.00816" s0="0.234467" s1="0.274593" s2="0.0850996" q0="0.706876" q1="0.0180519" q2="0.018052" q3="0.706876" euler_x="1.5708" euler_y="0" euler_z="0.0510642" id="52" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+        <Decal t0="4.33034" t1="4.19591" t2="1.00816" s0="0.234467" s1="0.274593" s2="0.0850996" q0="0.706876" q1="0.0180519" q2="0.018052" q3="0.706876" euler_x="1.5708" euler_y="0" euler_z="0.0510641" id="52" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
             <parameters />
         </Decal>
         <Decal t0="4.563" t1="4.33164" t2="1.00816" s0="0.343826" s1="0.274593" s2="0.0780195" q0="0.491637" q1="-0.508226" q2="-0.508226" q3="0.491637" euler_x="1.5708" euler_y="0" euler_z="-1.60398" id="53" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
             <parameters />
         </Decal>
-        <Decal t0="4.65485" t1="4.40009" t2="1.01425" s0="0.275871" s1="0.286764" s2="0.0780197" q0="0.670856" q1="0.223499" q2="0.223499" q3="0.670856" euler_x="1.5708" euler_y="0" euler_z="0.643179" id="54" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+        <Decal t0="4.65485" t1="4.40009" t2="1.01425" s0="0.275871" s1="0.286764" s2="0.0780197" q0="0.670856" q1="0.223499" q2="0.223499" q3="0.670856" euler_x="1.5708" euler_y="0" euler_z="0.64318" id="54" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
             <parameters />
         </Decal>
         <Decal t0="4.69091" t1="4.25583" t2="1.01425" s0="0.275871" s1="0.286764" s2="0.0780197" q0="0.656375" q1="-0.263006" q2="-0.263006" q3="0.656375" euler_x="1.5708" euler_y="0" euler_z="-0.762211" id="55" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
             <parameters />
         </Decal>
     </Group>
-    <Decal t0="3.95904" t1="3.54487" t2="1.00816" s0="0.955034" s1="0.274594" s2="0.115051" q0="0.506446" q1="-0.49347" q2="-0.49347" q3="0.506446" euler_x="1.5708" euler_y="0" euler_z="-1.54484" id="57" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+    <Group t0="3.97348" t1="3.54487" t2="1.00816" s0="0.661298" s1="0.967699" s2="0.284595" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="60" version="1">
         <parameters />
-    </Decal>
-    <Decal t0="3.83774" t1="3.30686" t2="1.00816" s0="0.490513" s1="0.274594" s2="0.110471" q0="0.631064" q1="-0.318996" q2="-0.318995" q3="0.631064" euler_x="1.5708" euler_y="0" euler_z="-0.936057" id="58" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+        <Decal t0="3.95904" t1="3.54487" t2="1.00816" s0="0.955034" s1="0.274594" s2="0.115051" q0="0.506446" q1="-0.49347" q2="-0.49347" q3="0.506446" euler_x="1.5708" euler_y="0" euler_z="-1.54484" id="57" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="3.83774" t1="3.30686" t2="1.00816" s0="0.490513" s1="0.274594" s2="0.110471" q0="0.631064" q1="-0.318996" q2="-0.318995" q3="0.631064" euler_x="1.5708" euler_y="-1.2815e-006" euler_z="-0.936057" id="58" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="4.10432" t1="3.30025" t2="1.00816" s0="0.490513" s1="0.274594" s2="0.110471" q0="0.309395" q1="-0.635826" q2="-0.635826" q3="0.309395" euler_x="1.5708" euler_y="0" euler_z="-2.23585" id="59" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+    </Group>
+    <Group t0="7.95581" t1="3.58314" t2="1.00816" s0="0.661298" s1="0.967699" s2="0.284595" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="61" version="1">
         <parameters />
-    </Decal>
-    <Decal t0="4.10432" t1="3.30025" t2="1.00816" s0="0.490513" s1="0.274594" s2="0.110471" q0="0.309395" q1="-0.635826" q2="-0.635826" q3="0.309395" euler_x="1.5708" euler_y="0" euler_z="-2.23585" id="59" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+        <Decal t0="7.94137" t1="3.58314" t2="1.00816" s0="0.955034" s1="0.274594" s2="0.115051" q0="0.506446" q1="-0.49347" q2="-0.49347" q3="0.506446" euler_x="1.5708" euler_y="0" euler_z="-1.54484" id="62" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="7.82007" t1="3.34513" t2="1.00816" s0="0.490513" s1="0.274594" s2="0.110471" q0="0.631064" q1="-0.318996" q2="-0.318995" q3="0.631064" euler_x="1.5708" euler_y="-1.2815e-006" euler_z="-0.936057" id="63" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="8.08665" t1="3.33852" t2="1.00816" s0="0.490513" s1="0.274594" s2="0.110471" q0="0.309395" q1="-0.635826" q2="-0.635826" q3="0.309395" euler_x="1.5708" euler_y="0" euler_z="-2.23585" id="64" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+    </Group>
+    <Group t0="7.96586" t1="4.26098" t2="1.01425" s0="1.57365" s1="0.398877" s2="0.292851" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="65" version="1">
         <parameters />
-    </Decal>
+        <Decal t0="7.33082" t1="4.38207" t2="1.00816" s0="0.242473" s1="0.274593" s2="0.0748759" q0="0.706847" q1="0.0191809" q2="0.0191809" q3="0.706847" euler_x="1.5708" euler_y="0" euler_z="0.0542585" id="66" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="7.23236" t1="4.24387" t2="1.00816" s0="0.343747" s1="0.274593" s2="0.0802906" q0="0.514634" q1="-0.484925" q2="-0.484924" q3="0.514634" euler_x="1.5708" euler_y="-1.04308e-006" euler_z="-1.51137" id="67" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="7.36487" t1="4.11307" t2="1.00816" s0="0.234467" s1="0.274593" s2="0.0850996" q0="0.706876" q1="0.0180519" q2="0.018052" q3="0.706876" euler_x="1.5708" euler_y="0" euler_z="0.0510641" id="68" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="7.61305" t1="4.25651" t2="1.00816" s0="0.343747" s1="0.274593" s2="0.0802905" q0="0.494023" q1="-0.505907" q2="-0.505907" q3="0.494022" euler_x="1.5708" euler_y="1.01328e-006" euler_z="-1.59457" id="69" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="7.68734" t1="4.11227" t2="1.00816" s0="0.219334" s1="0.274593" s2="0.0774773" q0="0.707104" q1="-0.00188273" q2="-0.0018826" q3="0.707104" euler_x="1.5708" euler_y="0" euler_z="-0.00532499" id="70" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="7.93346" t1="4.25305" t2="1.00816" s0="0.343827" s1="0.274593" s2="0.0780195" q0="0.506446" q1="-0.49347" q2="-0.49347" q3="0.506446" euler_x="1.5708" euler_y="0" euler_z="-1.54484" id="71" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="8.2283" t1="4.40827" t2="1.00816" s0="0.242473" s1="0.274593" s2="0.0748759" q0="0.706847" q1="0.0191809" q2="0.0191809" q3="0.706847" euler_x="1.5708" euler_y="0" euler_z="0.0542585" id="72" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="8.12984" t1="4.27007" t2="1.00816" s0="0.343747" s1="0.274593" s2="0.0802906" q0="0.514634" q1="-0.484925" q2="-0.484924" q3="0.514634" euler_x="1.5708" euler_y="-1.04308e-006" euler_z="-1.51137" id="73" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="8.26236" t1="4.13926" t2="1.00816" s0="0.234467" s1="0.274593" s2="0.0850996" q0="0.706876" q1="0.0180519" q2="0.018052" q3="0.706876" euler_x="1.5708" euler_y="0" euler_z="0.0510641" id="74" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="8.49502" t1="4.27499" t2="1.00816" s0="0.343826" s1="0.274593" s2="0.0780195" q0="0.491637" q1="-0.508226" q2="-0.508226" q3="0.491637" euler_x="1.5708" euler_y="0" euler_z="-1.60398" id="75" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="8.58687" t1="4.34344" t2="1.01425" s0="0.275871" s1="0.286764" s2="0.0780197" q0="0.670856" q1="0.223499" q2="0.223499" q3="0.670856" euler_x="1.5708" euler_y="0" euler_z="0.64318" id="76" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="8.62293" t1="4.19918" t2="1.01425" s0="0.275871" s1="0.286764" s2="0.0780197" q0="0.656375" q1="-0.263006" q2="-0.263006" q3="0.656375" euler_x="1.5708" euler_y="0" euler_z="-0.762211" id="77" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+    </Group>
+    <Group t0="7.92447" t1="4.70982" t2="1.00816" s0="1.31722" s1="0.449692" s2="0.284597" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="92" version="1">
+        <parameters />
+        <Decal t0="7.32114" t1="4.66393" t2="1.00816" s0="0.343747" s1="0.274593" s2="0.0802906" q0="0.514634" q1="-0.484925" q2="-0.484924" q3="0.514634" euler_x="1.5708" euler_y="-1.04308e-006" euler_z="-1.51137" id="78" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="7.4113" t1="4.76226" t2="1.00816" s0="0.246938" s1="0.274592" s2="0.0749722" q0="0.696025" q1="-0.124695" q2="-0.124694" q3="0.696025" euler_x="1.5708" euler_y="-1.2517e-006" euler_z="-0.354544" id="79" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="7.50176" t1="4.66144" t2="1.00816" s0="0.168695" s1="0.274595" s2="0.065833" q0="0.522646" q1="-0.476279" q2="-0.476278" q3="0.522646" euler_x="1.5708" euler_y="-1.16229e-006" euler_z="-1.47803" id="80" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="7.43697" t1="4.54282" t2="1.00816" s0="0.246939" s1="0.274593" s2="0.0749723" q0="0.0408532" q1="-0.705926" q2="-0.705925" q3="0.0408524" euler_x="1.5708" euler_y="1.017e-006" euler_z="-3.02598" id="81" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="7.66659" t1="4.69149" t2="1.00816" s0="0.30353" s1="0.274594" s2="0.0669662" q0="0.507733" q1="-0.492146" q2="-0.492145" q3="0.507733" euler_x="1.5708" euler_y="0" euler_z="-1.53962" id="82" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="7.77708" t1="4.8085" t2="1.00816" s0="0.212078" s1="0.274597" s2="0.0666094" q0="0.0145153" q1="-0.706958" q2="-0.706957" q3="0.0145146" euler_x="1.5708" euler_y="1.03749e-006" euler_z="-3.10054" id="83" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="7.84544" t1="4.69114" t2="1.00816" s0="0.314872" s1="0.274594" s2="0.0702349" q0="-0.493565" q1="-0.506353" q2="-0.506353" q3="-0.493566" euler_x="1.5708" euler_y="1.07288e-006" euler_z="1.59637" id="84" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="7.75439" t1="4.57132" t2="1.00816" s0="0.255822" s1="0.27459" s2="0.067158" q0="-0.707032" q1="-0.0102265" q2="-0.0102272" q3="-0.707033" euler_x="1.5708" euler_y="-1.02073e-006" euler_z="0.0289269" id="85" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="7.97873" t1="4.69139" t2="1.00816" s0="0.303528" s1="0.274593" s2="0.0669658" q0="0.514634" q1="-0.484925" q2="-0.484924" q3="0.514634" euler_x="1.5708" euler_y="-1.04308e-006" euler_z="-1.51137" id="86" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="8.05147" t1="4.69293" t2="1.00816" s0="0.364862" s1="0.274592" s2="0.0770172" q0="0.622729" q1="-0.334976" q2="-0.334975" q3="0.622729" euler_x="1.5708" euler_y="-1.49012e-006" euler_z="-0.987035" id="87" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="8.13932" t1="4.68488" t2="1.00816" s0="0.318581" s1="0.274592" s2="0.0679732" q0="0.500542" q1="-0.499457" q2="-0.499456" q3="0.500542" euler_x="1.5708" euler_y="0" euler_z="-1.56863" id="88" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="8.22395" t1="4.84079" t2="1.00816" s0="0.175701" s1="0.274594" s2="0.0540151" q0="0.510082" q1="-0.489711" q2="-0.48971" q3="0.510082" euler_x="1.5708" euler_y="0" euler_z="-1.53005" id="89" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="8.44806" t1="4.68289" t2="1.00816" s0="0.250573" s1="0.274594" s2="0.0641264" q0="0.50916" q1="-0.49067" q2="-0.490669" q3="0.50916" euler_x="1.5708" euler_y="-1.04308e-006" euler_z="-1.53381" id="90" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+        <Decal t0="8.44428" t1="4.8134" t2="1.00816" s0="0.266339" s1="0.274593" s2="0.059199" q0="0.707062" q1="0.00787807" q2="0.00787873" q3="0.707063" euler_x="1.57079" euler_y="0" euler_z="0.0222839" id="91" type_file="Data/Objects/Decals/rugs/thick_tan_rug.xml" color_r="1" color_g="0" color_b="0" overbright="0">
+            <parameters />
+        </Decal>
+    </Group>
+    <Hotspot t0="8" t1="2" t2="1.39189" s0="0.369975" s1="0.369975" s2="0.369975" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="93" type_file="Data/Objects/magic-mouse/Hotspots/switch-hotspot.xml">
+        <parameters>
+            <parameter name="Character ID (-1 for Level Message)" type="int" val="1" />
+            <parameter name="Default Switch State is On (Not Off)" type="int" val="0" />
+            <parameter name="Execute as Code instead of Message" type="int" val="1" />
+            <parameter name="Send Message on Level Reset" type="int" val="0" />
+            <parameter name="Send Message on switch Off to On" type="string" val="CutThroat();" />
+            <parameter name="Send Message on switch On to Off" type="string" val="" />
+        </parameters>
+        <Connections />
+        <ConnectionsFrom />
+    </Hotspot>
 </ActorObjects>
 <RecentItems>
     <SpawnerItem display_name="Basics Stone Cube" path="Data/Objects/Buildings/basics/soft_cube.xml" thumbnail_path="Data/UI/spawner/thumbs/Static Objects/soft_cube.png" />

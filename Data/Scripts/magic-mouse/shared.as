@@ -10,6 +10,7 @@ const string SP_RESET_PB = "[Magic Mouse] Reset PB type reset";
 // Hotspot ScriptParams
 const string SP_CHARACTER_ID = "Character ID (-1 for Level Message)";
 const string SP_DEFAULT_SWITCH_STATE_IS_ON = "Default Switch State is On (Not Off)";
+const string SP_EXECUTE_AS_CODE_INSTEAD_OF_MESSAGE = "Execute as Code instead of Message";
 const string SP_SEND_MESSAGE_ON_LEVEL_RESET = "Send Message on Level Reset";
 const string SP_SEND_MESSAGE_ON_SWITCH_OFF_TO_ON = "Send Message on switch Off to On";
 const string SP_SEND_MESSAGE_ON_SWITCH_ON_TO_OFF = "Send Message on switch On to Off";

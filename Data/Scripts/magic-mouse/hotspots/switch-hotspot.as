@@ -27,6 +27,7 @@ void SetParameters()
 {
 	params.AddInt(SP_CHARACTER_ID, -1);
 	params.AddIntCheckbox(SP_DEFAULT_SWITCH_STATE_IS_ON, false);
+	params.AddIntCheckbox(SP_EXECUTE_AS_CODE_INSTEAD_OF_MESSAGE, false);
 	params.AddIntCheckbox(SP_SEND_MESSAGE_ON_LEVEL_RESET, false);
 	params.AddString(SP_SEND_MESSAGE_ON_SWITCH_OFF_TO_ON, "");
 	params.AddString(SP_SEND_MESSAGE_ON_SWITCH_ON_TO_OFF, "");
@@ -80,11 +81,12 @@ void DrawEditor()
 	if (!hotspotInfoDetailLevel)
 	{
 		int receiverId = params.GetInt(SP_CHARACTER_ID);
+		bool executeAsCode = params.GetInt(SP_EXECUTE_AS_CODE_INSTEAD_OF_MESSAGE) == 1;
 
 		string displayText = "Switch Hotspot [" + hotspot.GetID() + "]\n\n" +
 			"Receiver ID: " + ((receiverId == -1) ? "Level" : (receiverId + "")) + "\n" +
-			"Message Off->On: " + params.GetString(SP_SEND_MESSAGE_ON_SWITCH_OFF_TO_ON) + "\n" +
-			"Message On->Off: " + params.GetString(SP_SEND_MESSAGE_ON_SWITCH_ON_TO_OFF)
+			(executeAsCode ? "Code" : "Message") + " Off->On: " + params.GetString(SP_SEND_MESSAGE_ON_SWITCH_OFF_TO_ON) + "\n" +
+			(executeAsCode ? "Code" : "Message") + " On->Off: " + params.GetString(SP_SEND_MESSAGE_ON_SWITCH_ON_TO_OFF)
 		;
 		
 		if (receiverId > 0 && ObjectExists(receiverId))
@@ -160,42 +162,32 @@ void Reset()
 
 void SetSwitchState(bool state, bool sendMessage)
 {
-	array<int>@ groupObjects = ReadObjectFromID(groupId).GetChildren();
+	array<int>@ groupObjects = ReadObjectFromID(groupId).GetChildren();	
+	ReadObjectFromID(groupObjects[1]).SetEnabled(!state);
+	ReadObjectFromID(groupObjects[2]).SetEnabled(state);
 	
-	Object@ offSwitchObject = ReadObjectFromID(groupObjects[1]);
-	Object@ onSwitchObject = ReadObjectFromID(groupObjects[2]);
+	string message = params.GetString(
+		state
+			? SP_SEND_MESSAGE_ON_SWITCH_OFF_TO_ON
+			: SP_SEND_MESSAGE_ON_SWITCH_ON_TO_OFF
+	);	
 	
-	if (state)
+	if (sendMessage && message != "")
 	{
-		offSwitchObject.SetEnabled(false);
-		onSwitchObject.SetEnabled(true);
-		
-		string message = params.GetString(SP_SEND_MESSAGE_ON_SWITCH_OFF_TO_ON);
-		
-		if (sendMessage && message != "")
+		int receiverId = params.GetInt(SP_CHARACTER_ID);
+	
+		if (receiverId == -1)
 		{
-			int receiverId = params.GetInt(SP_CHARACTER_ID);
-		
-			if (receiverId == -1)
+			if (params.GetInt(SP_EXECUTE_AS_CODE_INSTEAD_OF_MESSAGE) == 1)
+				level.Execute(message);
+			else
 				level.SendMessage(message);
-			else if (ObjectExists(receiverId) && ReadObjectFromID(receiverId).GetType() == _movement_object)
-				ReadCharacterID(receiverId).ReceiveScriptMessage(message);
 		}
-	}
-	else
-	{
-		offSwitchObject.SetEnabled(true);
-		onSwitchObject.SetEnabled(false);
-		
-		string message = params.GetString(SP_SEND_MESSAGE_ON_SWITCH_ON_TO_OFF);
-		
-		if (sendMessage && message != "")
+		else if (ObjectExists(receiverId) && ReadObjectFromID(receiverId).GetType() == _movement_object)
 		{
-			int receiverId = params.GetInt(SP_CHARACTER_ID);
-			
-			if (receiverId == -1)
-				level.SendMessage(message);
-			else if (ObjectExists(receiverId) && ReadObjectFromID(receiverId).GetType() == _movement_object)
+			if (params.GetInt(SP_EXECUTE_AS_CODE_INSTEAD_OF_MESSAGE) == 1)
+				ReadCharacterID(receiverId).Execute(message);
+			else
 				ReadCharacterID(receiverId).ReceiveScriptMessage(message);
 		}
 	}
