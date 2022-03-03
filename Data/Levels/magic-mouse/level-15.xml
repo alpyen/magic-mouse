@@ -26,7 +26,6 @@
     <parameter name="Sky Rotation" type="float" val="0" />
     <parameter name="Sky Tint" type="string" val="255, 255, 255" />
     <parameter name="[Magic Mouse] Max Energy" type="int" val="10" />
-    <parameter name="[Magic Mouse] Reset PB type reset" type="string" val="" />
 </LevelScriptParameters>
 <NavMeshParameters generate="false" cell_size="0.3" cell_height="0.2" agent_height="1.7" agent_radius="0.4" agent_max_climb="1.5" agent_max_slope="60" />
 <Sky>

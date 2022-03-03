@@ -1,4 +1,20 @@
-void Init(string level_name) { }
+#include "magic-mouse/shared.as"
+
+// False = Full Details, True = Less Details (because non-existant keys return false)
+bool hotspotInfoDetailLevel = false;
+
+void Init(string level_name)
+{
+	if (!ConfigHasKey(CONFIG_HOTSPOTINFO_DETAILLEVEL))
+	{
+		SetConfigValueBool(CONFIG_HOTSPOTINFO_DETAILLEVEL, false);
+		SaveConfig();
+	}
+	else
+	{
+		hotspotInfoDetailLevel = GetConfigValueBool(CONFIG_HOTSPOTINFO_DETAILLEVEL);
+	}
+}
 
 void Menu()
 {
@@ -15,16 +31,18 @@ void Menu()
 				ImGui_Text("Personal best time for the current level:");
 				ImGui_Indent();
 					ImGui_AlignTextToFramePadding();
-					ImGui_Text("Time: 00:05.6");
+					ImGui_Text("Time: " + GetTimeString(LoadPbTime()));
 					ImGui_SameLine();
-					ImGui_Button("Reset Record");
+					if (ImGui_Button("Reset Record")) ResetPb();
 				ImGui_Unindent();
 				
 				ImGui_NewLine();
 				ImGui_Text("Detail level of hotspot info in the editor:");
 					ImGui_Indent();
-					ImGui_RadioButton(" Full Details (parameter and connection)", true);
-					ImGui_RadioButton(" Less Details (abbreviated)", false);
+					if (ImGui_RadioButton(" Full Details (parameter and connection)", !hotspotInfoDetailLevel))
+						ChangeHotspotInfoDetailLevel(false);
+					if (ImGui_RadioButton(" No Details (no editor tooltips)", hotspotInfoDetailLevel))
+						ChangeHotspotInfoDetailLevel(true);
 				ImGui_Unindent();
 				
 			ImGui_Unindent();
@@ -60,4 +78,21 @@ void Menu()
 		
 		ImGui_EndMenu();
 	}	
+}
+
+void ResetPb()
+{
+	SavePbTime(0.0f);
+
+	level.SendMessage(MSG_PB_WAS_RESET);
+}
+
+void ChangeHotspotInfoDetailLevel(bool detailLevel)
+{
+	hotspotInfoDetailLevel = detailLevel;
+	
+	SetConfigValueBool(CONFIG_HOTSPOTINFO_DETAILLEVEL, detailLevel);
+	SaveConfig();
+	
+	level.SendMessage(MSG_HOTSPOTINFO_DETAILLEVEL_CHANGED);
 }

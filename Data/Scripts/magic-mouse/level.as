@@ -1,9 +1,8 @@
 #include "magic-mouse/gui.as"
+#include "magic-mouse/shared.as"
 
 array<int> lines;
 bool postInit = false;
-
-const string SF_PERSONAL_BEST = "[Magic Mouse] Personal Best";
 
 const int PLAYER_ID = 1;
 const int START_ID = 2;
@@ -30,6 +29,8 @@ float timestampLevelStart;
 float timestampLevelFinished;
 bool levelFinished;
 
+float pbTime;
+
 // Reset player to this Z-Axis value.
 float zAxisStickValue;
 
@@ -43,8 +44,10 @@ void PostScriptReload()
 
 void Init(string level_name)
 {
+	pbTime = LoadPbTime();
+
 	GUI::Init();
-	GUI::SetPbTime(GetPbTime());
+	GUI::SetPbTime(pbTime);
 	GUI::SetEnergy(remainingEnergy, maxEnergy);
 }
 
@@ -96,17 +99,13 @@ void Update(int is_paused)
 			timestampLevelFinished = ImGui_GetTime();
 			
 			PlaySound("Data/Sounds/magic-mouse/cheer.wav");
-			Log(fatal, ImGui_GetTime() + " Level won!");
 			
-			SavedLevel@ levelData = save_file.GetSavedLevel(GetCurrLevelRelPath());
-			string pbTime = levelData.GetValue(SF_PERSONAL_BEST);
+			float levelTime = timestampLevelFinished - timestampLevelStart;
 			
-			float cutTime = float(int((timestampLevelFinished - timestampLevelStart) * 10)) / 10;
-			
-			if (pbTime == "" || cutTime < atof(pbTime))
+			if (pbTime == 0 || levelTime < pbTime)
 			{
-				levelData.SetValue(SF_PERSONAL_BEST, formatFloat(cutTime, "", 0, 1));
-				save_file.WriteInPlace();
+				pbTime = levelTime;
+				SavePbTime(levelTime);
 			}
 		}
 	}
@@ -143,7 +142,7 @@ void ReceiveMessage(string message)
 		timestampLevelStart = ImGui_GetTime();
 		levelFinished = false;
 		
-		GUI::SetPbTime(GetPbTime());
+		GUI::SetPbTime(LoadPbTime());
 		
 		remainingEnergy = maxEnergy;
 		GUI::SetEnergy(maxEnergy, maxEnergy);
@@ -152,7 +151,7 @@ void ReceiveMessage(string message)
 		
 		zAxisStickValue = ReadObjectFromID(PLAYER_ID).GetTranslation().z;
 	}
-	else if (ti.GetToken(message) == "tdh-teleported")
+	else if (ti.GetToken(message) == MSG_TELEPORTED)
 	{
 		if (!ti.FindNextToken(message)) return;
 		
@@ -165,6 +164,16 @@ void ReceiveMessage(string message)
 			cameraDistance -= zAxisStickValue;
 		else if (oldZAxisStickValue >= zAxisStickValue)
 			cameraDistance += oldZAxisStickValue;
+	}
+	else if (ti.GetToken(message) == MSG_HOTSPOTINFO_DETAILLEVEL_CHANGED)
+	{
+		for (int i = 0; i < GetNumHotspots(); ++i)
+			ReadObjectFromID(ReadHotspot(i).GetID()).ReceiveScriptMessage(MSG_HOTSPOTINFO_DETAILLEVEL_CHANGED);
+	}
+	else if (ti.GetToken(message) == MSG_PB_WAS_RESET)
+	{
+		pbTime = 0.0f;
+		GUI::SetPbTime(0.0f);
 	}
 }
 
@@ -188,19 +197,8 @@ void DrawGUI()
 	GUI::Render();
 }
 
-float GetPbTime()
-{
-	SavedLevel@ levelData = save_file.GetSavedLevel(GetCurrLevelRelPath());
-	string pbTime = levelData.GetValue(SF_PERSONAL_BEST);
-	
-	return atof(pbTime);
-}
-
 void HandleScriptParams()
 {
-	const string SP_MAX_ENERGY = "[Magic Mouse] Max Energy";
-	const string SP_RESET_PB = "[Magic Mouse] Reset PB type reset";
-
 	ScriptParams@ scriptParams = level.GetScriptParams();
 	if (!scriptParams.HasParam(SP_MAX_ENERGY))
 	{
@@ -223,28 +221,6 @@ void HandleScriptParams()
 		maxEnergy = levelEnergy;
 		remainingEnergy = levelEnergy;
 		GUI::SetEnergy(maxEnergy, maxEnergy);
-	}
-	
-	if (!scriptParams.HasParam(SP_RESET_PB))
-		scriptParams.AddString(SP_RESET_PB, "");
-	
-	if (scriptParams.GetString(SP_RESET_PB) == "reset")
-	{
-		scriptParams.SetString(SP_RESET_PB, "");
-		
-		SavedLevel@ levelData = save_file.GetSavedLevel(GetCurrLevelRelPath());
-		
-		if (levelData.GetValue(SF_PERSONAL_BEST) != "")
-		{
-			GUI::SetPbTime(0.0f);
-		
-			levelData.SetValue(SF_PERSONAL_BEST, "");
-			save_file.WriteInPlace();
-		}
-	}
-	else
-	{
-		scriptParams.SetString(SP_RESET_PB, "");
 	}
 }
 
@@ -312,10 +288,10 @@ void HandleHovering()
 	
 	for (int j = 0; j < GetNumHotspots(); ++j)
 	{
-		if (ReadHotspot(j).GetTypeString() == "MagicMouse-SwitchHotspot")
+		if (ReadHotspot(j).GetTypeString() == TYPE_SWITCH_HOTSPOT)
 		{
 			// Sending Id -1 will UnHover the hotspot.
-			ReadObjectFromID(ReadHotspot(j).GetID()).ReceiveScriptMessage("MagicMouse-Hover " + closestId);
+			ReadObjectFromID(ReadHotspot(j).GetID()).ReceiveScriptMessage(MSG_HOVER + " " + closestId);
 		}
 	}
 }
@@ -355,9 +331,9 @@ void HandleClicks()
 		{
 			for (int j = 0; j < GetNumHotspots(); ++j)
 			{
-				if (ReadHotspot(j).GetTypeString() == "MagicMouse-SwitchHotspot")
+				if (ReadHotspot(j).GetTypeString() == TYPE_SWITCH_HOTSPOT)
 				{
-					ReadObjectFromID(ReadHotspot(j).GetID()).ReceiveScriptMessage("MagicMouse-Click " + closestId);
+					ReadObjectFromID(ReadHotspot(j).GetID()).ReceiveScriptMessage(MSG_CLICK + " " + closestId);
 				}
 			}
 		}

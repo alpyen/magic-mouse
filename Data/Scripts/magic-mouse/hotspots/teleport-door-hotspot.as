@@ -1,3 +1,7 @@
+#include "magic-mouse/shared.as";
+
+bool hotspotInfoDetailLevel = false;
+
 int doorId = -1;
 
 int playerId = -1;
@@ -7,12 +11,17 @@ array<int> incomingConnections;
 
 string GetTypeString()
 {
-	return "MagicMouse-TeleportDoorHotspot";
+	return TYPE_DOOR_TELEPORT_HOTSPOT;
 }
 
 void Reset()
 {
 	playerId = -1;
+}
+
+void Init()
+{
+	hotspotInfoDetailLevel = GetConfigValueBool(CONFIG_HOTSPOTINFO_DETAILLEVEL);
 }
 
 void Dispose()
@@ -30,7 +39,7 @@ void Update()
 	if (doorId == -1)
 	{
 		doorId = CreateObject("Data/Objects/Buildings/Door1.xml", true);
-		ReadObjectFromID(doorId).SetTranslation(ReadObjectFromID(hotspot.GetID()).GetTranslation());
+		ReadObjectFromID(doorId).SetTranslation(hotspotObject.GetTranslation());
 		
 		hotspotObject.SetRotatable(false);
 		hotspotObject.SetScalable(false);
@@ -64,10 +73,23 @@ void Update()
 			player.position = ReadObjectFromID(hotspot.GetConnectedObjects()[0]).GetTranslation() + vec3(0.0f, -0.55f, 0.0f);
 			player.velocity = vec3(0.0f);
 			
-			level.SendMessage("tdh-teleported " + hotspot.GetConnectedObjects()[0]);
+			level.SendMessage(MSG_TELEPORTED + " " + hotspot.GetConnectedObjects()[0]);
 		}
 	}
 		
+}
+
+void ReceiveMessage(string message)
+{
+	TokenIterator ti;
+	ti.Init();
+	
+	if (!ti.FindNextToken(message)) return;
+	
+	if (ti.GetToken(message) == MSG_HOTSPOTINFO_DETAILLEVEL_CHANGED)
+	{
+		hotspotInfoDetailLevel = GetConfigValueBool(CONFIG_HOTSPOTINFO_DETAILLEVEL);
+	}
 }
 
 void HandleEvent(string event, MovementObject @mo)
@@ -129,38 +151,41 @@ void DisconnectedFrom(Object@ other)
 
 void DrawEditor()
 {
-	string displayText = "Door Teleport Hotspot [" + hotspot.GetID() + "]";
-	
-	if (incomingConnections.length() > 0)
+	if (!hotspotInfoDetailLevel)
 	{
-		displayText += "\n\nIn:  [";
+		string displayText = "Door Teleport Hotspot [" + hotspot.GetID() + "]";
 		
-		for (int i = 0; i < int(incomingConnections.length()); ++i)
+		if (incomingConnections.length() > 0)
 		{
-			displayText += incomingConnections[i];
-			if (i < int(incomingConnections.length()) - 1) displayText += ", ";
+			displayText += "\n\nIn:  [";
+			
+			for (int i = 0; i < int(incomingConnections.length()); ++i)
+			{
+				displayText += incomingConnections[i];
+				if (i < int(incomingConnections.length()) - 1) displayText += ", ";
+			}
+			
+			displayText += "]";
 		}
 		
-		displayText += "]";
-	}
-	
-	if (hotspot.GetConnectedObjects().length() == 1)
-	{
-		displayText += "\nOut: [" + hotspot.GetConnectedObjects()[0] + "]";
-	
-		DebugDrawLine(
+		if (hotspot.GetConnectedObjects().length() == 1)
+		{
+			displayText += "\nOut: [" + hotspot.GetConnectedObjects()[0] + "]";
+		
+			DebugDrawLine(
+				ReadObjectFromID(hotspot.GetID()).GetTranslation(),
+				ReadObjectFromID(hotspot.GetConnectedObjects()[0]).GetTranslation(),
+				vec3(0.0f, 1.0f, 0.0f),
+				_delete_on_draw
+			);
+		}
+		
+		DebugDrawText(
 			ReadObjectFromID(hotspot.GetID()).GetTranslation(),
-			ReadObjectFromID(hotspot.GetConnectedObjects()[0]).GetTranslation(),
-			vec3(0.0f, 1.0f, 0.0f),
+			displayText,
+			1.0f,
+			true,
 			_delete_on_draw
 		);
 	}
-	
-	DebugDrawText(
-		ReadObjectFromID(hotspot.GetID()).GetTranslation(),
-		displayText,
-		1.0f,
-		true,
-		_delete_on_draw
-	);
 }

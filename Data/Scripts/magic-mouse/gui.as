@@ -1,3 +1,5 @@
+#include "magic-mouse/shared.as"
+
 namespace GUI
 {
 	const vec2 ENERGY_CONTAINER_SIZE(750.0f, 120.0f);
@@ -38,22 +40,7 @@ namespace GUI
 
 	void SetPbTime(float pbTime)
 	{
-		int time = int(pbTime * 1000.0f);
-	
-		int minutes = time / (60 * 1000);
-		time %= (60 * 1000);
-		
-		int seconds = time / 1000;
-		time %= 1000;
-		
-		int milliseconds = int(time / 100);
-		
-		pbTimerText.setText(
-			"PB: " +
-			(minutes < 10 ? "0" : "") + minutes + ":" +
-			(seconds < 10 ? "0" : "") + seconds + "." + 
-			milliseconds
-		);
+		pbTimerText.setText("PB: " + GetTimeString(pbTime));
 		gui.update();
 	}
 

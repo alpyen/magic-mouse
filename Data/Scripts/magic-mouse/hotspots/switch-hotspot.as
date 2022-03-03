@@ -1,8 +1,6 @@
-const string SP_CHARACTER_ID = "Character ID (-1 for Level Message)";
-const string SP_DEFAULT_SWITCH_STATE_IS_ON = "Default Switch State is On (Not Off)";
-const string SP_SEND_MESSAGE_ON_LEVEL_RESET = "Send Message on Level Reset";
-const string SP_SEND_MESSAGE_ON_SWITCH_OFF_TO_ON = "Send Message on switch Off to On";
-const string SP_SEND_MESSAGE_ON_SWITCH_ON_TO_OFF = "Send Message on switch On to Off";
+#include "magic-mouse/shared.as"
+
+bool hotspotInfoDetailLevel = false;
 
 int groupId = -1;
 
@@ -12,38 +10,12 @@ bool switchState = false;
 
 string GetTypeString()
 {
-	return "MagicMouse-SwitchHotspot";
+	return TYPE_SWITCH_HOTSPOT;
 }
 
 void Init()
 {
-	// Parameters are unloaded, need to load them.
-	// params.Add will load them correctly weirdly enough.
-	SetParameters();
-	
-	groupId = CreateObject("Data/Objects/magic-mouse/switch.xml", true);
-	
-	Object@ groupObject = ReadObjectFromID(groupId);		
-	groupObject.SetTranslation(ReadObjectFromID(hotspot.GetID()).GetTranslation());
-	
-	array<int> groupObjects = groupObject.GetChildren();
-	groupObjects.insertAt(0, groupId);
-	
-	// You could technically select the elements through the scenegraph and scale them,
-	// but the scaling will not save correctly, as it is dependant on the group scale.
-	// Disabling it completely is possible, but not worth the time and effort.
-	for (int i = 0; i < int(groupObjects.size()); ++i)
-	{
-		Object@ object = ReadObjectFromID(groupObjects[i]);
-		object.SetDeletable(false);
-		object.SetCopyable(false);
-		object.SetRotatable(false);
-		object.SetScalable(false);
-		object.SetSelectable(false);
-	}
-	
-	adjustedScale = 10.0f * ReadObjectFromID(groupId).GetScale();
-	SetSwitchState((params.GetInt(SP_DEFAULT_SWITCH_STATE_IS_ON) == 1) ? true : false, false);
+	hotspotInfoDetailLevel = GetConfigValueBool(CONFIG_HOTSPOTINFO_DETAILLEVEL);
 }
 
 void Dispose()
@@ -63,8 +35,36 @@ void SetParameters()
 void Update()
 {
 	Object@ hotspotObject = ReadObjectFromID(hotspot.GetID());
-	Object@ switchObject = ReadObjectFromID(groupId);
 	
+	if (groupId == -1)
+	{
+		groupId = CreateObject("Data/Objects/magic-mouse/switch.xml", true);
+	
+		Object@ groupObject = ReadObjectFromID(groupId);		
+		groupObject.SetTranslation(ReadObjectFromID(hotspot.GetID()).GetTranslation());
+		
+		array<int> groupObjects = groupObject.GetChildren();
+		groupObjects.insertAt(0, groupId);
+		
+		// You could technically select the elements through the scenegraph and scale them,
+		// but the scaling will not save correctly, as it is dependant on the group scale.
+		// Disabling it completely is possible, but not worth the time and effort.
+		for (int i = 0; i < int(groupObjects.size()); ++i)
+		{
+			Object@ object = ReadObjectFromID(groupObjects[i]);
+			object.SetDeletable(false);
+			object.SetCopyable(false);
+			object.SetRotatable(false);
+			object.SetScalable(false);
+			object.SetSelectable(false);
+		}
+		
+		adjustedScale = 10.0f * ReadObjectFromID(groupId).GetScale();
+		SetSwitchState((params.GetInt(SP_DEFAULT_SWITCH_STATE_IS_ON) == 1) ? true : false, false);
+	}
+	
+	Object@ switchObject = ReadObjectFromID(groupId);
+		
 	if (switchObject.GetTranslation() != hotspotObject.GetTranslation())
 		switchObject.SetTranslation(hotspotObject.GetTranslation());
 		
@@ -77,28 +77,37 @@ void Update()
 
 void DrawEditor()
 {
-	string displayText = "Switch Hotspot [" + hotspot.GetID() + "]\n\n" + 
-		"Message Off->On: " + params.GetString(SP_SEND_MESSAGE_ON_SWITCH_OFF_TO_ON) + "\n" +
-		"Message On->Off: " + params.GetString(SP_SEND_MESSAGE_ON_SWITCH_ON_TO_OFF)
-	;
-	
-	DebugDrawText(
-		ReadObjectFromID(hotspot.GetID()).GetTranslation(),
-		displayText,
-		1.0f,
-		true,
-		_delete_on_draw
-	);
+	if (!hotspotInfoDetailLevel)
+	{
+		int receiverId = params.GetInt(SP_CHARACTER_ID);
+
+		string displayText = "Switch Hotspot [" + hotspot.GetID() + "]\n\n" +
+			"Receiver ID: " + ((receiverId == -1) ? "Level" : (receiverId + "")) + "\n" +
+			"Message Off->On: " + params.GetString(SP_SEND_MESSAGE_ON_SWITCH_OFF_TO_ON) + "\n" +
+			"Message On->Off: " + params.GetString(SP_SEND_MESSAGE_ON_SWITCH_ON_TO_OFF)
+		;
+		
+		DebugDrawText(
+			ReadObjectFromID(hotspot.GetID()).GetTranslation(),
+			displayText,
+			1.0f,
+			true,
+			_delete_on_draw
+		);
+	}
 }
 
 void ReceiveMessage(string message)
 {
 	TokenIterator ti;
 	ti.Init();
-		
+	
+	// A check of groupId == -1 would be necessary if the effects would be available in editor mode.
+	// But they are not in the levelscript, if they were, it would crash without the check.
+	
 	if (!ti.FindNextToken(message)) return;
 	
-	if (ti.GetToken(message) == "MagicMouse-Click")
+	if (ti.GetToken(message) == MSG_CLICK)
 	{
 		if (!ti.FindNextToken(message)) return;
 		
@@ -109,7 +118,7 @@ void ReceiveMessage(string message)
 		if (clickedId == groupObjects[1] || clickedId == groupObjects[2])
 			SetSwitchState(!switchState, true);
 	}
-	else if (ti.GetToken(message) == "MagicMouse-Hover")
+	else if (ti.GetToken(message) == MSG_HOVER)
 	{
 		if (!ti.FindNextToken(message)) return;
 		
@@ -121,6 +130,10 @@ void ReceiveMessage(string message)
 		
 		ReadObjectFromID(groupObjects[1]).SetTint(brightness * vec3(1.0f, 0.0f, 0.0f));
 		ReadObjectFromID(groupObjects[2]).SetTint(brightness * vec3(0.0f, 1.0f, 0.0f));
+	}
+	else if (ti.GetToken(message) == MSG_HOTSPOTINFO_DETAILLEVEL_CHANGED)
+	{
+		hotspotInfoDetailLevel = GetConfigValueBool(CONFIG_HOTSPOTINFO_DETAILLEVEL);
 	}
 }
 
