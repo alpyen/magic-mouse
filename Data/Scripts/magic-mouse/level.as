@@ -300,8 +300,11 @@ void HandleHovering()
 		}
 	}
 	
-	// There has to be a better way to solve this rather than sending so many
-	// messages in each script iteration but it draws so less performance, I'll disregard it for now.
+	// There is a better way by registering the hotspots objects and sending only the message
+	// to the hotspot which should light up, but that would mean so much more code
+	// for a minuscule amount of more performance.
+	// With CPU-bottleneck settings I get 5 fps for 14052 objects (with 6403 switches).
+	// Disabling the hovering function completely yields 15 fps, basically no difference.
 	
 	for (int j = 0; j < GetNumHotspots(); ++j)
 	{
