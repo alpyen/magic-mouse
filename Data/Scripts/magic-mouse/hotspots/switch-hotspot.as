@@ -87,6 +87,16 @@ void DrawEditor()
 			"Message On->Off: " + params.GetString(SP_SEND_MESSAGE_ON_SWITCH_ON_TO_OFF)
 		;
 		
+		if (receiverId > 0 && ObjectExists(receiverId))
+		{
+			DebugDrawLine(
+				ReadObjectFromID(hotspot.GetID()).GetTranslation(),
+				ReadObjectFromID(receiverId).GetTranslation(),
+				vec3(1.0f, 1.0f, 0.0f),
+				_delete_on_draw
+			);
+		}
+		
 		DebugDrawText(
 			ReadObjectFromID(hotspot.GetID()).GetTranslation(),
 			displayText,

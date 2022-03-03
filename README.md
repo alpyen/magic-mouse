@@ -16,3 +16,6 @@ An Overgrowth puzzle mod which makes use of the mouse.
 - Add levels with NPCs
 - Add levels with switches
 - Use 1.5x font as title or not?
+- Add all gameplay elements to base.xml
+- Add gameplay elements to Load menu (mod.xml)
+- Force enemies on Z-Axis necessary?
