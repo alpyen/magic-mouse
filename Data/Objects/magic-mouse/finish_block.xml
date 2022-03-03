@@ -1,0 +1,7 @@
+<?xml version="2.0" ?>
+<Type>saved</Type>
+<ActorObjects>
+    <EnvObject t0="12" t1="0" t2="0" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="3" color_r="1" color_g="0" color_b="0" overbright="0" type_file="Data/Objects/Buildings/basics/soft_cube.xml">
+        <parameters />
+    </EnvObject>
+</ActorObjects>

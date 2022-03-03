@@ -29,6 +29,8 @@
 	
 	<Item category="Magic Mouse" title="Blocks" path="" thumbnail=""/>
 	<Item category="Magic Mouse" title="   Standard Block" path="Data/Objects/magic-mouse/standard_block.xml" thumbnail="Data/Textures/magic-mouse/Spawner/standard_block.png"/>
+	<Item category="Magic Mouse" title="   Start Block (non-functional)" path="Data/Objects/magic-mouse/start_block.xml" thumbnail="Data/Textures/magic-mouse/Spawner/start_block.png"/>
+	<Item category="Magic Mouse" title="   Finish Block (non-functional)" path="Data/Objects/magic-mouse/finish_block.xml" thumbnail="Data/Textures/magic-mouse/Spawner/finish_block.png"/>
 	<Item category="Magic Mouse" title="" path="" thumbnail=""/>
 	
 	<Item category="Magic Mouse" title="Hotspots" path="" thumbnail=""/>
