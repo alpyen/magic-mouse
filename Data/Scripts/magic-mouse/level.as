@@ -62,7 +62,7 @@ void Update(int is_paused)
 		
 		// Protect these objects from destructive/impossible manipulation.
 		array<int> modObjects = { PLAYER_ID, START_ID, FINISH_ID };
-		for (int i = 0; i < int(modObjects.size()); ++i)
+		for (int i = 0; i < int(modObjects.length()); ++i)
 		{
 			Object@ object = ReadObjectFromID(modObjects[i]);
 			object.SetDeletable(false);
@@ -83,6 +83,21 @@ void Update(int is_paused)
 	
 	MovementObject@ player = ReadCharacterID(PLAYER_ID);
 	player.position.z = zAxisStickValue;
+	
+	// Stick characters to one digit behind decimal point.
+	// This is not a perfect solution, as it will make characters
+	// stick too it if they move too fast, but it should do the trick
+	// without having to manage zAxisStickValues for every character
+	// or setting the scripts manually.
+	for (int i = 0; i < GetNumCharacters(); ++i)
+	{
+		MovementObject@ character = ReadCharacter(i);
+		if (character.controlled) continue;
+		
+		vec3 fixedPosition = character.position;
+		fixedPosition.z = float(int(fixedPosition.z * 10) / 10);
+		character.position = fixedPosition;
+	}
 	
 	vec3 finishLocation = ReadObjectFromID(FINISH_ID).GetTranslation();
 	

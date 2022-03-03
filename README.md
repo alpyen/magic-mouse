@@ -9,14 +9,11 @@ An Overgrowth puzzle mod which makes use of the mouse.
 ### ToDo-List
 
 - Add Mod menu to editor for settings
-	- Open Workshop page button (niy)
+	- Open Workshop page button (needs testing after release)
 - Optimize (Un-)Hovering of the Switch Hotspots (do not send messages every frame)
 	- Add disabling to mod settings menu if it draws too much performance on low-end systems?
 - Test if menu hook is drawing performance from non-magic-mouse levels.
 - Add levels with NPCs
 - Add levels with switches
 - Use 1.5x font as title or not?
-- Add all gameplay elements to base.xml
-- Add gameplay elements to Load menu (mod.xml)
-- Force enemies on Z-Axis necessary?
 - Make co-op compatible

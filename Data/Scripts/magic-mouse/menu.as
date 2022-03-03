@@ -68,7 +68,7 @@ void Menu()
 			
 			ImGui_Text("                        ");
 			ImGui_SameLine();
-			ImGui_Button("Open Workshop Page");
+			if (ImGui_Button("Open Workshop Page")) OpenWorkshopPage();
 			ImGui_NewLine();
 		}
 		else
@@ -81,6 +81,23 @@ void Menu()
 		
 		ImGui_EndMenu();
 	}	
+}
+
+void OpenWorkshopPage()
+{
+	array<ModID>@ mods = GetActiveModSids();
+	int index = 0;
+
+	for (int i = 0; i < int(mods.length()); ++i)
+	{	
+		if (ModGetID(mods[i]) == MOD_ID)
+		{
+			index = i;
+			break;
+		}
+	}
+
+	OpenModWorkshopPage(mods[index]);
 }
 
 void ResetPb()

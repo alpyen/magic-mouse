@@ -50,7 +50,7 @@ void Update()
 		// You could technically select the elements through the scenegraph and scale them,
 		// but the scaling will not save correctly, as it is dependant on the group scale.
 		// Disabling it completely is possible, but not worth the time and effort.
-		for (int i = 0; i < int(groupObjects.size()); ++i)
+		for (int i = 0; i < int(groupObjects.length()); ++i)
 		{
 			Object@ object = ReadObjectFromID(groupObjects[i]);
 			object.SetDeletable(false);

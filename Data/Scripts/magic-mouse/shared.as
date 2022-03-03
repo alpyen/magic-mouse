@@ -1,4 +1,4 @@
-// ScriptParams/SaveFile keys used in (possibly) multiple scripts
+const string MOD_ID = "magic-mouse";
 
 // SaveFile
 const string SF_PERSONAL_BEST = "[Magic Mouse] Personal Best";
