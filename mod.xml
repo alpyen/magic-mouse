@@ -22,11 +22,18 @@
 	
 	<LevelHookFile>Data/Scripts/magic-mouse/menu.as</LevelHookFile>
 	
-    <Item category="Magic Mouse" title="Koko (General)" path="Data/Objects/magic-mouse/Characters/koko_no_z_restriction_spawner.xml" thumbnail="Data/Textures/magic-mouse/Spawner/koko.png"/>
-	<Item category="Magic Mouse" title="Koko (Magic Mouse)" path="Data/Objects/magic-mouse/Characters/koko_spawner.xml" thumbnail="Data/Textures/magic-mouse/Spawner/koko.png"/>
-    <Item category="Magic Mouse" title="Standard Block" path="Data/Objects/magic-mouse/standard_block.xml" thumbnail="Data/Textures/magic-mouse/Spawner/standard_block.png"/>
-	<Item category="Magic Mouse" title="Switch Hotspot" path="Data/Objects/magic-mouse/Hotspots/switch_hotspot.xml" thumbnail="Data/Textures/magic-mouse/Spawner/switch_hotspot.png"/>
-	<Item category="Magic Mouse" title="Teleport Door Hotspot" path="Data/Objects/magic-mouse/Hotspots/teleport_door_hotspot.xml" thumbnail="Data/Textures/magic-mouse/Spawner/teleport_door_hotspot.png"/>
+	<Item category="Magic Mouse" title="Characters" path="" thumbnail=""/>
+    <Item category="Magic Mouse" title="   Koko (General)" path="Data/Objects/magic-mouse/Characters/koko_no_z_restriction_spawner.xml" thumbnail="Data/Textures/magic-mouse/Spawner/koko.png"/>
+	<Item category="Magic Mouse" title="   Koko (Magic Mouse)" path="Data/Objects/magic-mouse/Characters/koko_spawner.xml" thumbnail="Data/Textures/magic-mouse/Spawner/koko.png"/>
+	<Item category="Magic Mouse" title="" path="" thumbnail=""/>
+	
+	<Item category="Magic Mouse" title="Blocks" path="" thumbnail=""/>
+	<Item category="Magic Mouse" title="   Standard Block" path="Data/Objects/magic-mouse/standard_block.xml" thumbnail="Data/Textures/magic-mouse/Spawner/standard_block.png"/>
+	<Item category="Magic Mouse" title="" path="" thumbnail=""/>
+	
+	<Item category="Magic Mouse" title="Hotspots" path="" thumbnail=""/>
+	<Item category="Magic Mouse" title="   Switch Hotspot" path="Data/Objects/magic-mouse/Hotspots/switch_hotspot.xml" thumbnail="Data/Textures/magic-mouse/Spawner/switch_hotspot.png"/>
+	<Item category="Magic Mouse" title="   Teleport Door Hotspot" path="Data/Objects/magic-mouse/Hotspots/teleport_door_hotspot.xml" thumbnail="Data/Textures/magic-mouse/Spawner/teleport_door_hotspot.png"/>
 	
 	
 	<Campaign title="Magic Mouse Campaign" thumbnail="Images/magic-mouse/campaign-thumb.jpg" type="general" is_linear="true">
