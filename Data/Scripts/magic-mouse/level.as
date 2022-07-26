@@ -13,7 +13,7 @@ const float DEFAULT_CAMERA_DISTANCE = 100.0f;
 const float MAXIMUM_CAMERA_DISTANCE = 200.0f;
 const float CAMERA_INCREMENT_PER_MILLISECOND = 100.0f;
 float cameraDistance = DEFAULT_CAMERA_DISTANCE;
-float timestampLastUpdate;
+float timestampLastUpdate = 0.0f;
 
 bool stickCameraToLocation = false;
 vec3 savedCameraLocation;
@@ -268,10 +268,13 @@ void HandleCamera()
 {
 	MovementObject@ player = ReadCharacterID(PLAYER_ID);
 	
-	if (GetInputDown(player.controller_id, "keypad+") || GetInputDown(player.controller_id, "r"))
-		cameraDistance -= ((ImGui_GetTime() - timestampLastUpdate)) * CAMERA_INCREMENT_PER_MILLISECOND;
-	if (GetInputDown(player.controller_id, "keypad-") || GetInputDown(player.controller_id, "f"))
-		cameraDistance += ((ImGui_GetTime() - timestampLastUpdate)) * CAMERA_INCREMENT_PER_MILLISECOND;
+	if (timestampLastUpdate != 0.0f)
+	{
+		if (GetInputDown(player.controller_id, "keypad+") || GetInputDown(player.controller_id, "r"))
+			cameraDistance -= ((ImGui_GetTime() - timestampLastUpdate)) * CAMERA_INCREMENT_PER_MILLISECOND;
+		if (GetInputDown(player.controller_id, "keypad-") || GetInputDown(player.controller_id, "f"))
+			cameraDistance += ((ImGui_GetTime() - timestampLastUpdate)) * CAMERA_INCREMENT_PER_MILLISECOND;
+	}
 
 	cameraDistance = Limit(cameraDistance, MINIMUM_CAMERA_DISTANCE, MAXIMUM_CAMERA_DISTANCE);
 
@@ -387,6 +390,9 @@ void HandleClicks(bool playerAlive)
 
 void HandleDragging(bool playerAlive)
 {
+	// Ignores the dragging if the player advances the loadscreen with a mouseclick.
+	if (timestampLastUpdate == ImGui_GetTime()) return;
+
 	if (maxEnergy == 0 || !playerAlive) return;
 
 	MovementObject@ player = ReadCharacterID(PLAYER_ID);
