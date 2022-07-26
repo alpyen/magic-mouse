@@ -8,10 +8,10 @@ const int PLAYER_ID = 1;
 const int START_ID = 2;
 const int FINISH_ID = 3;
 
-const float DEFAULT_CAMERA_DISTANCE = 100.0f;
 const float MINIMUM_CAMERA_DISTANCE = 10.0f;
+const float DEFAULT_CAMERA_DISTANCE = 100.0f;
+const float MAXIMUM_CAMERA_DISTANCE = 200.0f;
 const float CAMERA_INCREMENT_PER_MILLISECOND = 100.0f;
-
 float cameraDistance = DEFAULT_CAMERA_DISTANCE;
 float timestampLastUpdate;
 
@@ -22,7 +22,7 @@ bool dragging = false;
 vec3 startRay;
 vec3 endRay;
 
-float maxEnergy = 100.0f;
+float maxEnergy = SPL_DEF_ENERGY;
 float remainingEnergy = maxEnergy;
 
 float timestampLevelStart;
@@ -30,6 +30,8 @@ float timestampLevelFinished;
 bool levelFinished;
 
 float pbTime;
+
+bool hotspotInfoDetailLevel = false;
 
 // Reset player to this Z-Axis value.
 float zAxisStickValue;
@@ -40,8 +42,6 @@ void PostScriptReload()
 	Init("");
 }
 
-// KAMERA FIXIEREN MIT TAB UND DANN TÜR BENUTZEN?
-
 void Init(string level_name)
 {
 	pbTime = LoadPbTime();
@@ -49,6 +49,8 @@ void Init(string level_name)
 	GUI::Init();
 	GUI::SetPbTime(pbTime);
 	GUI::SetEnergy(remainingEnergy, maxEnergy);
+	
+	hotspotInfoDetailLevel = GetConfigValueBool(CONFIG_HOTSPOTINFO_DETAILLEVEL);
 }
 
 void Update(int is_paused)
@@ -128,16 +130,34 @@ void Update(int is_paused)
 	}
 	
 	if (EditorModeActive() || GetMenuPaused())
-	{	
+	{
+		if (!hotspotInfoDetailLevel && EditorModeActive())
+		{
+			DebugDrawText(
+				ReadObjectFromID(START_ID).GetTranslation(),
+				"Start [" + START_ID + "]", 1.0f, true, _delete_on_update
+			);
+			
+			DebugDrawText(
+				ReadCharacterID(PLAYER_ID).position,
+				"Player [" + PLAYER_ID + "]", 1.0f, true, _delete_on_update
+			);
+			
+			DebugDrawText(
+				ReadObjectFromID(FINISH_ID).GetTranslation(),
+				"Finish [" + FINISH_ID + "]", 1.0f, true, _delete_on_update
+			);
+		}
+		
 		// Otherwise if the player holds + or - while closing the menu, the camera will jump.
 		timestampLastUpdate = ImGui_GetTime();
 		return;
 	}
-
+	
 	HandleCamera();
-	HandleHovering();
-	HandleClicks();
-	HandleDragging();
+	HandleHovering(playerAlive);
+	HandleClicks(playerAlive);
+	HandleDragging(playerAlive);
 	
 	timestampLastUpdate = ImGui_GetTime();
 }
@@ -186,6 +206,8 @@ void ReceiveMessage(string message)
 	{
 		for (int i = 0; i < GetNumHotspots(); ++i)
 			ReadObjectFromID(ReadHotspot(i).GetID()).ReceiveScriptMessage(MSG_HOTSPOTINFO_DETAILLEVEL_CHANGED);
+		
+		hotspotInfoDetailLevel = GetConfigValueBool(CONFIG_HOTSPOTINFO_DETAILLEVEL);
 	}
 	else if (ti.GetToken(message) == MSG_PB_WAS_RESET)
 	{
@@ -217,19 +239,20 @@ void DrawGUI()
 void HandleScriptParams()
 {
 	ScriptParams@ scriptParams = level.GetScriptParams();
+	
 	if (!scriptParams.HasParam(SP_MAX_ENERGY))
 	{
-		scriptParams.AddInt(SP_MAX_ENERGY, 100);
-		maxEnergy = 100.0f;
-		remainingEnergy = 100.0f;
+		scriptParams.AddInt(SP_MAX_ENERGY, SPL_DEF_ENERGY);
+		maxEnergy = SPL_DEF_ENERGY;
+		remainingEnergy = SPL_DEF_ENERGY;
 		
 		GUI::SetEnergy(maxEnergy, maxEnergy);
 	}
 	
 	int levelEnergy = scriptParams.GetInt(SP_MAX_ENERGY);
-	if (levelEnergy < 0 || levelEnergy > 10000)
+	if (levelEnergy < 0 || levelEnergy > SPL_MAX_ENERGY)
 	{
-		levelEnergy = (levelEnergy < 0) ? 0 : 10000;
+		levelEnergy = (levelEnergy < 0) ? 0 : SPL_MAX_ENERGY;
 		scriptParams.SetInt(SP_MAX_ENERGY, levelEnergy);
 	}
 	
@@ -250,8 +273,7 @@ void HandleCamera()
 	if (GetInputDown(player.controller_id, "keypad-") || GetInputDown(player.controller_id, "f"))
 		cameraDistance += ((ImGui_GetTime() - timestampLastUpdate)) * CAMERA_INCREMENT_PER_MILLISECOND;
 
-	if (cameraDistance <= MINIMUM_CAMERA_DISTANCE)
-		cameraDistance = MINIMUM_CAMERA_DISTANCE;
+	cameraDistance = Limit(cameraDistance, MINIMUM_CAMERA_DISTANCE, MAXIMUM_CAMERA_DISTANCE);
 
 	if (GetInputPressed(player.controller_id, "tab"))
 	{
@@ -271,7 +293,7 @@ void HandleCamera()
 		camera.SetPos(player.position + vec3(0.0f, 0.5f, cameraDistance));
 }
 
-void HandleHovering()
+void HandleHovering(bool playerAlive)
 {
 	vec3 start = camera.GetPos();
 	vec3 end = camera.GetPos() + camera.GetMouseRay() * 1000.0f;
@@ -281,22 +303,25 @@ void HandleHovering()
 	float closestCollisionDistance;
 	int closestId = -1;
 	
-	for (int i = 0; i < sphere_col.NumContacts(); ++i)
+	if (playerAlive)
 	{
-		CollisionPoint cp = sphere_col.GetContact(i);
-		if (cp.id == -1) continue;
-		
-		float newCollisionDistance = distance_squared(camera.GetPos(), cp.position);
-		
-		if (closestId == -1)
+		for (int i = 0; i < sphere_col.NumContacts(); ++i)
 		{
-			closestId = cp.id;
-			closestCollisionDistance = newCollisionDistance;
-		}
-		else if (newCollisionDistance < closestCollisionDistance)
-		{
-			closestId = cp.id;
-			closestCollisionDistance = newCollisionDistance;
+			CollisionPoint cp = sphere_col.GetContact(i);
+			if (cp.id == -1) continue;
+			
+			float newCollisionDistance = distance_squared(camera.GetPos(), cp.position);
+			
+			if (closestId == -1)
+			{
+				closestId = cp.id;
+				closestCollisionDistance = newCollisionDistance;
+			}
+			else if (newCollisionDistance < closestCollisionDistance)
+			{
+				closestId = cp.id;
+				closestCollisionDistance = newCollisionDistance;
+			}
 		}
 	}
 	
@@ -316,9 +341,9 @@ void HandleHovering()
 	}
 }
 
-void HandleClicks()
+void HandleClicks(bool playerAlive)
 {
-	if (GetInputPressed(ReadCharacterID(PLAYER_ID).controller_id, "attack"))
+	if (GetInputPressed(ReadCharacterID(PLAYER_ID).controller_id, "attack") && playerAlive)
 	{
 		vec3 start = camera.GetPos();
 		vec3 end = camera.GetPos() + camera.GetMouseRay() * 1000.0f;
@@ -360,9 +385,9 @@ void HandleClicks()
 	}
 }
 
-void HandleDragging()
+void HandleDragging(bool playerAlive)
 {
-	if (maxEnergy == 0) return;
+	if (maxEnergy == 0 || !playerAlive) return;
 
 	MovementObject@ player = ReadCharacterID(PLAYER_ID);
 

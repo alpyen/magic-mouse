@@ -40,40 +40,33 @@ void Update()
 	if (groupId == -1)
 	{
 		groupId = CreateObject("Data/Objects/magic-mouse/switch.xml", true);
-	
-		Object@ groupObject = ReadObjectFromID(groupId);		
-		groupObject.SetTranslation(ReadObjectFromID(hotspot.GetID()).GetTranslation());
-		
-		array<int> groupObjects = groupObject.GetChildren();
-		groupObjects.insertAt(0, groupId);
-		
-		// You could technically select the elements through the scenegraph and scale them,
-		// but the scaling will not save correctly, as it is dependant on the group scale.
-		// Disabling it completely is possible, but not worth the time and effort.
-		for (int i = 0; i < int(groupObjects.length()); ++i)
-		{
-			Object@ object = ReadObjectFromID(groupObjects[i]);
-			object.SetDeletable(false);
-			object.SetCopyable(false);
-			object.SetRotatable(false);
-			object.SetScalable(false);
-			object.SetSelectable(false);
-		}
 		
 		adjustedScale = 10.0f * ReadObjectFromID(groupId).GetScale();
 		SetSwitchState((params.GetInt(SP_DEFAULT_SWITCH_STATE_IS_ON) == 1) ? true : false, false);
 	}
 	
+	// Sadly you need to update collision some time after the objects have been created.
+	// Since it does not draw too much performance, we're just going to do it every frame.
 	Object@ switchObject = ReadObjectFromID(groupId);
-		
-	if (switchObject.GetTranslation() != hotspotObject.GetTranslation())
-		switchObject.SetTranslation(hotspotObject.GetTranslation());
-		
-	if (switchObject.GetRotation() != hotspotObject.GetRotation())
-		switchObject.SetRotation(hotspotObject.GetRotation());
-		
-	if (switchObject.GetScale() != hotspotObject.GetScale() * adjustedScale)
-		switchObject.SetScale(hotspotObject.GetScale() * adjustedScale);
+	array<int> groupObjects = switchObject.GetChildren();
+	
+	// You could technically select the elements through the scenegraph and scale them,
+	// but the scaling will not save correctly, as it is dependant on the group scale.
+	// Disabling it completely is possible, but not worth the time and effort.
+	for (int i = 0; i < int(groupObjects.length()); ++i)
+	{
+		Object@ object = ReadObjectFromID(groupObjects[i]);
+		object.SetTranslation(object.GetTranslation()); // Updates collision
+		object.SetDeletable(false);
+		object.SetCopyable(false);
+		object.SetRotatable(false);
+		object.SetScalable(false);
+		object.SetSelectable(false);
+	}
+
+	switchObject.SetTranslation(hotspotObject.GetTranslation());
+	switchObject.SetRotation(hotspotObject.GetRotation());
+	switchObject.SetScale(hotspotObject.GetScale() * adjustedScale);
 }
 
 void DrawEditor()

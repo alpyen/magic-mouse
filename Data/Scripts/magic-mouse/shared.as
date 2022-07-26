@@ -5,7 +5,8 @@ const string SF_PERSONAL_BEST = "[Magic Mouse] Personal Best";
 
 // Level ScriptParams
 const string SP_MAX_ENERGY = "[Magic Mouse] Max Energy";
-const string SP_RESET_PB = "[Magic Mouse] Reset PB type reset";
+const int SPL_DEF_ENERGY = 100;
+const int SPL_MAX_ENERGY = 10000;
 
 // Hotspot ScriptParams
 const string SP_CHARACTER_ID = "Character ID (-1 for Level Message)";
@@ -63,4 +64,9 @@ float LoadPbTime()
 	string pbTime = levelData.GetValue(SF_PERSONAL_BEST);
 	
 	return atof(pbTime);
+}
+
+float Limit(float value, float minValue, float maxValue)
+{
+	return min(max(value, minValue), maxValue);
 }
