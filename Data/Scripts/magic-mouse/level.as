@@ -104,13 +104,13 @@ void Update(int is_paused)
 	vec3 finishLocation = ReadObjectFromID(FINISH_ID).GetTranslation();
 	
 	bool xOK = abs(player.position.x - finishLocation.x) <= 1.0f;
-	bool bottomOK = player.position.y >= finishLocation.y + 1.0f;
-	bool topOK = player.position.y <= finishLocation.y + 1.5f;
+	bool yOKBottom = player.position.y >= finishLocation.y + 1.0f;
+	bool yOKTop = player.position.y <= finishLocation.y + 1.5f;
 	bool zOK = abs(finishLocation.z - player.position.z) <= 0.5f;
 	int knockedOut = player.GetIntVar("knocked_out");
 	bool playerAlive = knockedOut != _dead && knockedOut != _unconscious;
 	
-	if (xOK && bottomOK && topOK && zOK && playerAlive)
+	if (xOK && yOKBottom && yOKTop && zOK && playerAlive)
 	{
 		if (!levelFinished)
 		{
@@ -157,7 +157,9 @@ void Update(int is_paused)
 	HandleCamera();
 	HandleHovering(playerAlive);
 	HandleClicks(playerAlive);
-	HandleDragging(playerAlive);
+	
+	// DrawingLines while Dragging might flicker, so we do it in DrawGUI.
+	// HandleDragging(playerAlive);
 	
 	timestampLastUpdate = ImGui_GetTime();
 }
@@ -234,6 +236,14 @@ void SetWindowDimensions(int width, int height)
 void DrawGUI()
 {
 	GUI::Render();
+	
+	if (!EditorModeActive() && !GetMenuPaused())
+	{
+		int knockedOut = ReadCharacterID(PLAYER_ID).GetIntVar("knocked_out");
+		bool playerAlive = knockedOut != _dead && knockedOut != _unconscious;
+		
+		HandleDragging(playerAlive);
+	}
 }
 
 void HandleScriptParams()
@@ -441,8 +451,8 @@ void HandleDragging(bool playerAlive)
 		int sound;
 		if (energy >= 1 && energy <= 4) sound = 4;
 		else if (energy > 4 && energy <= 8) sound = 3;
-		else if (energy > 6 && energy <= 10) sound = 2;
-		else /* if (energy > 10) */ sound = 1;
+		else if (energy > 8 && energy <= 12) sound = 2;
+		else /* if (energy > 12) */ sound = 1;
 		
 		int idSound = PlaySound("Data/Sounds/magic-mouse/magic" + sound + ".wav");
 		SetSoundGain(idSound, 0.2f);
@@ -459,6 +469,6 @@ void HandleDragging(bool playerAlive)
 		if (requiredEnergy < 0.95f || requiredEnergy > remainingEnergy) lineColor.x = 50.0f;
 		else lineColor.y = 50.0f;
 		
-		DebugDrawLine(startPosition, endPosition, lineColor, _delete_on_update);
+		DebugDrawLine(startPosition, endPosition, lineColor, _delete_on_draw);
 	}
 }
