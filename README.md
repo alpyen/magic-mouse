@@ -11,3 +11,9 @@ An Overgrowth puzzle mod which makes use of the mouse with the ability to make y
 - Gameplay Elements
 	- Trampoline Blocks/Pads
 	- Drag&Drop with Right Click?
+
+Undo resets .SetSelectable etc.
+RawMouse deactivated causes Flickering. Fixed if Hovering is moved to DrawGUI
+Level that features TAB-functionality
+Prompt if the next campaign level should load or restart
+Quick Restart Button

@@ -35,7 +35,7 @@
     <RayToSun r0="0" r1="0" r2="1" />
 </Sky>
 <ActorObjects>
-    <CameraObject t0="6.33977" t1="1.48659" t2="10.2248" s0="1" s1="1" s2="1" q0="0.0401719" q1="-0.0230236" q2="0.000925926" q3="0.998927" euler_x="0.0803867" euler_y="-0.0460885" euler_z="0" id="0">
+    <CameraObject t0="6.33977" t1="1.48659" t2="10.2248" s0="1" s1="1" s2="1" q0="0.020036" q1="-0.0326829" q2="0.000655279" q3="0.999265" euler_x="0.0400961" euler_y="-0.0653906" euler_z="0" id="0">
         <parameters />
     </CameraObject>
     <ActorObject t0="0" t1="2" t2="0" s0="1" s1="1" s2="1" q0="0" q1="0" q2="0" q3="1" euler_x="0" euler_y="0" euler_z="0" id="1" type_file="Data/Objects/magic-mouse/Characters/koko_actor.xml" pc_script_path="magic-mouse/playercontrol.as" is_player="1">
@@ -107,60 +107,60 @@
                 <BoneConnect bone_id="-1" num_connections="0" m0="1" m1="0" m2="0" m3="0" m4="0" m5="1" m6="0" m7="0" m8="0" m9="0" m10="1" m11="0" m12="0" m13="0" m14="0" m15="1" />
             </EnvObjectAttachment>
         </EnvObjectAttachments>
-        <Group t0="0.0352088" t1="1.78773" t2="-0.20837" s0="0.926472" s1="0.996969" s2="1.12264" q0="-0.00665159" q1="0.000483813" q2="0.00308971" q3="0.999973" euler_x="-0.0133002" euler_y="0.0010087" euler_z="0.00617287" id="5" version="1">
+        <Group t0="0.0421677" t1="1.79246" t2="-0.209019" s0="0.926472" s1="0.996969" s2="1.12264" q0="-0.00664778" q1="0.0010175" q2="-0.000324818" q3="0.999977" euler_x="-0.0132964" euler_y="0.00200335" euler_z="-0.000480731" id="5" version="1">
             <parameters />
-            <EnvObject t0="0.0350546" t1="1.78536" t2="-0.38627" s0="0.379665" s1="0.379665" s2="0.379665" q0="-0.617442" q1="0.24214" q2="-0.1801" q3="0.726427" euler_x="-1.44921" euler_y="0.129756" euler_z="-0.600951" id="6" color_r="0.846863" color_g="0" color_b="1" overbright="4.92" type_file="Data/Objects/magic-mouse/Plants/tall_fern_lessshake.xml">
+            <EnvObject t0="0.0418208" t1="1.79009" t2="-0.386918" s0="0.379665" s1="0.379665" s2="0.379665" q0="-0.616673" q1="0.244718" q2="-0.182351" q3="0.725654" euler_x="-1.4498" euler_y="0.130608" euler_z="-0.60795" id="6" color_r="0.846863" color_g="0" color_b="1" overbright="4.92" type_file="Data/Objects/magic-mouse/Plants/tall_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="0.0976812" t1="1.78881" t2="0.138303" s0="0.18125" s1="0.18125" s2="0.18125" q0="0.48257" q1="-0.0402223" q2="-0.303637" q3="0.820554" euler_x="0.994101" euler_y="0.229041" euler_z="-0.584192" id="7" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="0.104991" t1="1.79313" t2="0.137592" s0="0.18125" s1="0.18125" s2="0.18125" q0="0.482275" q1="-0.041452" q2="-0.306686" q3="0.819532" euler_x="0.993517" euler_y="0.229893" euler_z="-0.591178" id="7" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="0.187226" t1="1.79079" t2="0.0674133" s0="0.158602" s1="0.158602" s2="0.158602" q0="0.279686" q1="-0.179462" q2="-0.535571" q3="0.776358" euler_x="0.677234" euler_y="0.0209308" euler_z="-1.20039" id="9" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="0.194476" t1="1.79451" t2="0.0666136" s0="0.158602" s1="0.158602" s2="0.158602" q0="0.278798" q1="-0.18002" q2="-0.538364" q3="0.774614" euler_x="0.676306" euler_y="0.0212893" euler_z="-1.20706" id="9" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="0.238319" t1="1.7866" t2="-0.0188593" s0="0.175407" s1="0.175407" s2="0.175407" q0="-0.314743" q1="-0.511246" q2="-0.543289" q3="0.586859" euler_x="0.588012" euler_y="-1.2287" euler_z="-1.91458" id="12" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="0.245454" t1="1.78998" t2="-0.0197097" s0="0.175407" s1="0.175407" s2="0.175407" q0="-0.316845" q1="-0.509813" q2="-0.545203" q3="0.585197" euler_x="0.585023" euler_y="-1.22905" euler_z="-1.91888" id="12" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="0.162407" t1="1.76807" t2="-0.0812418" s0="0.158602" s1="0.158602" s2="0.158602" q0="0.605439" q1="0.738822" q2="-0.291667" q3="0.0501654" euler_x="-2.71969" euler_y="0.441504" euler_z="1.86463" id="13" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="0.169359" t1="1.77196" t2="-0.0820167" s0="0.158602" s1="0.158602" s2="0.158602" q0="0.607905" q1="0.736693" q2="-0.292164" q3="0.0487362" euler_x="-2.71856" euler_y="0.441197" euler_z="1.85799" id="13" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="0.138689" t1="1.78647" t2="-0.170625" s0="0.167044" s1="0.167044" s2="0.167044" q0="0.327656" q1="0.78394" q2="-0.500215" q3="0.166943" euler_x="-2.15254" euler_y="0.630493" euler_z="2.69795" id="14" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="0.145675" t1="1.79052" t2="-0.171376" s0="0.167044" s1="0.167044" s2="0.167044" q0="0.330173" q1="0.78286" q2="-0.500978" q3="0.164748" euler_x="-2.15199" euler_y="0.629558" euler_z="2.69135" id="14" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="0.0425686" t1="1.78885" t2="-0.20869" s0="0.171886" s1="0.171886" s2="0.171886" q0="-0.403866" q1="0.593157" q2="-0.369274" q3="0.590504" euler_x="-1.60345" euler_y="0.413972" euler_z="-1.54501" id="15" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="0.0495345" t1="1.79354" t2="-0.209346" s0="0.171886" s1="0.171886" s2="0.171886" q0="-0.401952" q1="0.594902" q2="-0.371154" q3="0.588874" euler_x="-1.60461" euler_y="0.413997" euler_z="-1.5526" id="15" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="-0.0775856" t1="1.78927" t2="-0.187702" s0="0.167705" s1="0.167705" s2="0.167705" q0="-0.552226" q1="0.409733" q2="0.0294861" q3="0.725461" euler_x="-1.50099" euler_y="0.677769" euler_z="-0.553904" id="16" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="-0.0705933" t1="1.79475" t2="-0.188238" s0="0.167705" s1="0.167705" s2="0.167705" q0="-0.550751" q1="0.412077" q2="0.0272023" q3="0.725344" euler_x="-1.50171" euler_y="0.678672" euler_z="-0.56148" id="16" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="-0.171284" t1="1.73585" t2="-0.115111" s0="0.17259" s1="0.17259" s2="0.17259" q0="-0.524952" q1="0.10007" q2="0.331541" q3="0.777493" euler_x="-1.05136" euler_y="0.52787" euler_z="0.495139" id="17" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="-0.164573" t1="1.74197" t2="-0.115554" s0="0.17259" s1="0.17259" s2="0.17259" q0="-0.524417" q1="0.102347" q2="0.329056" q3="0.778613" euler_x="-1.05078" euler_y="0.528808" euler_z="0.488309" id="17" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="-0.178787" t1="1.71553" t2="-0.0308979" s0="0.171237" s1="0.171237" s2="0.171237" q0="-0.257805" q1="-0.221885" q2="0.580162" q3="0.740077" euler_x="-0.693619" euler_y="-0.0292899" euler_z="1.3403" id="18" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="-0.172127" t1="1.7217" t2="-0.0313334" s0="0.171237" s1="0.171237" s2="0.171237" q0="-0.258283" q1="-0.220575" q2="0.577666" q3="0.742251" euler_x="-0.692611" euler_y="-0.0290518" euler_z="1.33335" id="18" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="-0.193553" t1="1.71935" t2="0.0122159" s0="0.17313" s1="0.17313" s2="0.17313" q0="0.0770637" q1="-0.118503" q2="0.615754" q3="0.775156" euler_x="-0.0275589" euler_y="-0.282358" euler_z="1.3465" id="19" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="-0.186824" t1="1.72561" t2="0.0117951" s0="0.17313" s1="0.17313" s2="0.17313" q0="0.0769732" q1="-0.11837" q2="0.613061" q3="0.777317" euler_x="-0.0265499" euler_y="-0.282134" euler_z="1.33957" id="19" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="-0.182684" t1="1.7136" t2="0.0483177" s0="0.166565" s1="0.166565" s2="0.166565" q0="0.483464" q1="-0.452994" q2="0.381204" q3="0.644781" euler_x="1.15702" euler_y="-1.2622" euler_z="0.17732" id="20" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="-0.175958" t1="1.71979" t2="0.0478861" s0="0.166565" s1="0.166565" s2="0.166565" q0="0.482054" q1="-0.454366" q2="0.378654" q3="0.646371" euler_x="1.1576" euler_y="-1.26118" euler_z="0.169833" id="20" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="-0.155605" t1="1.7369" t2="0.147718" s0="0.158602" s1="0.158602" s2="0.158602" q0="0.608908" q1="-0.603094" q2="-0.135804" q3="0.497053" euler_x="2.11836" euler_y="-0.4491" euler_z="-1.3061" id="21" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="-0.148626" t1="1.74291" t2="0.147259" s0="0.158602" s1="0.158602" s2="0.158602" q0="0.60669" q1="-0.604989" q2="-0.137893" q3="0.496887" euler_x="2.11722" euler_y="-0.448822" euler_z="-1.31273" id="21" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="-0.0576437" t1="1.7713" t2="0.16302" s0="0.158602" s1="0.158602" s2="0.158602" q0="-0.461317" q1="0.687935" q2="0.419291" q3="-0.371659" euler_x="1.95525" euler_y="-0.124826" euler_z="-1.87597" id="22" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="-0.0504227" t1="1.77666" t2="0.162464" s0="0.158602" s1="0.158602" s2="0.158602" q0="-0.458749" q1="0.689318" q2="0.420795" q3="-0.370575" euler_x="1.95429" euler_y="-0.125128" euler_z="-1.8825" id="22" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="0.0202325" t1="1.77353" t2="0.186123" s0="0.171253" s1="0.171253" s2="0.171253" q0="-0.39087" q1="0.737157" q2="0.485811" q3="-0.260398" euler_x="1.974" euler_y="-0.00413088" euler_z="-2.16377" id="23" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="0.0274896" t1="1.77836" t2="0.18549" s0="0.171253" s1="0.171253" s2="0.171253" q0="-0.3881" q1="0.738355" q2="0.486898" q3="-0.259112" euler_x="1.97317" euler_y="-0.00468774" euler_z="-2.17042" id="23" color_r="1" color_g="1" color_b="1" overbright="0" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
         </Group>
-        <Group t0="-0.0440437" t1="2.3309" t2="0.135004" s0="0.213102" s1="0.245885" s2="0.233667" q0="0.0474763" q1="0.00614005" q2="-0.00116094" q3="0.998853" euler_x="0.0949794" euler_y="0.0123766" euler_z="-0.00173634" id="24" version="1">
+        <Group t0="-0.0902746" t1="2.34442" t2="0.0878291" s0="0.213102" s1="0.245885" s2="0.233667" q0="0.0173997" q1="-0.234578" q2="0.00394174" q3="0.971934" euler_x="0.0359363" euler_y="-0.473637" euler_z="-0.000562898" id="24" version="1">
             <parameters />
-            <EnvObject t0="-0.0440437" t1="2.3309" t2="0.135004" s0="0.078199" s1="0.078199" s2="0.078199" q0="0.542697" q1="-0.636818" q2="0.0594836" q3="0.54443" euler_x="2.23116" euler_y="-0.860194" euler_z="-1.28827" id="25" color_r="0" color_g="0.682353" color_b="1" overbright="8.124" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="-0.0902746" t1="2.34442" t2="0.0878291" s0="0.078199" s1="0.078199" s2="0.078199" q0="0.49249" q1="-0.750394" q2="0.203333" q3="0.391174" euler_x="3.01123" euler_y="-0.906496" euler_z="-1.91644" id="25" color_r="0" color_g="0.682353" color_b="1" overbright="8.124" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
-            <EnvObject t0="-0.0440437" t1="2.3309" t2="0.135004" s0="0.0781989" s1="0.0781989" s2="0.078199" q0="-0.50502" q1="0.81972" q2="0.207394" q3="-0.173217" euler_x="2.59895" euler_y="-0.0745711" euler_z="-2.01651" id="26" color_r="1" color_g="0.752941" color_b="0" overbright="8.124" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
+            <EnvObject t0="-0.0902746" t1="2.34442" t2="0.0878291" s0="0.0781989" s1="0.0781989" s2="0.078199" q0="-0.529755" q1="0.846085" q2="0.0570525" q3="0.0157043" euler_x="3.0613" euler_y="0.0871323" euler_z="-2.02628" id="26" color_r="1" color_g="0.752941" color_b="0" overbright="8.124" type_file="Data/Objects/magic-mouse/Plants/low_fern_lessshake.xml">
                 <parameters />
             </EnvObject>
         </Group>

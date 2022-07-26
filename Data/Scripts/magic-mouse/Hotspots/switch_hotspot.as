@@ -121,7 +121,12 @@ void ReceiveMessage(string message)
 		array<int>@ groupObjects = ReadObjectFromID(groupId).GetChildren();
 		
 		if (clickedId == groupObjects[1] || clickedId == groupObjects[2])
+		{
 			SetSwitchState(!switchState, true);
+			
+			int idSound = PlaySound("Data/Sounds/magic-mouse/switch.wav");
+			SetSoundGain(idSound, 0.8f);
+		}
 	}
 	else if (ti.GetToken(message) == MSG_HOVER)
 	{

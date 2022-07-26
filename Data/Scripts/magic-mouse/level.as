@@ -433,9 +433,19 @@ void HandleDragging(bool playerAlive)
 		GetRotationBetweenVectors(vec3(1.0f, 0.0f, 0.0f), endPosition - startPosition, rotation);
 		line.SetRotation(rotation);
 		
-		remainingEnergy -= distance(startPosition, endPosition);
+		float energy = distance(startPosition, endPosition);
+		remainingEnergy -= energy;
 		
 		GUI::SetEnergy(remainingEnergy, maxEnergy);
+		
+		int sound;
+		if (energy >= 1 && energy <= 4) sound = 4;
+		else if (energy > 4 && energy <= 8) sound = 3;
+		else if (energy > 6 && energy <= 10) sound = 2;
+		else /* if (energy > 10) */ sound = 1;
+		
+		int idSound = PlaySound("Data/Sounds/magic-mouse/magic" + sound + ".wav");
+		SetSoundGain(idSound, 0.2f);
 	}
 	
 	if (dragging)

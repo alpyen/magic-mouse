@@ -56,27 +56,32 @@ void Update()
 	for (int i = hotspot.GetConnectedObjects().length() - 1; i >= 1; --i)
 		hotspot.Disconnect(ReadObjectFromID(hotspot.GetConnectedObjects()[i]));
 	
-	if (hotspot.GetConnectedObjects().length() == 1 && playerId != -1 && ImGui_GetTime() - timestampHotspotEntered >= 0.5f)
-	{	
-		DebugDrawText(
-			hotspotObject.GetTranslation() + vec3(0.0f, 0.5f, 0.0f),
-			"Hold 'E' to enter.",
-			1.0f,
-			true,
-			_delete_on_update
-		);
+	if (playerId != -1)
+	{
+		int knockedOut = ReadCharacterID(playerId).GetIntVar("knocked_out");
+		bool playerAlive = knockedOut != _dead && knockedOut != _unconscious;
 		
-		MovementObject@ player = ReadCharacterID(playerId);
-		
-		if (GetInputPressed(player.controller_id, "e"))
-		{
-			player.position = ReadObjectFromID(hotspot.GetConnectedObjects()[0]).GetTranslation() + vec3(0.0f, -0.55f, 0.0f);
-			player.velocity = vec3(0.0f);
+		if (hotspot.GetConnectedObjects().length() == 1 && playerAlive && ImGui_GetTime() - timestampHotspotEntered >= 0.5f)
+		{	
+			DebugDrawText(
+				hotspotObject.GetTranslation() + vec3(0.0f, 0.5f, 0.0f),
+				"Hold 'E' to enter.",
+				1.0f,
+				true,
+				_delete_on_update
+			);
 			
-			level.SendMessage(MSG_TELEPORTED + " " + hotspot.GetConnectedObjects()[0]);
+			MovementObject@ player = ReadCharacterID(playerId);
+			
+			if (GetInputPressed(player.controller_id, "e"))
+			{
+				player.position = ReadObjectFromID(hotspot.GetConnectedObjects()[0]).GetTranslation() + vec3(0.0f, -0.55f, 0.0f);
+				player.velocity = vec3(0.0f);
+				
+				level.SendMessage(MSG_TELEPORTED + " " + hotspot.GetConnectedObjects()[0]);
+			}
 		}
-	}
-		
+	}	
 }
 
 void ReceiveMessage(string message)

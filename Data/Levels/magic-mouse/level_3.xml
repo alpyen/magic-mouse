@@ -1,6 +1,6 @@
 <?xml version="2.0" ?>
 <Type>saved</Type>
-<Name>level-3</Name>
+<Name>level_3</Name>
 <Description></Description>
 <Shader>post</Shader>
 <Shadows>true</Shadows>
