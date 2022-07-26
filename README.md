@@ -15,4 +15,4 @@ An Overgrowth puzzle mod which makes use of the mouse with the ability to make y
 Undo resets .SetSelectable etc.
 Level that features TAB-functionality
 Prompt if the next campaign level should load or restart
-Quick Restart Button
+Color bridge based on length

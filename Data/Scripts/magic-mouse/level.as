@@ -154,6 +154,9 @@ void Update(int is_paused)
 		return;
 	}
 	
+	if (GetInputPressed(player.controller_id, "h"))
+		level.SendMessage("reset");
+	
 	HandleCamera();
 	HandleHovering(playerAlive);
 	HandleClicks(playerAlive);
@@ -428,7 +431,7 @@ void HandleDragging(bool playerAlive)
 		
 		line.SetTint(vec3(0.0f));
 		
-		vec3 scale = distance(startPosition, endPosition);
+		vec3 scale = requiredEnergy;
 		scale.y = 0.5f;
 		scale.z = 1.0f;
 		scale /= 2.0f;
@@ -443,16 +446,14 @@ void HandleDragging(bool playerAlive)
 		GetRotationBetweenVectors(vec3(1.0f, 0.0f, 0.0f), endPosition - startPosition, rotation);
 		line.SetRotation(rotation);
 		
-		float energy = distance(startPosition, endPosition);
-		remainingEnergy -= energy;
-		
+		remainingEnergy -= requiredEnergy;		
 		GUI::SetEnergy(remainingEnergy, maxEnergy);
 		
 		int sound;
-		if (energy >= 1 && energy <= 4) sound = 4;
-		else if (energy > 4 && energy <= 8) sound = 3;
-		else if (energy > 8 && energy <= 12) sound = 2;
-		else /* if (energy > 12) */ sound = 1;
+		if (requiredEnergy >= 1 && requiredEnergy <= 4) sound = 4;
+		else if (requiredEnergy > 4 && requiredEnergy <= 8) sound = 3;
+		else if (requiredEnergy > 8 && requiredEnergy <= 12) sound = 2;
+		else /* if (requiredEnergy > 12) */ sound = 1;
 		
 		int idSound = PlaySound("Data/Sounds/magic-mouse/magic" + sound + ".wav");
 		SetSoundGain(idSound, 0.2f);
