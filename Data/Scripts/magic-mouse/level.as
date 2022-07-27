@@ -63,20 +63,10 @@ void Update(int is_paused)
 		timestampLevelStart = ImGui_GetTime();
 		levelFinished = false;
 		
-		// Protect these objects from destructive/impossible manipulation.
-		array<int> modObjects = { PLAYER_ID, START_ID, FINISH_ID };
-		for (int i = 0; i < int(modObjects.length()); ++i)
-		{
-			Object@ object = ReadObjectFromID(modObjects[i]);
-			object.SetDeletable(false);
-			object.SetCopyable(false);
-			object.SetRotatable(false);
-			object.SetScalable(false);
-		}
-		
 		zAxisStickValue = ReadObjectFromID(PLAYER_ID).GetTranslation().z;
 	}
 	
+	ProtectBlocks();	
 	HandleScriptParams();
 	
 	if (!levelFinished)
@@ -259,6 +249,21 @@ void DrawGUI()
 		bool playerAlive = knockedOut != _dead && knockedOut != _unconscious;
 		
 		HandleDragging(playerAlive);
+	}
+}
+
+void ProtectBlocks()
+{
+	// Protect these objects from destructive/impossible manipulation.
+	array<int> modObjects = { PLAYER_ID, START_ID, FINISH_ID };
+	for (int i = 0; i < int(modObjects.length()); ++i)
+	{
+		Object@ object = ReadObjectFromID(modObjects[i]);
+		object.SetScale(vec3(1.0f));
+		object.SetDeletable(false);
+		object.SetCopyable(false);
+		object.SetRotatable(false);
+		object.SetScalable(false);
 	}
 }
 
