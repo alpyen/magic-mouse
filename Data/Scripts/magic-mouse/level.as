@@ -30,6 +30,7 @@ float timestampLevelStart;
 float timestampLevelFinished;
 bool levelFinished;
 int advanceOrRestart = 0;
+float timestampAdvanceOrRestart;
 
 float pbTime;
 
@@ -165,13 +166,18 @@ void Update(int is_paused)
 				break;
 			
 			case 1:
+				timestampAdvanceOrRestart = ImGui_GetTime();
 				SendGlobalMessage("levelwin");
 				++advanceOrRestart;
 				return;
 			
 			case 2:
-				level.SendMessage("go_to_main_menu");
-				return;
+				if ((ImGui_GetTime() - timestampAdvanceOrRestart) >= 0.2f)
+				{
+					level.SendMessage("go_to_main_menu");
+					return;
+				}
+				break;
 				
 			case 3:
 				if (GetInputPressed(player.controller_id, "c"))
