@@ -1,6 +1,6 @@
 # magic-mouse
 
-Steam Workshop Page: <a href="">Steam Workshop::TBA</a>
+Steam Workshop Page: <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2841279839">Steam Workshop::Magic Mouse</a>
 
 Cast your way through 2.5D levels by drawing bridges with your mouse and hopping onto them.
 Solve puzzles by passing doors, trapping enemies and activating switches.
