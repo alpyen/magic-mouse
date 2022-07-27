@@ -75,3 +75,29 @@ void TimeLog(string message)
 {
 	Log(fatal, ImGui_GetTime() + " - " + message);
 }
+
+vec3 ColorFromGradient(float percent, vec3& lowColor, vec3& mediumColor, vec3& highColor)
+{
+	percent = max(0.0f, min(1.0f, percent));
+
+	if (percent >= 0.5f)
+	{
+		vec3 colorHigh(highColor.x, highColor.y, highColor.z);
+		colorHigh *= min(1.0f, ((percent - 0.5f) * 2.0f));
+		
+		vec3 colorMid(mediumColor.x, mediumColor.y, mediumColor.z);
+		colorMid *= min(1.0f, (1.0f - (percent - 0.5f) * 2.0f));
+		
+		return colorHigh + colorMid;
+	}
+	else // (percent < 0.5f)
+	{
+		vec3 colorMid(mediumColor.x, mediumColor.y, mediumColor.z);
+		colorMid *= min(1.0f, percent * 2.0f);
+		
+		vec3 colorLow(lowColor.x, lowColor.y, lowColor.z);
+		colorLow *= min(1.0f, 1.0f - percent * 2.0f);
+		
+		return colorMid + colorLow;
+	}
+}

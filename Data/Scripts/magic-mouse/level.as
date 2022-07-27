@@ -471,10 +471,17 @@ void HandleDragging(bool playerAlive)
 		float requiredEnergy = distance(startPosition, endPosition);
 		if (requiredEnergy < 0.95f || requiredEnergy > remainingEnergy) return;
 		
-		Object@ line = ReadObjectFromID(CreateObject("Data/Objects/Environment/sand.xml", true));
+		// Object@ line = ReadObjectFromID(CreateObject("Data/Objects/Environment/sand.xml", true));
+		Object@ line = ReadObjectFromID(CreateObject("Data/Objects/magic-mouse/bridge.xml", true));
 		bridges.insertLast(line.GetID());
 		
-		line.SetTint(0.0f);
+		line.SetTint(
+			ColorFromGradient(Limit(requiredEnergy - 1.0f, 0.0f, 12.0f) / 12.0f,
+			vec3(1.0f, 0.0f, 0.0f),
+			vec3(1.0f, 1.0f, 0.0f),
+			vec3(0.0f, 1.0f, 0.0f)
+			)
+		);
 		
 		vec3 scale = requiredEnergy;
 		scale.y = 0.5f;

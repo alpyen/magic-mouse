@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<Object>
+	<Model>Data/Models/Buildings/basics/edged_cube.obj</Model>
+	<ColorMap>Data/Textures/magic-mouse/bridge_colors.tga</ColorMap>
+	<NormalMap>Data/Textures/magic-mouse/bridge_normals.tga</NormalMap>
+    <MaterialPath>Data/Materials/rock.xml</MaterialPath>
+	<ShaderPath>Data/GLSL/cubemap</ShaderPath>
+	<ShaderName>cubemap</ShaderName>
+</Object>
