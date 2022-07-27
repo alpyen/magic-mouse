@@ -326,6 +326,7 @@ void HandleScriptParams()
 void HandleCamera()
 {
 	MovementObject@ player = ReadCharacterID(PLAYER_ID);
+	UpdateListener(player.position, player.velocity, camera.GetFacing(), camera.GetUpVector());
 	
 	if (timestampLastUpdate != 0.0f)
 	{

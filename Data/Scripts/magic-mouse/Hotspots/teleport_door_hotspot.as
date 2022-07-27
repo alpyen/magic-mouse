@@ -77,6 +77,9 @@ void Update()
 			{
 				player.position = ReadObjectFromID(hotspot.GetConnectedObjects()[0]).GetTranslation() + vec3(0.0f, -0.55f, 0.0f);
 				player.velocity = vec3(0.0f);
+					
+				int idSound = PlaySound("Data/Sounds/magic-mouse/door.wav");
+				SetSoundGain(idSound, 0.6f);
 				
 				level.SendMessage(MSG_TELEPORTED + " " + hotspot.GetConnectedObjects()[0]);
 			}
