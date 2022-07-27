@@ -186,7 +186,7 @@ namespace GUI
 		@advanceToNextLevelText = IMText("Advance or restart the level?", fontRestartOrAdvance);
 		endOfLevelContainer.addFloatingElement(advanceToNextLevelText, "advanceToNextLevelText", vec2(0.0f), 3);
 		
-		@hotkeysText = IMText("[E] = Advance    [H] = Restart", fontEndOfLevel);
+		@hotkeysText = IMText("[C] Continue   [E] Advance   [H] Restart", fontEndOfLevel);
 		endOfLevelContainer.addFloatingElement(hotkeysText, "hotkeysText", vec2(0.0f), 3);
 		gui.update();
 		

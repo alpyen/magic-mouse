@@ -106,6 +106,7 @@ void Update(int is_paused)
 		if (!levelFinished)
 		{
 			levelFinished = true;
+			advanceOrRestart = 0;
 			timestampLevelFinished = ImGui_GetTime();
 			
 			PlaySound("Data/Sounds/magic-mouse/cheer.wav");
@@ -148,11 +149,37 @@ void Update(int is_paused)
 	
 	// If the player dies after the finish they should still have the ability to advance.
 	// We need to wait one iteration before sending go_to_main_menu, otherwise the next level will bug out if one exists.
-	switch (advanceOrRestart)
+	if (levelFinished)
 	{
-		case 0: if (levelFinished && GetInputPressed(player.controller_id, "e")) ++advanceOrRestart; break;
-		case 1:	SendGlobalMessage("levelwin"); ++advanceOrRestart; return;
-		case 2: level.SendMessage("go_to_main_menu"); ++advanceOrRestart; return;
+		switch (advanceOrRestart)
+		{
+			case 0:
+				if (GetInputPressed(player.controller_id, "c"))
+				{
+					GUI::SetEndOfLevelWindowVisibility(false);
+					advanceOrRestart = 3;
+				}
+				else if (GetInputPressed(player.controller_id, "e"))
+					++advanceOrRestart;
+				break;
+			
+			case 1:
+				SendGlobalMessage("levelwin");
+				++advanceOrRestart;
+				return;
+			
+			case 2:
+				level.SendMessage("go_to_main_menu");
+				return;
+				
+			case 3:
+				if (GetInputPressed(player.controller_id, "c"))
+				{
+					GUI::SetEndOfLevelWindowVisibility(true);
+					advanceOrRestart = 0;
+				}
+				break;
+		}
 	}
 	
 	if (GetInputPressed(player.controller_id, "h"))
