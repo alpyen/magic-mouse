@@ -477,9 +477,9 @@ void HandleDragging(bool playerAlive)
 		
 		line.SetTint(
 			ColorFromGradient(Limit(requiredEnergy - 1.0f, 0.0f, 12.0f) / 12.0f,
-			vec3(1.0f, 0.0f, 0.0f),
-			vec3(1.0f, 1.0f, 0.0f),
-			vec3(0.0f, 1.0f, 0.0f)
+			vec3(1.5f, 0.0f, 0.0f),
+			vec3(1.5f, 1.5f, 0.0f),
+			vec3(0.0f, 1.5f, 0.0f)
 			)
 		);
 		
@@ -519,8 +519,16 @@ void HandleDragging(bool playerAlive)
 		vec3 lineColor;
 		float requiredEnergy = distance(startPosition, endPosition);
 		
-		if (requiredEnergy < 0.95f || requiredEnergy > remainingEnergy) lineColor.x = 50.0f;
-		else lineColor.y = 50.0f;
+		if (requiredEnergy < 0.95f || requiredEnergy > remainingEnergy)
+			lineColor = vec3(25.0f);
+		else
+			lineColor = ColorFromGradient(Limit(requiredEnergy - 1.0f, 0.0f, 12.0f) / 12.0f,
+				vec3(50.0f, 0.0f, 0.0f),
+				vec3(25.0f, 25.0f, 0.0f),
+				vec3(0.0f, 50.0f, 0.0f)
+			);
+		
+		
 		
 		DebugDrawLine(startPosition, endPosition, lineColor, _delete_on_draw);
 	}
