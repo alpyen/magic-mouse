@@ -19,7 +19,7 @@
     <parameter name="HDR Bloom multiplier" type="float" val="1" />
     <parameter name="HDR White point" type="float" val="0.971" />
     <parameter name="Level Boundaries" type="int" val="1" />
-    <parameter name="Load Tip" type="string" val="Meet Koko, a magical little mouse.&#x0A;&#x0A;     She has the ability to draw lines in the air which transform into magical floating bridges.&#x0A;     Help her on her journey through many levels." />
+    <parameter name="Load Tip" type="string" val="Meet Koko, the magical little mouse.&#x0A;&#x0A;     She has the ability to draw lines in the air which transform into magical floating bridges.&#x0A;     Help her on her journey through many levels." />
     <parameter name="Objectives" type="string" val="destroy_all" />
     <parameter name="Saturation" type="float" val="1" />
     <parameter name="Sky Brightness" type="float" val="1" />

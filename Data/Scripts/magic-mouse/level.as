@@ -18,6 +18,7 @@ float timestampLastUpdate = 0.0f;
 bool stickCameraToLocation = false;
 vec3 savedCameraLocation;
 
+float timestampDragStarted;
 bool dragging = false;
 vec3 startRay;
 vec3 endRay;
@@ -448,9 +449,6 @@ void HandleClicks(bool playerAlive)
 
 void HandleDragging(bool playerAlive)
 {
-	// Ignores the dragging if the player advances the loadscreen with a mouseclick.
-	if (timestampLastUpdate == ImGui_GetTime()) return;
-
 	if (maxEnergy == 0 || !playerAlive) return;
 
 	MovementObject@ player = ReadCharacterID(PLAYER_ID);
@@ -459,59 +457,66 @@ void HandleDragging(bool playerAlive)
 	{
 		dragging = true;
 		startRay = camera.GetMouseRay();
+		
+		timestampDragStarted = ImGui_GetTime();
 	}
 	else if (dragging && !GetInputDown(player.controller_id, "attack"))
 	{
 		dragging = false;
-		endRay = camera.GetMouseRay();
 		
-		vec3 startPosition = camera.GetPos() + startRay * cameraDistance;
-		vec3 endPosition = camera.GetPos() + endRay * cameraDistance;
-		
-		float requiredEnergy = distance(startPosition, endPosition);
-		if (requiredEnergy < 0.95f || requiredEnergy > remainingEnergy) return;
-		
-		// Object@ line = ReadObjectFromID(CreateObject("Data/Objects/Environment/sand.xml", true));
-		Object@ line = ReadObjectFromID(CreateObject("Data/Objects/magic-mouse/bridge.xml", true));
-		bridges.insertLast(line.GetID());
-		
-		line.SetTint(
-			ColorFromGradient(Limit(requiredEnergy - 1.0f, 0.0f, 12.0f) / 12.0f,
-			vec3(1.5f, 0.0f, 0.0f),
-			vec3(1.5f, 1.5f, 0.0f),
-			vec3(0.0f, 1.5f, 0.0f)
-			)
-		);
-		
-		vec3 scale = requiredEnergy;
-		scale.y = 0.5f;
-		scale.z = 1.0f;
-		scale /= 2.0f;
-		
-		vec3 position = startPosition + 0.5f * (endPosition - startPosition);
-		position.z = zAxisStickValue;
-		
-		line.SetTranslation(position);
-		line.SetScale(scale);
-		
-		quaternion rotation;
-		GetRotationBetweenVectors(vec3(1.0f, 0.0f, 0.0f), endPosition - startPosition, rotation);
-		line.SetRotation(rotation);
-		
-		remainingEnergy -= requiredEnergy;		
-		GUI::SetEnergy(remainingEnergy, maxEnergy);
-		
-		int sound;
-		if (requiredEnergy >= 1 && requiredEnergy <= 4) sound = 4;
-		else if (requiredEnergy > 4 && requiredEnergy <= 8) sound = 3;
-		else if (requiredEnergy > 8 && requiredEnergy <= 12) sound = 2;
-		else /* if (requiredEnergy > 12) */ sound = 1;
-		
-		int idSound = PlaySound("Data/Sounds/magic-mouse/magic" + sound + ".wav");
-		SetSoundGain(idSound, 0.2f);
+		if (timestampDragStarted - 0.1f > timestampLevelStart)
+		{
+			endRay = camera.GetMouseRay();
+			
+			vec3 startPosition = camera.GetPos() + startRay * cameraDistance;
+			vec3 endPosition = camera.GetPos() + endRay * cameraDistance;
+			
+			float requiredEnergy = distance(startPosition, endPosition);
+			if (requiredEnergy < 0.95f || requiredEnergy > remainingEnergy) return;
+			
+			// Object@ line = ReadObjectFromID(CreateObject("Data/Objects/Environment/sand.xml", true));
+			Object@ line = ReadObjectFromID(CreateObject("Data/Objects/magic-mouse/bridge.xml", true));
+			bridges.insertLast(line.GetID());
+			
+			line.SetTint(
+				ColorFromGradient(Limit(requiredEnergy - 1.0f, 0.0f, 12.0f) / 12.0f,
+				vec3(1.5f, 0.0f, 0.0f),
+				vec3(1.5f, 1.5f, 0.0f),
+				vec3(0.0f, 1.5f, 0.0f)
+				)
+			);
+			
+			vec3 scale = requiredEnergy;
+			scale.y = 0.5f;
+			scale.z = 1.0f;
+			scale /= 2.0f;
+			
+			vec3 position = startPosition + 0.5f * (endPosition - startPosition);
+			position.z = zAxisStickValue;
+			
+			line.SetTranslation(position);
+			line.SetScale(scale);
+			
+			quaternion rotation;
+			GetRotationBetweenVectors(vec3(1.0f, 0.0f, 0.0f), endPosition - startPosition, rotation);
+			line.SetRotation(rotation);
+			
+			remainingEnergy -= requiredEnergy;		
+			GUI::SetEnergy(remainingEnergy, maxEnergy);
+			
+			int sound;
+			if (requiredEnergy >= 1 && requiredEnergy <= 4) sound = 4;
+			else if (requiredEnergy > 4 && requiredEnergy <= 8) sound = 3;
+			else if (requiredEnergy > 8 && requiredEnergy <= 12) sound = 2;
+			else /* if (requiredEnergy > 12) */ sound = 1;
+			
+			int idSound = PlaySound("Data/Sounds/magic-mouse/magic" + sound + ".wav");
+			SetSoundGain(idSound, 0.2f);
+		}
 	}
 	
-	if (dragging)
+	// Dragging is enabled after 0.1s to prevent accidental dragging through the Loading Screen.
+	if (dragging && (timestampDragStarted - 0.1f > timestampLevelStart))
 	{
 		vec3 startPosition = camera.GetPos() + startRay * cameraDistance;
 		vec3 endPosition = camera.GetPos() + camera.GetMouseRay() * cameraDistance;
@@ -527,8 +532,6 @@ void HandleDragging(bool playerAlive)
 				vec3(25.0f, 25.0f, 0.0f),
 				vec3(0.0f, 50.0f, 0.0f)
 			);
-		
-		
 		
 		DebugDrawLine(startPosition, endPosition, lineColor, _delete_on_draw);
 	}

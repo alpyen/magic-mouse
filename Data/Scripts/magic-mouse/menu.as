@@ -21,7 +21,7 @@ void Menu()
 	if (ImGui_BeginMenu("Magic Mouse Mod"))
 	{
 	
-		if (level.GetScriptParams().HasParam("[Magic Mouse] Max Energy"))
+		if (level.GetScriptParams().HasParam(SP_MAX_ENERGY))
 		{
 			ImGui_AlignTextToFramePadding();
 			ImGui_SetWindowFontScale(1.5f);

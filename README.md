@@ -11,6 +11,3 @@ An Overgrowth puzzle mod which makes use of the mouse with the ability to make y
 - Gameplay Elements
 	- Trampoline Blocks/Pads
 	- Drag&Drop with Right Click?
-
-Color bridge based on length
-^-> better object as bridge, not sand.xml
