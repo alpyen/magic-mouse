@@ -19,7 +19,7 @@
     <parameter name="HDR Bloom multiplier" type="float" val="1" />
     <parameter name="HDR White point" type="float" val="0.971" />
     <parameter name="Level Boundaries" type="int" val="1" />
-    <parameter name="Load Tip" type="string" val="Sometimes the finish can be out of sight.&#x0A;Use &quot;r&quot; to zoom in, and &quot;f&quot; to zoom out." />
+    <parameter name="Load Tip" type="string" val="Sometimes the finish can be out of sight. Maybe you need a new perspective on things?&#x0A;&#x0A;Use [R] to zoom in, and [F] to zoom out. Pressing [TAB] will freeze the camera inplace." />
     <parameter name="Objectives" type="string" val="destroy_all" />
     <parameter name="Saturation" type="float" val="1" />
     <parameter name="Sky Brightness" type="float" val="1" />
