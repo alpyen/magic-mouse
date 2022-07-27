@@ -53,6 +53,6 @@
 		<Level title="12" thumbnail="Images/magic-mouse/level_thumb.jpg">magic-mouse/level_12.xml</Level>
 		<Level title="13" thumbnail="Images/magic-mouse/level_thumb.jpg">magic-mouse/level_13.xml</Level>
 		<Level title="14" thumbnail="Images/magic-mouse/level_thumb.jpg">magic-mouse/level_14.xml</Level>
-		
+		<Level title="15" thumbnail="Images/magic-mouse/level_thumb.jpg">magic-mouse/level_15.xml</Level>		
 	</Campaign>
 </Mod> 

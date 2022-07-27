@@ -5,10 +5,14 @@ namespace GUI
 	const vec2 ENERGY_CONTAINER_SIZE(750.0f, 120.0f);
 	const vec2 TIMER_CONTAINER_SIZE(300.0f, 75.0f);
 	const vec2 PBTIMER_CONTAINER_SIZE(150.0f, 30.0f);
+	const vec2 ENDOFLEVEL_CONTAINER_SIZE(1200.0f, 450.0f);
 	
 	FontSetup fontText("Underdog-Regular", 50, vec4(1.0f), false);
 	FontSetup fontTimer("Lato-Regular", int(TIMER_CONTAINER_SIZE.y - 25), vec4(1.0f), true);
 	FontSetup fontPbTimer("Lato-Regular", int(TIMER_CONTAINER_SIZE.y - 50), vec4(1.0), false);
+	FontSetup fontCongratulations("Underdog-Regular", 100, vec4(1.0f, 0.2f, 4.0f, 1.0f), true);
+	FontSetup fontRestartOrAdvance("Underdog-Regular", 55, vec4(1.0f, 0.9f, 0.0f, 1.0f), false);
+	FontSetup fontEndOfLevel("Underdog-Regular", 65, vec4(1.0f), true);
 	
 	IMGUI@ gui = CreateIMGUI();
 
@@ -28,6 +32,11 @@ namespace GUI
 	IMImage@ pbTimerBackground;
 	IMText@ pbTimerText;
 
+	IMContainer@ endOfLevelContainer;
+	IMImage@ endOfLevelBackground;
+	IMText@ congratulationsText;
+	IMText@ advanceToNextLevelText;
+	IMText@ hotkeysText;
 
 	void Init()
 	{
@@ -82,6 +91,14 @@ namespace GUI
 		energyRemainingBar.setColor(energyBarColor);
 	}
 
+	void SetEndOfLevelWindowVisibility(bool show)
+	{
+		endOfLevelBackground.setVisible(show);
+		congratulationsText.setVisible(show);
+		advanceToNextLevelText.setVisible(show);
+		hotkeysText.setVisible(show);
+	}
+
 	void Build()
 	{
 		// ===== Energy Bar ===== //
@@ -99,8 +116,6 @@ namespace GUI
 		
 		@energyText = IMText("100 / 100", fontText);
 		energyContainer.addFloatingElement(energyText, "energyText", vec2(0.0f), 2);
-		gui.update();
-		energyContainer.moveElement("energyText", vec2(ENERGY_CONTAINER_SIZE.x - energyText.getSizeX() - 15.0f, 15.0f));
 		
 		@energyMaxBar = IMImage("Textures/UI/whiteblock.tga");
 		energyMaxBar.setColor(vec4(0.0f, 0.621f, 0.0f, 0.4f));
@@ -111,6 +126,9 @@ namespace GUI
 		energyRemainingBar.setColor(vec4(0.0f, 1.0f, 0.0f, 0.6f));
 		energyRemainingBar.setSize(ENERGY_CONTAINER_SIZE + vec2(2.0f * -15.0f, 3.0f * -15.0f - fontText.size));
 		energyContainer.addFloatingElement(energyRemainingBar, "energyRemainingBar", vec2(15.0f, 15.0f + fontText.size + 15.0f), 3);
+		gui.update();
+		
+		energyContainer.moveElement("energyText", vec2(ENERGY_CONTAINER_SIZE.x - energyText.getSizeX() - 15.0f, 15.0f));
 		
 		// ===== Timer ===== //
 		
@@ -150,6 +168,33 @@ namespace GUI
 		gui.update();
 		
 		pbTimerContainer.moveElement("pbTimerText", vec2((PBTIMER_CONTAINER_SIZE.x - pbTimerText.getSizeX()) / 2.0f, (PBTIMER_CONTAINER_SIZE.y - pbTimerText.getSizeY()) / 2.0f + 3.0f));
+		
+		// ===== Congratulations ===== //
+		
+		@endOfLevelContainer = IMContainer();
+		endOfLevelContainer.setSize(ENDOFLEVEL_CONTAINER_SIZE);
+		gui.getMain().addFloatingElement(endOfLevelContainer, "endOfLevelContainer", (gui.getMain().getSize() - endOfLevelContainer.getSize()) / 2.0f, 1);
+		
+		@endOfLevelBackground = IMImage("Textures/UI/whiteblock.tga");
+		endOfLevelBackground.setColor(vec4(vec3(0.0f), 0.4f));
+		endOfLevelBackground.setSize(endOfLevelContainer.getSize());
+		endOfLevelContainer.addFloatingElement(endOfLevelBackground, "endOfLevelBackground", vec2(0.0f), 2);
+		
+		@congratulationsText = IMText("Congratulations!", fontCongratulations);
+		endOfLevelContainer.addFloatingElement(congratulationsText, "congratulationsText", vec2(0.0f), 3);
+		
+		@advanceToNextLevelText = IMText("Advance or restart the level?", fontRestartOrAdvance);
+		endOfLevelContainer.addFloatingElement(advanceToNextLevelText, "advanceToNextLevelText", vec2(0.0f), 3);
+		
+		@hotkeysText = IMText("[E] = Advance    [H] = Restart", fontEndOfLevel);
+		endOfLevelContainer.addFloatingElement(hotkeysText, "hotkeysText", vec2(0.0f), 3);
+		gui.update();
+		
+		endOfLevelContainer.moveElement("congratulationsText", vec2((ENDOFLEVEL_CONTAINER_SIZE.x - congratulationsText.getSizeX()) / 2.0f, 30.0f));
+		endOfLevelContainer.moveElement("advanceToNextLevelText", (ENDOFLEVEL_CONTAINER_SIZE - advanceToNextLevelText.getSize()) / 2.0f);
+		endOfLevelContainer.moveElement("hotkeysText", vec2((ENDOFLEVEL_CONTAINER_SIZE.x - hotkeysText.getSizeX()) / 2.0f, ENDOFLEVEL_CONTAINER_SIZE.y - hotkeysText.getSizeY() - 30.0f));
+		
+		SetEndOfLevelWindowVisibility(false);
 		
 		gui.update();
 	}
@@ -225,6 +270,11 @@ namespace GUI
 				(gui.getMain().getSize().x - PBTIMER_CONTAINER_SIZE.x) / 2.0f,
 				gui.getMain().getSizeY() * 0.015f + timerContainer.getSizeY() + 1.0f
 			)
+		);
+		
+		gui.getMain().moveElement(
+			"endOfLevelContainer",
+			(gui.getMain().getSize() - endOfLevelContainer.getSize()) / 2.0f
 		);
 			
 		gui.update();

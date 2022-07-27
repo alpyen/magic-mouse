@@ -1,7 +1,7 @@
 #include "magic-mouse/gui.as"
 #include "magic-mouse/shared.as"
 
-array<int> lines;
+array<int> bridges;
 bool postInit = false;
 
 const int PLAYER_ID = 1;
@@ -28,6 +28,7 @@ float remainingEnergy = maxEnergy;
 float timestampLevelStart;
 float timestampLevelFinished;
 bool levelFinished;
+int advanceOrRestart = 0;
 
 float pbTime;
 
@@ -118,6 +119,7 @@ void Update(int is_paused)
 			timestampLevelFinished = ImGui_GetTime();
 			
 			PlaySound("Data/Sounds/magic-mouse/cheer.wav");
+			GUI::SetEndOfLevelWindowVisibility(true);
 			
 			float levelTime = timestampLevelFinished - timestampLevelStart;
 			
@@ -128,7 +130,7 @@ void Update(int is_paused)
 			}
 		}
 	}
-	
+		
 	if (EditorModeActive() || GetMenuPaused())
 	{
 		if (!hotspotInfoDetailLevel && EditorModeActive())
@@ -154,6 +156,15 @@ void Update(int is_paused)
 		return;
 	}
 	
+	// If the player dies after the finish they should still have the ability to advance.
+	// We need to wait one iteration before sending go_to_main_menu, otherwise the next level will bug out if one exists.
+	switch (advanceOrRestart)
+	{
+		case 0: if (levelFinished && GetInputPressed(player.controller_id, "e")) ++advanceOrRestart; break;
+		case 1:	SendGlobalMessage("levelwin"); ++advanceOrRestart; return;
+		case 2: level.SendMessage("go_to_main_menu"); ++advanceOrRestart; return;
+	}
+	
 	if (GetInputPressed(player.controller_id, "h"))
 		level.SendMessage("reset");
 	
@@ -161,7 +172,7 @@ void Update(int is_paused)
 	HandleHovering(playerAlive);
 	HandleClicks(playerAlive);
 	
-	// DrawingLines while Dragging might flicker, so we do it in DrawGUI.
+	// Drawingbridges while Dragging might flicker, so we do it in DrawGUI.
 	// HandleDragging(playerAlive);
 	
 	timestampLastUpdate = ImGui_GetTime();
@@ -176,10 +187,10 @@ void ReceiveMessage(string message)
 	
 	if (ti.GetToken(message) == "post_reset")
 	{
-		for (int i = 0; i < int(lines.length()); ++i)
-			DeleteObjectID(lines[i]);
+		for (int i = 0; i < int(bridges.length()); ++i)
+			DeleteObjectID(bridges[i]);
 		
-		lines.resize(0);
+		bridges.resize(0);
 		
 		timestampLevelStart = ImGui_GetTime();
 		levelFinished = false;
@@ -188,6 +199,8 @@ void ReceiveMessage(string message)
 		
 		remainingEnergy = maxEnergy;
 		GUI::SetEnergy(maxEnergy, maxEnergy);
+		
+		GUI::SetEndOfLevelWindowVisibility(false);
 		
 		cameraDistance = DEFAULT_CAMERA_DISTANCE;
 		
@@ -427,9 +440,9 @@ void HandleDragging(bool playerAlive)
 		if (requiredEnergy < 0.95f || requiredEnergy > remainingEnergy) return;
 		
 		Object@ line = ReadObjectFromID(CreateObject("Data/Objects/Environment/sand.xml", true));
-		lines.insertLast(line.GetID());
+		bridges.insertLast(line.GetID());
 		
-		line.SetTint(vec3(0.0f));
+		line.SetTint(0.0f);
 		
 		vec3 scale = requiredEnergy;
 		scale.y = 0.5f;

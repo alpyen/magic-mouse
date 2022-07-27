@@ -70,3 +70,8 @@ float Limit(float value, float minValue, float maxValue)
 {
 	return min(max(value, minValue), maxValue);
 }
+
+void TimeLog(string message)
+{
+	Log(fatal, ImGui_GetTime() + " - " + message);
+}
